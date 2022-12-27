@@ -1,0 +1,2 @@
+cub3d v0.0.1 - Primeiro commit
+               Tratar de vereificar a validade do mapa e comecar parseing
