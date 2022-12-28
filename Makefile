@@ -6,7 +6,7 @@
 #    By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 15:07:52 by lucas-ma          #+#    #+#              #
-#    Updated: 2022/12/27 11:24:11 by pcampos-         ###   ########.fr        #
+#    Updated: 2022/12/28 15:31:07 by pcampos-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,9 +38,16 @@ _BIN    =        ./
 ############### COMPILER ################
 
 CC      =        cc
-CFLAGS      =        -Wall -Werror -Wextra -g # -fsanitize=address
+CFLAGS      =        -Wall -Werror -Wextra -g -fsanitize=address
 #valgrind --leak-check=full --show-leak-kinds=all ./minishell
 SRCS    =        $(_SRC)cub3d_main.c \
+                 $(_SRC)errors.c \
+                 $(_SRC)free_utils.c \
+                 $(_SRC)utils.c \
+                 $(_SRC)check_args.c \
+                 $(_SRC)parse_file.c \
+                 $(_SRC)check_map.c \
+                 $(_SRC)check_map_utils.c \
 
 OBJS    =        $(patsubst $(_SRC)%.c,$(_OBJ)%.o,$(SRCS))
 DEPS    =        ./libs/libft.a

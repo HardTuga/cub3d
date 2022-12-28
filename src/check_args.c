@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:25:04 by pcampos-          #+#    #+#             */
-/*   Updated: 2022/12/27 11:39:54 by pcampos-         ###   ########.fr       */
+/*   Updated: 2022/12/28 15:19:21 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ int	rev_strstr(char *str, char *find)
 	return (0);
 }
 
-int	check_args(int ac, char *av)
+int	check_args(int ac, char **av)
 {
-	if (ac > 1)
-		return (error_msg("Too many arguments"));
-	if (rev_strstr(av, ".cub"))
+	if (ac != 2)
+		return (error_msg("Wrong number of arguments"));
+	if (rev_strstr(av[1], ".cub"))
 		return (error_msg("Invalid file extension"));
+	return (0);
 }
