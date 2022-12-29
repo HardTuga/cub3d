@@ -6,13 +6,13 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
-/*   Updated: 2022/12/29 11:53:21 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2022/12/29 12:56:32 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYCASTING_H
 # define RAYCASTING_H
 
-
+# include "../cub3d.h"
 
 #endif
