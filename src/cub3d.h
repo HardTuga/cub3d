@@ -37,6 +37,7 @@ typedef struct s_cub
 	char	**map;
 	int		map_y;
 }				t_cub;
+
 //------------------------------CUB3D_MAIN------------------------------//
 void	print_cub(t_cub *cub);
 void	print_map(char **map);
