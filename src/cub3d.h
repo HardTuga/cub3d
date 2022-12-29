@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2022/12/29 11:54:40 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2022/12/29 16:07:19 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 //------------------------------INCLUDES------------------------------//
 # include "../libft/libft.h"
+# include "../minilibx_linux/mlx.h"
 # include <stdio.h>
 # include <math.h>
 # include <stdlib.h>
