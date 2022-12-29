@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:43:43 by pcampos-          #+#    #+#             */
-/*   Updated: 2022/12/29 12:32:09 by pcampos-         ###   ########.fr       */
+/*   Updated: 2022/12/29 13:16:42 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ int	check_elements(t_cub *cub)
 
 void	fill_params(t_cub *cub, char *str)
 {
-	if (ft_strncmp(str, "NO ", 3) && cub->n == NULL)
+	if (!ft_strncmp(str, "NO ", 3) && cub->n == NULL)
 		cub->n = ft_strdup(str + 3);
-	else if (ft_strncmp(str, "SO ", 3) && cub->s == NULL)
+	else if (!ft_strncmp(str, "SO ", 3) && cub->s == NULL)
 		cub->s = ft_strdup(str + 3);
-	else if (ft_strncmp(str, "WE ", 3) && cub->w == NULL)
+	else if (!ft_strncmp(str, "WE ", 3) && cub->w == NULL)
 		cub->w = ft_strdup(str + 3);
-	else if (ft_strncmp(str, "EA ", 3) && cub->e == NULL)
+	else if (!ft_strncmp(str, "EA ", 3) && cub->e == NULL)
 		cub->e = ft_strdup(str + 3);
-	else if (ft_strncmp(str, "F ", 2) && cub->f == NULL)
+	else if (!ft_strncmp(str, "F ", 2) && cub->f == NULL)
 		cub->f = ft_strdup(str + 2);
-	else if (ft_strncmp(str, "C ", 2) && cub->c == NULL)
+	else if (!ft_strncmp(str, "C ", 2) && cub->c == NULL)
 		cub->c = ft_strdup(str + 2);
 }
 
@@ -47,7 +47,7 @@ int	fill_elements(t_cub *cub, char **tmp)
 	if (check_elements(cub))
 	{
 		free_matrix(tmp);
-		return (1);
+		return (error_msg("Error parsing elements"));
 	}
 	cub->map = malloc(sizeof(char **) * (cub->map_y + 1));
 	if (!cub->map)
@@ -56,7 +56,6 @@ int	fill_elements(t_cub *cub, char **tmp)
 	while (tmp[i] && i < cub->map_y + 6)
 	{
 		cub->map[i - 6] = ft_strdup(tmp[i]);
-		printf("%s\n", cub->map[i - 6]);
 		i++;
 	}
 	free_matrix(tmp);
@@ -107,7 +106,7 @@ int	parse_file(t_cub *cub, char **av)
 	{
 		if (line[0] != '\n' && cub->map_y > 0)
 		{
-			tmp[++i] = ft_strdup(line);
+			tmp[++i] = ft_strdup_map(line);
 			cub->map_y--;
 		}
 		free(line);

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
 /*   Updated: 2022/12/29 16:07:19 by lucas-ma         ###   ########.fr       */
@@ -52,6 +52,7 @@ void	free_cub(t_cub *cub);
 
 //------------------------------UTILS------------------------------//
 int		matrix_size(char **matrix);
+char	*ft_strdup_map(const char *src);
 
 //------------------------------CHECK_ARGS------------------------------//
 int		check_args(int ac, char **av);

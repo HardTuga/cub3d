@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 14:30:06 by pcampos-          #+#    #+#             */
-/*   Updated: 2022/12/28 15:18:16 by pcampos-         ###   ########.fr       */
+/*   Updated: 2022/12/29 15:29:22 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ int	check_line_limits(char **map, int y, int x)
 {
 	if (x == 1)
 	{
-		if (check_element(map[y][0], 1) || check_element(map[y][2], 1) ||
-			check_element(map[y + 1][1], 1) || check_element(map[y - 1][1], 1))
+		if (check_element(map[y][0], 1) || check_element(map[y][2], 0) ||
+			check_element(map[y + 1][1], 0) || check_element(map[y - 1][1], 0))
 			return (1);
 	}
 	else if (x == (int)ft_strlen(map[y]) - 2)
 	{
-		if (check_element(map[y][x - 1], 1) || check_element(map[y][x + 1], 1)
-		|| check_element(map[y + 1][x], 1) || check_element(map[y - 1][x], 1))
+		if (check_element(map[y][x - 1], 0) || check_element(map[y][x + 1], 1)
+		|| check_element(map[y + 1][x], 0) || check_element(map[y - 1][x], 0))
 			return (1);
 	}
 	return (0);
