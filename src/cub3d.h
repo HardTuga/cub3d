@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2022/12/28 15:16:15 by pcampos-         ###   ########.fr       */
+/*   Updated: 2022/12/29 11:33:55 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_cub
 	char	**map;
 	int		map_y;
 }				t_cub;
+
 //------------------------------CUB3D_MAIN------------------------------//
 void	print_cub(t_cub *cub);
 void	print_map(char **map);
