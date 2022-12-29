@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:15:40 by pcampos-          #+#    #+#             */
-/*   Updated: 2022/12/28 15:36:41 by pcampos-         ###   ########.fr       */
+/*   Updated: 2022/12/29 12:32:59 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	main(int argc, char **argv)
 
 	if (check_args(argc, argv))
 		return (1);
+	ft_memset(&cub, 0, sizeof(t_cub));
 	if (parse_file(&cub, argv))
 	{
 		free_cub(&cub);
@@ -49,7 +50,7 @@ int	main(int argc, char **argv)
 		// free_cub(&cub);
 		// return (1);
 	// }
-	//print_cub(&cub);
+	print_cub(&cub);
 	free_cub(&cub);
 	printf("Feito!\n");
 }

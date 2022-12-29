@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:43:43 by pcampos-          #+#    #+#             */
-/*   Updated: 2022/12/28 15:34:52 by pcampos-         ###   ########.fr       */
+/*   Updated: 2022/12/29 12:32:09 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,10 @@ int	fill_elements(t_cub *cub, char **tmp)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	cub->map_y = matrix_size(tmp) - 6;
-	while (i < 5)
-	{
+	while (++i <= 5)
 		fill_params(cub, tmp[i]);
-		i++;
-	}
 	if (check_elements(cub))
 	{
 		free_matrix(tmp);
@@ -56,9 +53,10 @@ int	fill_elements(t_cub *cub, char **tmp)
 	if (!cub->map)
 		return (error_msg("Error allocating memory"));
 	cub->map[cub->map_y] = NULL;
-	while (tmp[i] && i < cub->map_y + 5)
+	while (tmp[i] && i < cub->map_y + 6)
 	{
-		cub->map[i - 5] = ft_strdup(tmp[i]);
+		cub->map[i - 6] = ft_strdup(tmp[i]);
+		printf("%s\n", cub->map[i - 6]);
 		i++;
 	}
 	free_matrix(tmp);
@@ -112,7 +110,7 @@ int	parse_file(t_cub *cub, char **av)
 			tmp[++i] = ft_strdup(line);
 			cub->map_y--;
 		}
-		free_str(line);
+		free(line);
 		line = get_next_line(fd);
 	}
 	return (fill_elements(cub, tmp));

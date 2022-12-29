@@ -3,3 +3,5 @@ cub3d v0.0.1 - Primeiro commit
 
 cub3d v0.0.2 - Continuar no parsing
                Comecar as vereficacoes do mapa
+
+cub3d v0.0.3 - segfault corrigido

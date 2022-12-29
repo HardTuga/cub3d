@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 18:14:15 by pcampos-          #+#    #+#             */
-/*   Updated: 2022/12/28 11:24:51 by pcampos-         ###   ########.fr       */
+/*   Updated: 2022/12/29 12:27:35 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_str(char *str)
 {
-	if (str)
+	if (str && *str)
 		free(str);
 }
 
@@ -23,13 +23,15 @@ void	free_matrix(char **matrix)
 	int	i;
 
 	i = 0;
-	while (matrix[i])
-	{
-		free_str(matrix[i]);
-		i++;
-	}
 	if (matrix)
+	{
+		while (matrix[i])
+		{
+			free_str(matrix[i]);
+			i++;
+		}
 		free(matrix);
+	}
 }
 
 void	free_cub(t_cub *cub)
