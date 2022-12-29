@@ -45,11 +45,11 @@ int	main(int argc, char **argv)
 		free_cub(&cub);
 		return (1);
 	}
-	// if (map_checker(&cub))
-	// {
-		// free_cub(&cub);
-		// return (1);
-	// }
+	if (map_checker(&cub))
+	{
+		free_cub(&cub);
+		return (1);
+	}
 	print_cub(&cub);
 	free_cub(&cub);
 	printf("Feito!\n");
