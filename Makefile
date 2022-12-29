@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+         #
+#    By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 15:07:52 by lucas-ma          #+#    #+#              #
-#    Updated: 2022/12/28 15:31:07 by pcampos-         ###   ########.fr        #
+#    Updated: 2022/12/29 12:01:52 by lucas-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,8 +50,8 @@ SRCS    =        $(_SRC)cub3d_main.c \
                  $(_SRC)check_map_utils.c \
 
 OBJS    =        $(patsubst $(_SRC)%.c,$(_OBJ)%.o,$(SRCS))
-DEPS    =        ./libs/libft.a
-LIBS    =        -lft
+DEPS    =        ./libs/libft.a ./libs/libmlx_Linux.a
+LIBS    =        -lft -lmlx_Linux
 
 ################ RULES ##################
 
@@ -59,10 +59,10 @@ all: deps $(NAME)
 
 $(_OBJ)%.o: $(_SRC)%.c
 	$(MKD) -p $(@D)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 $(NAME): $(DEPS) $(OBJS)
-	$(CC) $(CFLAGS)  $(OBJS) -o $(NAME) -L $(_LIB) $(LIBS)
+	$(CC) $(CFLAGS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz $(OBJS) -o $(NAME) -L $(_LIB) $(LIBS)
 
 ################ DEPS ###################
 
