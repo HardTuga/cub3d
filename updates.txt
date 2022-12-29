@@ -5,3 +5,6 @@ cub3d v0.0.2 - Continuar no parsing
                Comecar as vereficacoes do mapa
 
 cub3d v0.0.3 - segfault corrigido
+
+cub3d v0.0.4 - testes basicos feitos mas parece tar a funcionar bem
+               falta vereficar se os paths para texturas das paredes e se os valores RGB tao bem dados

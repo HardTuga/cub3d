@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:15:40 by pcampos-          #+#    #+#             */
-/*   Updated: 2022/12/29 12:32:59 by pcampos-         ###   ########.fr       */
+/*   Updated: 2022/12/29 13:17:17 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ int	main(int argc, char **argv)
 		free_cub(&cub);
 		return (1);
 	}
-	// if (map_checker(&cub))
-	// {
-		// free_cub(&cub);
-		// return (1);
-	// }
+	if (map_checker(&cub))
+	{
+		free_cub(&cub);
+		return (1);
+	}
 	print_cub(&cub);
 	free_cub(&cub);
 	printf("Feito!\n");

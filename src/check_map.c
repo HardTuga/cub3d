@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 11:27:21 by pcampos-          #+#    #+#             */
-/*   Updated: 2022/12/28 15:17:40 by pcampos-         ###   ########.fr       */
+/*   Updated: 2022/12/29 15:31:40 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	closed_border(char **map, int y)
 
 	x = -1;
 	while (map[y][++x])
-		if (map[y][x] == '0' || map[y][x] != 'N' || map[y][x] != 'S' ||
-			map[y][x] != 'E' || map[y][x] != 'W')
+		if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S' ||
+			map[y][x] == 'E' || map[y][x] == 'W')
 			return (1);
 	return (0);
 }
@@ -53,14 +53,13 @@ int	closed_line(char **map, int y)
 		if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S' ||
 			map[y][x] == 'E' || map[y][x] == 'W')
 		{
-			if (x == 0 || x == (int)ft_strlen(map[y]))
+			if (x == 0 || x == (int)ft_strlen(map[y]) - 1)
 				return (1);
 			if (check_line_limits(map, y, x))
 				return (1);
 			if (check_line_midle(map, y, x))
 				return (1);
 		}
-		x = -1;
 	}
 	return (0);
 }
@@ -74,10 +73,11 @@ int	check_closed(t_cub *cub)
 	control = 0;
 	while (cub->map[++y])
 	{
-		if (y == 0 || y == cub->map_y)
+		if (y == 0 || y == cub->map_y - 1)
 			control += closed_border(cub->map, y);
 		else
 			control += closed_line(cub->map, y);
+		printf("Y: %d\nLine: %s\nControl: %d\n", y, cub->map[y], control);
 	}
 	return (control);
 }
