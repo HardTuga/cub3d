@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:43:43 by pcampos-          #+#    #+#             */
-/*   Updated: 2022/12/29 13:16:42 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/03 13:55:23 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	check_elements(t_cub *cub)
 {
 	if (cub->n == NULL || cub->s == NULL || cub->w == NULL || cub->e == NULL
 		|| cub->f == NULL || cub->c == NULL)
+		return (1);
+	if (valid_elements(cub))
 		return (1);
 	return (0);
 }

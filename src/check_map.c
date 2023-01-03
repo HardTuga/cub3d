@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 11:27:21 by pcampos-          #+#    #+#             */
-/*   Updated: 2022/12/29 15:31:40 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/03 15:42:06 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	map_checker(t_cub *cub)
 	if (check_chars(cub->map))
 		return (error_msg("Invalid characters in map"));
 	if (single_player(cub->map))
-		return (error_msg("Map must have only one player"));
+		return (error_msg("Map must have one, and only one player"));
 	if (check_closed(cub))
 		return (error_msg("Map is not closed"));
 	return (0);
