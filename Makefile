@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+         #
+#    By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 15:07:52 by lucas-ma          #+#    #+#              #
-#    Updated: 2022/12/29 16:13:28 by lucas-ma         ###   ########.fr        #
+#    Updated: 2023/01/03 15:39:19 by pcampos-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ SRCS    =        $(_SRC)cub3d_main.c \
                  $(_SRC)utils.c \
                  $(_SRC)check_args.c \
                  $(_SRC)parse_file.c \
+                 $(_SRC)parse_file_utils.c \
                  $(_SRC)check_map.c \
                  $(_SRC)check_map_utils.c \
 

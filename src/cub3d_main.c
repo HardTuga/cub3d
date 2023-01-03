@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:15:40 by pcampos-          #+#    #+#             */
-/*   Updated: 2022/12/29 16:17:52 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/03 15:06:50 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int	main(int argc, char **argv)
 {
 	t_cub	cub;
 
+	ft_memset(&cub, 0, sizeof(t_cub));
 	if (check_args(argc, argv))
 		return (1);
-	ft_memset(&cub, 0, sizeof(t_cub));
 	if (parse_file(&cub, argv))
 	{
 		free_cub(&cub);

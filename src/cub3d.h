@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2022/12/29 16:07:19 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/03 15:39:01 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,11 @@ int		file_line(char *av);
 int		fill_elements(t_cub *cub, char **tmp);
 void	fill_params(t_cub *cub, char *str);
 int		check_elements(t_cub *cub);
+
+//------------------------------PARSE_FILE_UTILS------------------------------//
+int		valid_elements(t_cub *cub);
+int		check_rgb(char *element);
+int		check_image(char *element);
 
 //------------------------------CHECK_MAP------------------------------//
 int		map_checker(t_cub *cub);
