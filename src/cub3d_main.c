@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:15:40 by pcampos-          #+#    #+#             */
-/*   Updated: 2022/12/29 16:17:52 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/03 16:36:06 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,6 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	print_cub(&cub);
+	
 	free_cub(&cub);
-	printf("Feito!\n");
 }
