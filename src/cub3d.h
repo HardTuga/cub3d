@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/04 14:13:44 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/04 16:54:58 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,15 @@
 
 //------------------------------DEFINES------------------------------//
 
+#define SCREENW 3840
+#define SCREENH 2160
+
 //------------------------------STRUCTS------------------------------//
 typedef struct s_player
 {
 	int		x;
 	int		y;
-	char	spawn;
+	char	dir;
 }				t_player;
 
 typedef struct s_cub
@@ -41,7 +44,7 @@ typedef struct s_cub
 	char		*w;
 	char		*e;
 	char		*f;
-	char		*c;	
+	char		*c;
 	char		**map;
 	int			map_y;
 }				t_cub;
@@ -90,5 +93,8 @@ int		single_player(char **map, t_cub *cub);
 int		check_line_midle(char **map, int y, int x);
 int		check_line_limits(char **map, int y, int x);
 int		check_element(char c, int o);
+
+//------------------------------CHECK_MAP_UTILS------------------------------//
+void	ray_main(t_cub *map, void *mlx);
 
 #endif

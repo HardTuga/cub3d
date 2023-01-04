@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:15:40 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/03 17:03:30 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/04 16:53:39 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,14 @@ void	print_cub(t_cub *cub)
 	printf("EA: %s\n", cub->e);
 	printf("F: %s\n", cub->f);
 	printf("C: %s\n", cub->c);
-	printf("Player Stats:\nX: %d Y: %d\nOrientation: %c\n", cub->player.x, cub->player.y, cub->player.spawn);
+	printf("Player Stats:\nX: %d Y: %d\nOrientation: %c\n", cub->player.x, cub->player.y, cub->player.dir);
 	print_map(cub->map);
 }
 
 int	main(int argc, char **argv)
 {
 	t_cub	cub;
+	void	*mlx;
 
 	ft_memset(&cub, 0, sizeof(t_cub));
 	if (check_args(argc, argv))
@@ -51,7 +52,8 @@ int	main(int argc, char **argv)
 		free_cub(&cub);
 		return (1);
 	}
-	print_cub(&cub);
-	
+	//print_cub(&cub);
+	mlx = mlx_init();
+	ray_main(&cub, mlx);
 	free_cub(&cub);
 }
