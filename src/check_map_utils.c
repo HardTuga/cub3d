@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 14:30:06 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/04 14:13:29 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/04 14:21:05 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ int	single_player(char **map, t_cub *cub)
 				cub->player.spawn = map[j][i];
 				count++;
 			}
-		i = -1;
 		}
+		i = -1;
 	}
 	if (count == 1)
 		return (0);

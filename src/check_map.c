@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 11:27:21 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/04 14:11:22 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/04 14:21:36 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ int	check_closed(t_cub *cub)
 			control += closed_border(cub->map, y);
 		else
 			control += closed_line(cub->map, y);
-		printf("Y: %d\nLine: %s\nControl: %d\n", y, cub->map[y], control);
 	}
 	return (control);
 }

@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:15:40 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/03 15:06:50 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/04 14:21:42 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	print_cub(t_cub *cub)
 	printf("EA: %s\n", cub->e);
 	printf("F: %s\n", cub->f);
 	printf("C: %s\n", cub->c);
+	printf("Player Stats:\nX: %d Y: %d\nOrientation: %c\n", cub->player.x, cub->player.y, cub->player.spawn);
 	print_map(cub->map);
 }
 
