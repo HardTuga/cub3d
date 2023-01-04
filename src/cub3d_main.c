@@ -30,6 +30,7 @@ void	print_cub(t_cub *cub)
 	printf("EA: %s\n", cub->e);
 	printf("F: %s\n", cub->f);
 	printf("C: %s\n", cub->c);
+	printf("Player Stats:\nX: %d Y: %d\nOrientation: %c\n", cub->player.x, cub->player.y, cub->player.spawn);
 	print_map(cub->map);
 }
 

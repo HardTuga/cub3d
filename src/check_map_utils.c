@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 14:30:06 by pcampos-          #+#    #+#             */
-/*   Updated: 2022/12/29 15:29:22 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/04 14:21:05 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	check_line_midle(char **map, int y, int x)
 	return (0);
 }
 
-int	single_player(char **map)
+int	single_player(char **map, t_cub *cub)
 {
 	int	i;
 	int	j;
@@ -69,9 +69,16 @@ int	single_player(char **map)
 	while (map[++j])
 	{
 		while (map[j][++i])
+		{
 			if (map[j][i] == 'N' || map[j][i] == 'S' || map[j][i] == 'E' ||
 				map[j][i] == 'W')
+			{
+				cub->player.x = i;
+				cub->player.y = j;
+				cub->player.spawn = map[j][i];
 				count++;
+			}
+		}
 		i = -1;
 	}
 	if (count == 1)

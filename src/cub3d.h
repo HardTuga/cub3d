@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/03 15:39:01 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/04 14:13:44 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,24 @@
 //------------------------------DEFINES------------------------------//
 
 //------------------------------STRUCTS------------------------------//
+typedef struct s_player
+{
+	int		x;
+	int		y;
+	char	spawn;
+}				t_player;
+
 typedef struct s_cub
 {
-	char	*n;
-	char	*s;
-	char	*w;
-	char	*e;
-	char	*f;
-	char	*c;	
-	char	**map;
-	int		map_y;
+	t_player	player;
+	char		*n;
+	char		*s;
+	char		*w;
+	char		*e;
+	char		*f;
+	char		*c;	
+	char		**map;
+	int			map_y;
 }				t_cub;
 
 //------------------------------CUB3D_MAIN------------------------------//
@@ -78,7 +86,7 @@ int		closed_border(char **map, int y);
 int		check_chars(char **map);
 
 //------------------------------CHECK_MAP_UTILS------------------------------//
-int		single_player(char **map);
+int		single_player(char **map, t_cub *cub);
 int		check_line_midle(char **map, int y, int x);
 int		check_line_limits(char **map, int y, int x);
 int		check_element(char c, int o);
