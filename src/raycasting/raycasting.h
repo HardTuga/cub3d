@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/04 16:57:13 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/05 14:22:43 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,21 @@
 
 # include "../cub3d.h"
 
-typedef struct s_vector
+typedef struct s_rloop
 {
-	double	x;
-	double	y;
-}				t_vector;
+	int		hit;
+	int		side;
+	int		mapx;
+	int		mapy;
+	int		stepx;
+	int		stepy;
+	double	camx;
+	double	perpwdist;
+	t_vector	rdir;
+	t_vector	sdist;
+	t_vector	ddist;
+}				t_rloop;
 
-typedef	struct s_ray
-{
-	t_vector	p;
-	t_vector	dir;
-	t_vector	plane;
-}				t_ray;
 
 
 

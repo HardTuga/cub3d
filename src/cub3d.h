@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/04 16:54:58 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/05 15:14:29 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@
 # include <fcntl.h>
 
 //------------------------------DEFINES------------------------------//
-
-#define SCREENW 3840
-#define SCREENH 2160
 
 //------------------------------STRUCTS------------------------------//
 typedef struct s_player
@@ -49,9 +46,41 @@ typedef struct s_cub
 	int			map_y;
 }				t_cub;
 
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
+
+typedef struct s_vector
+{
+	double	x;
+	double	y;
+}				t_vector;
+
+typedef struct s_ray
+{
+	t_vector	p;
+	t_vector	dir;
+	t_vector	plane;
+}				t_ray;
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+	t_data	*img;
+	int		screenx;
+	int		screeny;
+}				t_mlx;
+
+
 //------------------------------CUB3D_MAIN------------------------------//
 void	print_cub(t_cub *cub);
 void	print_map(char **map);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 //------------------------------ERRORS------------------------------//
 int		error_msg(char *str);
@@ -94,7 +123,10 @@ int		check_line_midle(char **map, int y, int x);
 int		check_line_limits(char **map, int y, int x);
 int		check_element(char c, int o);
 
-//------------------------------CHECK_MAP_UTILS------------------------------//
-void	ray_main(t_cub *map, void *mlx);
+//--------------------------------RAY_MAIN.C---------------------------------//
+void	ray_main(t_cub *map, t_mlx *mlx);
+
+//-----------------------------RAY_LOOP.C------------------------------------//
+void	ray_loop(t_mlx *mlx, t_ray *r, t_cub *cub);
 
 #endif

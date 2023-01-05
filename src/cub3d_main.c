@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:15:40 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/04 16:53:39 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/05 16:07:37 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,21 @@ void	print_cub(t_cub *cub)
 	print_map(cub->map);
 }
 
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
+
 int	main(int argc, char **argv)
 {
 	t_cub	cub;
-	void	*mlx;
+	t_mlx	mlx;
 
 	ft_memset(&cub, 0, sizeof(t_cub));
+	ft_memset(&mlx, 0, sizeof(t_mlx));
 	if (check_args(argc, argv))
 		return (1);
 	if (parse_file(&cub, argv))
@@ -52,8 +61,8 @@ int	main(int argc, char **argv)
 		free_cub(&cub);
 		return (1);
 	}
-	//print_cub(&cub);
-	mlx = mlx_init();
-	ray_main(&cub, mlx);
+	// print_cub(&cub);
+	mlx.mlx = mlx_init();
+	ray_main(&cub, &mlx);
 	free_cub(&cub);
 }

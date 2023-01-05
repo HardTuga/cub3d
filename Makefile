@@ -6,7 +6,7 @@
 #    By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 15:07:52 by lucas-ma          #+#    #+#              #
-#    Updated: 2023/01/04 15:53:42 by lucas-ma         ###   ########.fr        #
+#    Updated: 2023/01/05 16:19:54 by lucas-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ _BIN    =        ./
 ############### COMPILER ################
 
 CC      =        cc
-CFLAGS      =        -Wall -Werror -Wextra #-g -fsanitize=address
+CFLAGS      =        -Wall -Werror -Wextra -g #-fsanitize=address
 #valgrind --leak-check=full --show-leak-kinds=all ./minishell
 SRCS    =        $(_SRC)cub3d_main.c \
                  $(_SRC)errors.c \
@@ -51,6 +51,7 @@ SRCS    =        $(_SRC)cub3d_main.c \
                  $(_SRC)check_map.c \
                  $(_SRC)check_map_utils.c \
 				 $(_SRC)raycasting/ray_main.c \
+				 $(_SRC)raycasting/ray_loop.c \
 
 OBJS    =        $(patsubst $(_SRC)%.c,$(_OBJ)%.o,$(SRCS))
 DEPS    =        ./libs/libft.a ./minilibx_linux/libmlx_Linux.a
