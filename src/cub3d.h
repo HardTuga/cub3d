@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/04 14:13:44 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/05 12:36:04 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ int		single_player(char **map, t_cub *cub);
 int		check_line_midle(char **map, int y, int x);
 int		check_line_limits(char **map, int y, int x);
 int		check_element(char c, int o);
+int		check_door(char **map, int y, int x);
 
 #endif

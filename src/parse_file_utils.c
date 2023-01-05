@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 13:50:26 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/03 16:38:22 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/05 14:49:52 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,17 @@ int	check_rgb(char *element)
 	tmp = ft_split(element, ',');
 	if (matrix_size(tmp) != 3 || n_chars(element, ',') != 2)
 	{
-		free(tmp);
+		free_matrix(tmp);
 		return (1);
 	}
 	if (ft_atoi(tmp[0]) < 0 || ft_atoi(tmp[1]) < 0 || ft_atoi(tmp[2]) < 0
 		|| ft_atoi(tmp[0]) > 255 || ft_atoi(tmp[1]) > 255
 		|| ft_atoi(tmp[2]) > 255)
 	{
-		free(tmp);
+		free_matrix(tmp);
 		return (1);
 	}
+	free_matrix(tmp);
 	return (0);
 }
 
