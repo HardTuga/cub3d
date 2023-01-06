@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:15:40 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/05 16:07:37 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/06 10:50:06 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	main(int argc, char **argv)
 		free_cub(&cub);
 		return (1);
 	}
-	// print_cub(&cub);
+	print_cub(&cub);
 	mlx.mlx = mlx_init();
 	ray_main(&cub, &mlx);
 	free_cub(&cub);

@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/05 15:14:29 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/06 10:25:04 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 # include <fcntl.h>
 
 //------------------------------DEFINES------------------------------//
+
+# define SCREENW 1920
+# define SCREENH 1080
 
 //------------------------------STRUCTS------------------------------//
 typedef struct s_player
@@ -71,9 +74,7 @@ typedef struct s_mlx
 {
 	void	*mlx;
 	void	*win;
-	t_data	*img;
-	int		screenx;
-	int		screeny;
+	t_data	img;
 }				t_mlx;
 
 

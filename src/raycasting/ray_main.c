@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:36:40 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/05 16:16:51 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/06 10:34:38 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ void	ray_main(t_cub *map, t_mlx *mlx)
 	r.plane = calc_plane(map->player.dir);
 	// time = 0;
 	// oldtime = 0;
-	mlx_get_screen_size(mlx->mlx, &(mlx->screenx), &(mlx->screeny));
-	mlx->win = mlx_new_window(mlx->mlx, mlx->screenx, mlx->screeny, "Cub3D");
+	mlx->win = mlx_new_window(mlx->mlx, SCREENW, SCREENH, "Cub3D");
 	ray_loop(mlx, &r, map);
-	mlx_loop(mlx->mlx);
 }
