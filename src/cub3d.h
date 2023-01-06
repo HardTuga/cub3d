@@ -123,6 +123,7 @@ int		single_player(char **map, t_cub *cub);
 int		check_line_midle(char **map, int y, int x);
 int		check_line_limits(char **map, int y, int x);
 int		check_element(char c, int o);
+int		check_door(char **map, int y, int x);
 
 //--------------------------------RAY_MAIN.C---------------------------------//
 void	ray_main(t_cub *map, t_mlx *mlx);

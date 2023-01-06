@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 11:27:21 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/04 14:21:36 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/05 15:34:17 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	check_chars(char **map)
 		while (map[j][++i])
 			if (map[j][i] != '0' && map[j][i] != '1' && map[j][i] != 'N' &&
 				map[j][i] != 'S' && map[j][i] != 'E' && map[j][i] != 'W' &&
-				map[j][i] != ' ')
+				map[j][i] != ' ' && map[j][i] != '2')
 				return (1);
 		i = -1;
 	}
@@ -38,8 +38,8 @@ int	closed_border(char **map, int y)
 	x = -1;
 	while (map[y][++x])
 		if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S' ||
-			map[y][x] == 'E' || map[y][x] == 'W')
-			return (1);
+			map[y][x] == 'E' || map[y][x] == 'W' || map[y][x] == '2')
+			return (error_msg("Map is not closed"));
 	return (0);
 }
 
@@ -54,11 +54,18 @@ int	closed_line(char **map, int y)
 			map[y][x] == 'E' || map[y][x] == 'W')
 		{
 			if (x == 0 || x == (int)ft_strlen(map[y]) - 1)
-				return (1);
+				return (error_msg("Map is not closed"));
 			if (check_line_limits(map, y, x))
-				return (1);
+				return (error_msg("Map is not closed"));
 			if (check_line_midle(map, y, x))
-				return (1);
+				return (error_msg("Map is not closed"));
+		}
+		if (map[y][x] == '2')
+		{
+			if (x == 0 || x == (int)ft_strlen(map[y]) - 1)
+				return (error_msg("Door in invalid place"));
+			if (check_door(map, y, x))
+				return (error_msg("Door in invalid place"));
 		}
 	}
 	return (0);
@@ -77,6 +84,8 @@ int	check_closed(t_cub *cub)
 			control += closed_border(cub->map, y);
 		else
 			control += closed_line(cub->map, y);
+		if (control != 0)
+			break ;
 	}
 	return (control);
 }
@@ -88,6 +97,6 @@ int	map_checker(t_cub *cub)
 	if (single_player(cub->map, cub))
 		return (error_msg("Map must have one, and only one player"));
 	if (check_closed(cub))
-		return (error_msg("Map is not closed"));
+		return (1);
 	return (0);
 }

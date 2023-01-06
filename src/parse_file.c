@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:43:43 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/03 13:55:23 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/05 12:03:01 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int	check_elements(t_cub *cub)
 {
 	if (cub->n == NULL || cub->s == NULL || cub->w == NULL || cub->e == NULL
 		|| cub->f == NULL || cub->c == NULL)
-		return (1);
+		return (error_msg("Wrong number of elements"));
 	if (valid_elements(cub))
-		return (1);
+		return (error_msg("Invalid value of one or more elements"));
 	return (0);
 }
 
@@ -96,10 +96,10 @@ int	parse_file(t_cub *cub, char **av)
 	char	**tmp;
 	char	*line;
 
-	cub->map_y = file_line(av[1]);
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 		return (error_msg("Error opening file"));
+	cub->map_y = file_line(av[1]);
 	tmp = malloc(sizeof(char *) * (cub->map_y + 1));
 	tmp[cub->map_y] = NULL;
 	i = -1;
