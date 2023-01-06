@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 14:30:06 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/05 15:36:27 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/06 11:58:58 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int	check_element(char c, int o)
 {
 	if (o == 1)
 	{
-		if (c != '1')
+		if (c == '1' || c == '3' || c == '4' || c == '5' || c == '6')
+			return (0);
+		else
 			return (1);
 	}
 	else
@@ -29,6 +31,24 @@ int	check_element(char c, int o)
 	}
 	return (0);
 }
+
+// int	check_element(char c, int o)
+// {
+	// if (o == 1)
+	// {
+		// if (c != '1')
+			// return (1);
+	// }
+	// else
+	// {
+		// if (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W'
+			// || c == '1' || c == '2')
+			// return (0);
+		// else
+			// return (1);
+	// }
+	// return (0);
+// }
 
 int	check_door(char **map, int y, int x)
 {
