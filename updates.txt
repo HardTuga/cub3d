@@ -17,3 +17,4 @@ cub3d v0.1.0 - parser e checker do mapa base feitos
                adicionar portas ao map checker e limpar um leak
 
 tmp 1 - check_chars e outras verificacoes do mapa alteradas (o original esta CUmentado)
+tmp 2 - corrigido
