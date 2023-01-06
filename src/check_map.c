@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 11:27:21 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/05 15:34:17 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/06 11:59:21 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,32 @@ int	check_chars(char **map)
 		while (map[j][++i])
 			if (map[j][i] != '0' && map[j][i] != '1' && map[j][i] != 'N' &&
 				map[j][i] != 'S' && map[j][i] != 'E' && map[j][i] != 'W' &&
-				map[j][i] != ' ' && map[j][i] != '2')
+				map[j][i] != ' ' && map[j][i] != '2' && map[j][i] != '3' &&
+				map[j][i] != '4' && map[j][i] != '5' && map[j][i] != '6')
 				return (1);
 		i = -1;
 	}
 	return (0);
 }
+
+// int	check_chars(char **map)
+// {
+// 	int	i;
+// 	int	j;
+
+// 	i = -1;
+// 	j = -1;
+// 	while (map[++j])
+// 	{
+// 		while (map[j][++i])
+// 			if (map[j][i] != '0' && map[j][i] != '1' && map[j][i] != 'N' &&
+// 				map[j][i] != 'S' && map[j][i] != 'E' && map[j][i] != 'W' &&
+// 				map[j][i] != ' ' && map[j][i] != '2')
+// 				return (1);
+// 		i = -1;
+// 	}
+// 	return (0);
+// }
 
 int	closed_border(char **map, int y)
 {
