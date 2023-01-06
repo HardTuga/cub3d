@@ -51,12 +51,7 @@ int	main(int argc, char **argv)
 	ft_memset(&mlx, 0, sizeof(t_mlx));
 	if (check_args(argc, argv))
 		return (1);
-	if (parse_file(&cub, argv))
-	{
-		free_cub(&cub);
-		return (1);
-	}
-	if (map_checker(&cub))
+	if (parse_file(&cub, argv) || map_checker(&cub))
 	{
 		free_cub(&cub);
 		return (1);
