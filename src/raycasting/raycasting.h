@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/06 11:49:37 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/09 12:10:18 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ typedef struct s_rloop
 	int		mapy;
 	int		stepx;
 	int		stepy;
-	int		d_start;
-	int		d_end;
+	int		draw_start;
+	int		draw_end;
 	int		line_height;
 	double	camx;
 	double	perpwdist;
