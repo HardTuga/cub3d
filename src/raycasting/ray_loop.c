@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 09:54:47 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/11 16:17:57 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:28:12 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,4 @@ void	ray_loop(t_mlx *mlx, t_play *pl, t_cub *cub)
 		draw_stripe(draw, &tudao);
 		(draw.x)++;
 	}
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img, 0, 0);
 }

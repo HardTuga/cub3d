@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/11 15:24:55 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:27:47 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ void	choose_color(t_rloop tudao, t_mlx *mlx, t_cub *cub, t_draw *draw);
 void	ray_loop(t_mlx *mlx, t_play *pl, t_cub *cub);
 
 //-----------------------------RAY_MOVES.C-----------------------------------//
-void	handle_hooks(t_all *all);
+int	handle_hooks(t_all *all);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:36:40 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/11 16:19:37 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:50:59 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ void	choose_color(t_rloop tudao, t_mlx *mlx, t_cub *cub, t_draw *draw)
 		draw->color = mlx_get_color_value(mlx->mlx, 0xFFFFFF00);
 	if (tudao.side == 1)
 		draw->color = (int)((draw->color & 0x0000FF) * 0.70)
-					| (int)(((draw->color >> 8) & 0x0000FF) * 0.70) << 8
-					| (int)((draw->color >> 16) * 0.70) << 16;
+				| (int)(((draw->color >> 8) & 0x0000FF) * 0.70) << 8
+				| (int)((draw->color >> 16) * 0.70) << 16;
 }
 
 static void	init_player(t_play *player, t_cub *cub)
@@ -85,7 +85,7 @@ void	ray_main(t_cub *cub)
 	var.mlx.win = mlx_new_window(var.mlx.mlx, SCREENW, SCREENH, "Cub3D");
 	init_player(&pl, cub);
 	var.pl = &pl;
-	// mlx_loop_hook(var->mlx.ptr, handlers, vars);
-	handle_hooks(&var);
+	mlx_hook(var.mlx.win, 2, 1L << 0, key_pressed, &var);
+	mlx_loop_hook(var.mlx.mlx, handle_hooks, &var);
 	mlx_loop(var.mlx.mlx);
 }

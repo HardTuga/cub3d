@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/11 16:14:11 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:55:03 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <unistd.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <stdbool.h>
 # include <sys/time.h>
 
 //------------------------------DEFINES------------------------------//
@@ -47,6 +48,18 @@ enum
 	KEY_UP_ARR = 65362,
 	KEY_DOWN_ARR = 65364,
 	KEY_M = 109
+};
+
+enum
+{
+	_W = 0,
+	_A = 1,
+	_S = 2,
+	_D = 3,
+	_LA = 4,
+	_RA = 5,
+	_UA = 6,
+	_DA	= 7
 };
 
 
