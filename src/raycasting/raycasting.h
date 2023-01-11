@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/09 12:10:18 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:24:55 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,37 @@
 
 # include "../cub3d.h"
 
+typedef struct s_draw
+{
+	int		x;
+	uint	color;
+	t_mlx	*mlx;
+}				t_draw;
+
 typedef struct s_rloop
 {
-	int		hit;
-	int		side;
-	int		mapx;
-	int		mapy;
-	int		stepx;
-	int		stepy;
-	int		draw_start;
-	int		draw_end;
-	int		line_height;
-	double	camx;
-	double	perpwdist;
+	int			hit;
+	int			side;
+	int			stepx;
+	int			stepy;
+	int			draw_start;
+	int			draw_end;
+	int			line_height;
+	double		camx;
+	double		perpwdist;
+	t_vector2	map;
 	t_vector	rdir;
 	t_vector	sdist;
 	t_vector	ddist;
 }				t_rloop;
 
+//-----------------------------RAY_MAIN.C------------------------------------//
+void	choose_color(t_rloop tudao, t_mlx *mlx, t_cub *cub, t_draw *draw);
 
+//-----------------------------RAY_LOOP.C------------------------------------//
+void	ray_loop(t_mlx *mlx, t_play *pl, t_cub *cub);
 
-
+//-----------------------------RAY_MOVES.C-----------------------------------//
+void	handle_hooks(t_all *all);
 
 #endif

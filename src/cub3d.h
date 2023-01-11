@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/09 12:15:53 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:14:11 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,36 @@
 # include <unistd.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <sys/time.h>
 
 //------------------------------DEFINES------------------------------//
 
 # define SCREENW 1920
 # define SCREENH 1080
+# define X_SEN 0.9
+# define X_VEL 0.75
+# define X_ROT 0.02
+
+//-------------------------------ENUMS-------------------------------//
+
+/* LINUX KEYS */
+enum
+{
+	KEY_ESC = 65307,
+	KEY_W = 119,
+	KEY_A = 97,
+	KEY_S = 115,
+	KEY_D = 100,
+	KEY_LFT_ARR = 65361,
+	KEY_RGT_ARR = 65363,
+	KEY_UP_ARR = 65362,
+	KEY_DOWN_ARR = 65364,
+	KEY_M = 109
+};
+
 
 //------------------------------STRUCTS------------------------------//
+
 typedef struct s_player
 {
 	int		x;
@@ -49,7 +72,7 @@ typedef struct s_cub
 	int			map_y;
 }				t_cub;
 
-typedef struct	s_data {
+typedef struct s_data {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -63,12 +86,18 @@ typedef struct s_vector
 	double	y;
 }				t_vector;
 
-typedef struct s_ray
+typedef struct s_vector2
+{
+	int	x;
+	int	y;
+}				t_vector2;
+
+typedef struct s_play
 {
 	t_vector	p;
 	t_vector	dir;
 	t_vector	plane;
-}				t_ray;
+}				t_play;
 
 typedef struct s_mlx
 {
@@ -77,10 +106,14 @@ typedef struct s_mlx
 	t_data	img;
 }				t_mlx;
 
+typedef struct s_all {
+	double		time_elapsed;
+	t_play		*pl;
+	t_mlx		mlx;
+	t_cub		*cub;
+}				t_all;
 
 //------------------------------CUB3D_MAIN------------------------------//
-void	print_cub(t_cub *cub);
-void	print_map(char **map);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 //------------------------------ERRORS------------------------------//
@@ -126,9 +159,6 @@ int		check_element(char c, int o);
 int		check_door(char **map, int y, int x);
 
 //--------------------------------RAY_MAIN.C---------------------------------//
-void	ray_main(t_cub *map, t_mlx *mlx);
-
-//-----------------------------RAY_LOOP.C------------------------------------//
-void	ray_loop(t_mlx *mlx, t_ray *r, t_cub *cub);
+void	ray_main(t_cub *map);
 
 #endif
