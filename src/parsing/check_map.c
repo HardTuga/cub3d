@@ -6,11 +6,11 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 11:27:21 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/06 11:59:21 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/12 16:00:21 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 int	check_chars(char **map)
 {

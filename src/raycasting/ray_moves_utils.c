@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ray_moves_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:21:17 by lucas-ma          #+#    #+#             */
 /*   Updated: 2023/01/12 15:03:16 by lucas-ma         ###   ########.fr       */
@@ -14,7 +14,11 @@
 
 int	exit_handler(t_all *all)
 {
-	(void)all;
+	free_cub(all->cub);
+	if (all->mlx.win != NULL)
+		mlx_destroy_window(all->mlx.mlx, all->mlx.win);
+	mlx_destroy_display(all->mlx.mlx);
+	free(all->mlx.mlx);
 	exit(EXIT_SUCCESS);
 }
 

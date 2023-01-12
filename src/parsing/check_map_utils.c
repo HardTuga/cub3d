@@ -6,11 +6,11 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 14:30:06 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/06 12:15:23 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/12 16:02:35 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 int	check_element(char c, int o)
 {
@@ -92,11 +92,11 @@ int	single_player(char **map, t_cub *cub)
 	int	j;
 	int	count;
 
-	i = -1;
 	j = -1;
 	count = 0;
 	while (map[++j])
 	{
+		i = -1;
 		while (map[j][++i])
 		{
 			if (map[j][i] == 'N' || map[j][i] == 'S' || map[j][i] == 'E' ||
@@ -105,10 +105,10 @@ int	single_player(char **map, t_cub *cub)
 				cub->player.x = i;
 				cub->player.y = j;
 				cub->player.dir = map[j][i];
+				map[j][i] = '0';
 				count++;
 			}
 		}
-		i = -1;
 	}
 	if (count == 1)
 		return (0);

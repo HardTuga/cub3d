@@ -1,39 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_args.c                                       :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/27 11:25:04 by pcampos-          #+#    #+#             */
-/*   Updated: 2022/12/28 15:19:21 by pcampos-         ###   ########.fr       */
+/*   Created: 2022/12/28 11:02:36 by pcampos-          #+#    #+#             */
+/*   Updated: 2023/01/12 16:00:00 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-int	rev_strstr(char *str, char *find)
+int	matrix_size(char **matrix)
 {
 	int	i;
-	int	j;
 
-	i = ft_strlen(str);
-	j = ft_strlen(find);
-	while (i >= 0 && j >= 0)
-	{
-		if (str[i] != find[j])
-			return (1);
-		i--;
-		j--;
-	}
-	return (0);
+	i = 0;
+	while (matrix[i])
+		i++;
+	return (i);
 }
 
-int	check_args(int ac, char **av)
+char	*ft_strdup_map(const char *src)
 {
-	if (ac != 2)
-		return (error_msg("Wrong number of arguments"));
-	if (rev_strstr(av[1], ".cub"))
-		return (error_msg("Invalid file extension"));
-	return (0);
+	char	*str;
+	int		len;
+	int		index;
+
+	index = 0;
+	len = ft_strlen(src);
+	str = malloc((len + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
+	while (src[index] != '\0' && src[index] != '\n')
+	{
+		str[index] = src[index];
+		index++;
+	}
+	str[index] = '\0';
+	return (str);
 }

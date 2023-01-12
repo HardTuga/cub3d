@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
 /*   Updated: 2023/01/12 15:05:26 by lucas-ma         ###   ########.fr       */
@@ -53,6 +53,5 @@ int		handle_hooks(t_all *all);
 //---------------------------RAY_MOVES_UTILS.C-------------------------------//
 int		exit_handler(t_all *all);
 void	hooks(t_all *all);
-
 
 #endif

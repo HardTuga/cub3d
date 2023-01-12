@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ray_moves.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:07:22 by lucas-ma          #+#    #+#             */
 /*   Updated: 2023/01/12 15:57:36 by lucas-ma         ###   ########.fr       */

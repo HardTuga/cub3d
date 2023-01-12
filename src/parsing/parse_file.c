@@ -6,11 +6,11 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:43:43 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/05 12:03:01 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/12 16:00:10 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 int	check_elements(t_cub *cub)
 {
