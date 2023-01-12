@@ -6,30 +6,32 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:07:22 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/12 09:22:05 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:22:29 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-// static void	rotation(t_all *all, double angle)
-// {
-// 	double	old_dirx;
-	
-// 	if (angle == 0)
-// 		return ;
-// 	old_dirx = all->pl->dir.x;
-	
-// }
-
-bool	player_colision(t_all *all)
+static void	rotation(t_all *all, t_play *p, double angle)
 {
+	double	old_dir;
+	double	old_plane;
 	
+	if (angle == 0)
+		return ;
+	old_dir = p->dir.x;
+	old_plane = p->plane.x;
+	p->dir.x = p->dir.x * cos(angle) - all->pl->dir.y * sin(angle);
+	p->dir.y = old_dir * sin(angle) + p->dir.y * sin(angle);
+	p->plane.x = p->plane.x * cos(angle) - p->plane.y * sin(angle);
+	p->plane.y = old_plane * sin(angle) + p->plane.y * cos(angle);
 }
 
-int	key_release(int key, t_all, *all)
+int	key_release(int key, t_all *all)
 {
-	if (key == KEY_W)
+	if (key == KEY_ESC)
+		exit_handler(all);
+	else if (key == KEY_W)
 		all->kmap[_W] = false;
 	else if (key == KEY_S)
 		all->kmap[_S] = false;
@@ -41,10 +43,6 @@ int	key_release(int key, t_all, *all)
 		all->kmap[_RA] = false;
 	else if (key == KEY_LFT_ARR)
 		all->kmap[_LA] = false;
-	else if (key == KEY_UP_ARR)
-		all->kmap[_UA] = false;
-	else if (key == KEY_DOWN_ARR)
-		all->kmap[_DA] = false;
 	return (0);
 }
 
@@ -62,16 +60,25 @@ int	key_pressed(int key, t_all *all)
 		all->kmap[_RA] = true;
 	else if (key == KEY_LFT_ARR)
 		all->kmap[_LA] = true;
-	else if (key == KEY_UP_ARR)
-		all->kmap[_UA] = true;
-	else if (key == KEY_DOWN_ARR)
-		all->kmap[_DA] = true;
 	return (0);
 }
 
 void	handle_keys(t_all *all)
 {
-	
+	t_vector	v;
+
+	rotation(all, all->pl, (all->kmap[_RA] * X_ROT - all->kmap[_LA] * X_ROT));
+	v.x += all->time_elapsed * ((all->pl->dir.x * all->kmap[_W]) + (all->pl->dir.y * all->kmap[_A])
+			- (all->pl->dir.x * all->kmap[_S]) - (all->pl->dir.y * all->kmap[_D]));
+	v.y += all->time_elapsed * ((all->pl->dir.y * all->kmap[_W]) + (all->pl->dir.x * all->kmap[_A])
+			- (all->pl->dir.y * all->kmap[_S]) - (all->pl->dir.x * all->kmap[_D]));
+	v.x = (v.x / 16) * X_VEL;
+	v.y = (v.y / 16) * X_VEL;
+	if (v.x != 0 || v.y != 0)
+	{
+		all->pl->p.x += v.x;
+		all->pl->p.y += v.y;
+	}
 }
 
 int	handle_hooks(t_all *all)
