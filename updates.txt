@@ -22,3 +22,5 @@ tmp 2 - corrigido
 cub3d v0.1.1 - juntar ray casting com o meu parsing
 
 cub3d v0.1.2 - organizar as coisas em pastas e mini coisinhas feitas
+
+cub3d v0.1.3 - adicionar as texturas
