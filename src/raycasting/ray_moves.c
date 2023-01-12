@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:07:22 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/12 14:22:29 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:47:30 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@ static void	rotation(t_all *all, t_play *p, double angle)
 
 int	key_release(int key, t_all *all)
 {
-	if (key == KEY_ESC)
-		exit_handler(all);
-	else if (key == KEY_W)
+	if (key == KEY_W)
 		all->kmap[_W] = false;
 	else if (key == KEY_S)
 		all->kmap[_S] = false;
@@ -48,7 +46,9 @@ int	key_release(int key, t_all *all)
 
 int	key_pressed(int key, t_all *all)
 {
-	if (key == KEY_W)
+	if (key == KEY_ESC)
+		exit_handler(all);
+	else if (key == KEY_W)
 		all->kmap[_W] = true;
 	else if (key == KEY_S)
 		all->kmap[_S] = true;
@@ -97,7 +97,7 @@ int	handle_hooks(t_all *all)
 			- oldtime;
 	oldtime += all->time_elapsed;
 	all->time_elapsed *= 64;
-	handle_keys(all);
+	hooks(all)
 	ray_loop(&all->mlx, all->pl, all->cub);
 	mlx_put_image_to_window(all->mlx.mlx, all->mlx.win, all->mlx.img.img, 0, 0);
 	return (0);
