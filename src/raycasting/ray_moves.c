@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:07:22 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/12 14:47:30 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:28:54 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	rotation(t_all *all, t_play *p, double angle)
 	p->plane.y = old_plane * sin(angle) + p->plane.y * cos(angle);
 }
 
-int	key_release(int key, t_all *all)
+int	key_released(int key, t_all *all)
 {
 	if (key == KEY_W)
 		all->kmap[_W] = false;
@@ -63,14 +63,14 @@ int	key_pressed(int key, t_all *all)
 	return (0);
 }
 
-void	handle_keys(t_all *all)
+static void	handle_keys(t_all *all)
 {
 	t_vector	v;
 
 	rotation(all, all->pl, (all->kmap[_RA] * X_ROT - all->kmap[_LA] * X_ROT));
-	v.x += all->time_elapsed * ((all->pl->dir.x * all->kmap[_W]) + (all->pl->dir.y * all->kmap[_A])
+	v.x = all->time_elapsed * ((all->pl->dir.x * all->kmap[_W]) + (all->pl->dir.y * all->kmap[_A])
 			- (all->pl->dir.x * all->kmap[_S]) - (all->pl->dir.y * all->kmap[_D]));
-	v.y += all->time_elapsed * ((all->pl->dir.y * all->kmap[_W]) + (all->pl->dir.x * all->kmap[_A])
+	v.y = all->time_elapsed * ((all->pl->dir.y * all->kmap[_W]) + (all->pl->dir.x * all->kmap[_A])
 			- (all->pl->dir.y * all->kmap[_S]) - (all->pl->dir.x * all->kmap[_D]));
 	v.x = (v.x / 16) * X_VEL;
 	v.y = (v.y / 16) * X_VEL;
@@ -97,8 +97,10 @@ int	handle_hooks(t_all *all)
 			- oldtime;
 	oldtime += all->time_elapsed;
 	all->time_elapsed *= 64;
-	hooks(all)
 	ray_loop(&all->mlx, all->pl, all->cub);
+	handle_keys(all);
+	mlx_clear_window(all->mlx.mlx, all->mlx.win);
 	mlx_put_image_to_window(all->mlx.mlx, all->mlx.win, all->mlx.img.img, 0, 0);
+	mlx_destroy_image(all->mlx.mlx, all->mlx.img.img);
 	return (0);
 }
