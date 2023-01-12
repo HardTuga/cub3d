@@ -6,13 +6,13 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:07:22 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/12 15:28:54 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:57:36 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-static void	rotation(t_all *all, t_play *p, double angle)
+static void	rotation(t_play *p, double angle)
 {
 	double	old_dir;
 	double	old_plane;
@@ -21,8 +21,8 @@ static void	rotation(t_all *all, t_play *p, double angle)
 		return ;
 	old_dir = p->dir.x;
 	old_plane = p->plane.x;
-	p->dir.x = p->dir.x * cos(angle) - all->pl->dir.y * sin(angle);
-	p->dir.y = old_dir * sin(angle) + p->dir.y * sin(angle);
+	p->dir.x = p->dir.x * cos(angle) - p->dir.y * sin(angle);
+	p->dir.y = old_dir * sin(angle) + p->dir.y * cos(angle);
 	p->plane.x = p->plane.x * cos(angle) - p->plane.y * sin(angle);
 	p->plane.y = old_plane * sin(angle) + p->plane.y * cos(angle);
 }
@@ -67,11 +67,11 @@ static void	handle_keys(t_all *all)
 {
 	t_vector	v;
 
-	rotation(all, all->pl, (all->kmap[_RA] * X_ROT - all->kmap[_LA] * X_ROT));
+	rotation(all->pl, (all->kmap[_RA] * X_ROT - all->kmap[_LA] * X_ROT));
 	v.x = all->time_elapsed * ((all->pl->dir.x * all->kmap[_W]) + (all->pl->dir.y * all->kmap[_A])
 			- (all->pl->dir.x * all->kmap[_S]) - (all->pl->dir.y * all->kmap[_D]));
-	v.y = all->time_elapsed * ((all->pl->dir.y * all->kmap[_W]) + (all->pl->dir.x * all->kmap[_A])
-			- (all->pl->dir.y * all->kmap[_S]) - (all->pl->dir.x * all->kmap[_D]));
+	v.y = all->time_elapsed * ((all->pl->dir.y * all->kmap[_W]) + (all->pl->dir.x * all->kmap[_D])
+			- (all->pl->dir.y * all->kmap[_S]) - (all->pl->dir.x * all->kmap[_A]));
 	v.x = (v.x / 16) * X_VEL;
 	v.y = (v.y / 16) * X_VEL;
 	if (v.x != 0 || v.y != 0)
