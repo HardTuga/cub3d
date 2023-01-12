@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+         #
+#    By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 15:07:52 by lucas-ma          #+#    #+#              #
-#    Updated: 2023/01/12 14:48:58 by lucas-ma         ###   ########.fr        #
+#    Updated: 2023/01/12 15:52:47 by pcampos-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,12 +44,12 @@ CFLAGS      =        -Wall -Werror -Wextra -g -fsanitize=address
 SRCS    =        $(_SRC)cub3d_main.c \
                  $(_SRC)errors.c \
                  $(_SRC)free_utils.c \
-                 $(_SRC)utils.c \
-                 $(_SRC)check_args.c \
-                 $(_SRC)parse_file.c \
-                 $(_SRC)parse_file_utils.c \
-                 $(_SRC)check_map.c \
-                 $(_SRC)check_map_utils.c \
+                 $(_SRC)parsing/utils.c \
+                 $(_SRC)parsing/check_args.c \
+                 $(_SRC)parsing/parse_file.c \
+                 $(_SRC)parsing/parse_file_utils.c \
+                 $(_SRC)parsing/check_map.c \
+                 $(_SRC)parsing/check_map_utils.c \
 				 $(_SRC)raycasting/ray_main.c \
 				 $(_SRC)raycasting/ray_loop.c \
 				 $(_SRC)raycasting/ray_moves.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_moves.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:07:22 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/12 14:47:30 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/12 16:02:56 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	rotation(t_all *all, t_play *p, double angle)
 	p->plane.y = old_plane * sin(angle) + p->plane.y * cos(angle);
 }
 
-int	key_release(int key, t_all *all)
+int	key_released(int key, t_all *all)
 {
 	if (key == KEY_W)
 		all->kmap[_W] = false;
@@ -97,7 +97,7 @@ int	handle_hooks(t_all *all)
 			- oldtime;
 	oldtime += all->time_elapsed;
 	all->time_elapsed *= 64;
-	hooks(all)
+	hooks(all);
 	ray_loop(&all->mlx, all->pl, all->cub);
 	mlx_put_image_to_window(all->mlx.mlx, all->mlx.win, all->mlx.img.img, 0, 0);
 	return (0);

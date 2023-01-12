@@ -18,3 +18,7 @@ cub3d v0.1.0 - parser e checker do mapa base feitos
 
 tmp 1 - check_chars e outras verificacoes do mapa alteradas (o original esta CUmentado)
 tmp 2 - corrigido
+
+cub3d v0.1.1 - juntar ray casting com o meu parsing
+
+cub3d v0.1.2 - organizar as coisas em pastas e mini coisinhas feitas
