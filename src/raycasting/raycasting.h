@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/12 14:57:19 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:05:26 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	ray_loop(t_mlx *mlx, t_play *pl, t_cub *cub);
 int		key_released(int key, t_all *all);
 int		key_pressed(int key, t_all *all);
 int		handle_hooks(t_all *all);
-void	handle_keys(t_all *all);
 
 //---------------------------RAY_MOVES_UTILS.C-------------------------------//
 int		exit_handler(t_all *all);
