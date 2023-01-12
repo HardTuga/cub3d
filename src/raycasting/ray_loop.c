@@ -6,33 +6,35 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 09:54:47 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/06 12:01:52 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:28:12 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-static void	calc_sidedist(t_rloop *tudao, t_ray *r)
+static void	calc_sidedist(t_rloop *tudao, t_play *player)
 {
-	if(r->dir.x < 0)
+	tudao->map.x = (int)player->p.x;
+	tudao->map.y = (int)player->p.y;
+	if (tudao->rdir.x < 0)
 	{
 		tudao->stepx = -1;
-		tudao->sdist.x = (r->p.x - tudao->mapx) * tudao->ddist.x;
+		tudao->sdist.x = (player->p.x - tudao->map.x) * tudao->ddist.x;
 	}
 	else
 	{
 		tudao->stepx = 1;
-		tudao->sdist.x = (tudao->mapx + 1.0 - r->p.x) * tudao->ddist.x;
+		tudao->sdist.x = (tudao->map.x + 1.0 - player->p.x) * tudao->ddist.x;
 	}
-	if(r->dir.y < 0)
+	if (tudao->rdir.y < 0)
 	{
 		tudao->stepy = -1;
-		tudao->sdist.y = (r->p.y - tudao->mapy) * tudao->ddist.x;
+		tudao->sdist.y = (player->p.y - tudao->map.y) * tudao->ddist.y;
 	}
 	else
 	{
 		tudao->stepy = 1;
-		tudao->sdist.y = (tudao->mapy + 1.0 - r->p.y) * tudao->ddist.y;
+		tudao->sdist.y = (tudao->map.y + 1.0 - player->p.y) * tudao->ddist.y;
 	}
 }
 
@@ -45,86 +47,72 @@ static void	calc_deltadist(t_vector *deltadist, t_vector raydir)
 	if (raydir.y == 0)
 		deltadist->y = 1e30;
 	else
-		deltadist->x = fabs(1 / raydir.y);
+		deltadist->y = fabs(1 / raydir.y);
 }
 
-static void	init_tudao(t_rloop *tudao, t_ray *ray, char **map)
+static void	init_tudao(t_rloop *tudao, t_play *player, char **map)
 {
-	tudao->rdir.x = ray->dir.x + ray->plane.x * tudao->camx;
-	tudao->rdir.y = ray->dir.y + ray->plane.y * tudao->camx;
-	tudao->mapx = (int)ray->p.x;
-	tudao->mapy = (int)ray->p.y;
+	tudao->rdir.x = player->dir.x + player->plane.x * tudao->camx;
+	tudao->rdir.y = player->dir.y + player->plane.y * tudao->camx;
 	calc_deltadist(&(tudao->ddist), tudao->rdir);
+	calc_sidedist(tudao, player);
 	tudao->hit = 0;
-	calc_sidedist(tudao, ray);
-	while (!tudao->hit)
+	while (!(tudao->hit))
 	{
 		if (tudao->sdist.x < tudao->sdist.y)
 		{
+			tudao->map.x += tudao->stepx;
 			tudao->sdist.x += tudao->ddist.x;
-			tudao->mapx += tudao->stepx;
 			tudao->side = 0;
 		}
 		else
 		{
+			tudao->map.y += tudao->stepy;
 			tudao->sdist.y += tudao->ddist.y;
-			tudao->mapy += tudao->stepy;
 			tudao->side = 1;
 		}
-		if (map[tudao->mapx][tudao->mapy] > 0)
+		if (map[tudao->map.y][tudao->map.x] != '0')
 			tudao->hit = 1;
 	}
-	if (tudao->side == 0)
-		tudao->perpwdist = tudao->sdist.x - tudao->ddist.x;
-	else
-		tudao->perpwdist = tudao->sdist.y - tudao->ddist.y;
 }
 
-void	ray_loop(t_mlx *mlx, t_ray *r, t_cub *cub)
+static void	draw_stripe(t_draw d, t_rloop *tudao)
 {
-	int		x;
-	int		line_height;
-	int		d_start;
-	int		d_end;
-	int		color;
+	tudao->line_height = (int)(SCREENH / tudao->perpwdist);
+	tudao->draw_start = -tudao->line_height / 2 + SCREENH / 2;
+	if (tudao->draw_start < 0)
+		tudao->draw_start = 0;
+	tudao->draw_end = tudao->line_height / 2 + SCREENH / 2;
+	if (tudao->draw_end > SCREENH)
+		tudao->draw_end = SCREENH;
+	while (tudao->draw_start < tudao->draw_end)
+	{
+		my_mlx_pixel_put(&(d.mlx->img), SCREENW - d.x - 1, \
+		tudao->draw_start, d.color);
+		tudao->draw_start++;
+	}
+}
+
+void	ray_loop(t_mlx *mlx, t_play *pl, t_cub *cub)
+{
+	t_draw	draw;
 	t_rloop	tudao;
 
-
-	x = 0;
+	draw.x = 0;
+	draw.mlx = mlx;
 	mlx->img.img = mlx_new_image(mlx->mlx, SCREENW, SCREENH);
 	mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bits_per_pixel,
-									&mlx->img.line_length, &mlx->img.endian);
-	while (x < SCREENW)
+			&mlx->img.line_length, &mlx->img.endian);
+	while (draw.x < SCREENW)
 	{
-		tudao.camx = 2 * x / (double)SCREENW - 1;
-		init_tudao(&tudao, r, cub->map);
-		line_height = (int)(SCREENH / tudao.perpwdist);
-		d_start = -line_height / 2 + SCREENH / 2;
-		if (d_start < 0)
-			d_start = 0;
-		d_end = line_height / 2 + SCREENH / 2;
-		if (d_end >= SCREENH - 1)
-			d_end = SCREENH - 1;
-		if (cub->map[tudao.mapx][tudao.mapy] == 1)
-			color = 0xFFFF0000;
-		else if (cub->map[tudao.mapx][tudao.mapy] == 6)
-			color = 0xFF00FF00;
-		else if (cub->map[tudao.mapx][tudao.mapy] == 3)
-			color = 0xFF0000FF;
-		else if (cub->map[tudao.mapx][tudao.mapy] == 4)
-			color = 0xFFFFFFFF;
-		else if (cub->map[tudao.mapx][tudao.mapy] == 5)
-			color = 0xFFFFFF00;
-		if (tudao.side == 1)
-			color = (int)((color & 0x0000FF) * 0.70)
-				| (int)(((color >> 8) & 0x0000FF) * 0.70) << 8
-				| (int)((color >> 16) * 0.70) << 16;
-		while (tudao.d_start < tudao.d_end)
-		{
-			my_mlx_pixel_put(&mlx->img, x, tudao.d_start, color);
-			tudao.d_start++;
-		}
-		x++;
+		tudao.camx = 2 * draw.x / (double)SCREENW - 1;
+		init_tudao(&tudao, pl, cub->map);
+		if (tudao.side == 0)
+			tudao.perpwdist = (tudao.sdist.x - tudao.ddist.x);
+		else
+			tudao.perpwdist = (tudao.sdist.y - tudao.ddist.y);
+		choose_color(tudao, mlx, cub, &draw);
+		draw_stripe(draw, &tudao);
+		(draw.x)++;
 	}
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img, 0, 0);
 }

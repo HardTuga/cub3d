@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:36:40 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/06 11:56:26 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:16:54 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,59 +15,80 @@
 static t_vector	find_dir(char dir)
 {
 	t_vector	d;
-	
-	d.x = 0;
-	d.y = 1;
+
+	ft_memset(&d, 0, sizeof(t_vector));
 	if (dir == 'N' || dir == 'S')
 	{
 		d.x = 0;
 		if (dir == 'N')
-			d.y = 1;
-		else
 			d.y = -1;
+		else
+			d.y = 1;
 	}
 	else
 	{
 		d.y = 0;
-		if (dir == 'E')
-			d.x = 1;
-		else
+		if (dir == 'W')
 			d.x = -1;
+		else
+			d.x = 1;
 	}
 	return (d);
 }
 
-static t_vector calc_plane(char dir)
+static t_vector	calc_plane(t_vector dir, int sign)
 {
 	t_vector	plane;
 
-	if (dir == 'N' || dir == 'S')
-	{
-		plane.y = 0;
-		plane.x = 0.66;
-	}
-	else 
-	{
-		plane.y = 0.66;
-		plane.x = 0;
-	}
+	plane.x = (0.66 * dir.y) * sign;
+	plane.y = (0.66 * dir.x) * sign;
 	return (plane);
 }
 
-void	ray_main(t_cub *map, t_mlx *mlx)
+void	choose_color(t_rloop tudao, t_mlx *mlx, t_cub *cub, t_draw *draw)
 {
-	t_ray	r;
-	// double	time;
-	// double	oldtime;
+	if (cub->map[tudao.map.y][tudao.map.x] == '1')
+		draw->color = mlx_get_color_value(mlx->mlx, 0xFFFF0000);
+	else if (cub->map[tudao.map.y][tudao.map.x] == '6')
+		draw->color = mlx_get_color_value(mlx->mlx, 0xFF00FF00);
+	else if (cub->map[tudao.map.y][tudao.map.x] == '3')
+		draw->color = mlx_get_color_value(mlx->mlx, 0xFF0000FF);
+	else if (cub->map[tudao.map.y][tudao.map.x] == '4')
+		draw->color = mlx_get_color_value(mlx->mlx, 0xFFFFFFFF);
+	else if (cub->map[tudao.map.y][tudao.map.x] == '5')
+		draw->color = mlx_get_color_value(mlx->mlx, 0xFFFFFF00);
+	if (tudao.side == 1)
+		draw->color = (int)((draw->color & 0x0000FF) * 0.70)
+				| (int)(((draw->color >> 8) & 0x0000FF) * 0.70) << 8
+				| (int)((draw->color >> 16) * 0.70) << 16;
+}
 
-	mlx->mlx = mlx_init();
-	mlx->win = mlx_new_window(mlx->mlx, SCREENW, SCREENH, "Cub3D");
-	r.p.x = (double)map->player.x;
-	r.p.y = (double)map->player.y;
-	r.dir = find_dir(map->player.dir);
-	r.plane = calc_plane(map->player.dir);
-	// time = 0;
-	// oldtime = 0;
-	ray_loop(mlx, &r, map);
-	mlx_loop(mlx->mlx);
+static void	init_player(t_play *player, t_cub *cub)
+{
+	player->p.x = cub->player.x + 0.5;
+	player->p.y = cub->player.y + 0.5;
+	player->dir = find_dir(cub->player.dir);
+	if (cub->player.dir == 'N' || cub->player.dir == 'S')
+		player->plane = calc_plane(player->dir, 1);
+	else
+		player->plane = calc_plane(player->dir, -1);
+}
+
+void	ray_main(t_cub *cub)
+{
+	t_play	pl;
+	t_all	var;
+
+	ft_memset(&var, 0, sizeof(var));
+	var.cub = cub;
+	var.mlx.mlx = mlx_init();
+	var.mlx.win = mlx_new_window(var.mlx.mlx, SCREENW, SCREENH, "Cub3D");
+	init_player(&pl, cub);
+	var.pl = &pl;
+	ray_loop(&var.mlx, var.pl, var.cub);
+	mlx_put_image_to_window(var.mlx.mlx, var.mlx.win, var.mlx.img.img, 0, 0);
+	// mlx_hook(var.mlx.win, 2, 1L << 0, key_pressed, &var);
+	// mlx_hook(var.mlx.win, 3, 1L << 1, key_release, &var);
+	// mlx_loop_hook(var.mlx.mlx, handle_hooks, &var);
+	mlx_loop(var.mlx.mlx);
 }
