@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/11 16:55:03 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/11 21:13:06 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ typedef struct s_mlx
 
 typedef struct s_all {
 	double		time_elapsed;
+	bool		kmap[8];
 	t_play		*pl;
 	t_mlx		mlx;
 	t_cub		*cub;
