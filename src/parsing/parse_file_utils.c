@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 13:50:26 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/12 16:00:15 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/13 15:50:22 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int	valid_elements(t_cub *cub)
 {
 	if (check_rgb(cub->f) || check_rgb(cub->c))
 		return (1);
-	//if (check_image(cub->n) || check_image(cub->s) || check_image(cub->w)
-	//	|| check_image(cub->e))
-	//	return (1);
+	/*if (check_image(cub->n) || check_image(cub->s) || check_image(cub->w)
+		|| check_image(cub->e))
+		return (1);*/
 	return (0);
 }
