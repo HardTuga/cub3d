@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_moves.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:07:22 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/12 15:57:36 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/13 16:00:23 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	rotation(t_play *p, double angle)
 {
 	double	old_dir;
 	double	old_plane;
-	
+
 	if (angle == 0)
 		return ;
 	old_dir = p->dir.x;
@@ -68,17 +68,18 @@ static void	handle_keys(t_all *all)
 	t_vector	v;
 
 	rotation(all->pl, (all->kmap[_RA] * X_ROT - all->kmap[_LA] * X_ROT));
-	v.x = all->time_elapsed * ((all->pl->dir.x * all->kmap[_W]) + (all->pl->dir.y * all->kmap[_A])
-			- (all->pl->dir.x * all->kmap[_S]) - (all->pl->dir.y * all->kmap[_D]));
-	v.y = all->time_elapsed * ((all->pl->dir.y * all->kmap[_W]) + (all->pl->dir.x * all->kmap[_D])
-			- (all->pl->dir.y * all->kmap[_S]) - (all->pl->dir.x * all->kmap[_A]));
+	v.x = all->time_elapsed * ((all->pl->dir.x * all->kmap[_W]) + \
+			(all->pl->dir.y * all->kmap[_A])
+			- (all->pl->dir.x * all->kmap[_S]) - \
+			(all->pl->dir.y * all->kmap[_D]));
+	v.y = all->time_elapsed * ((all->pl->dir.y * all->kmap[_W]) + \
+			(all->pl->dir.x * all->kmap[_D])
+			- (all->pl->dir.y * all->kmap[_S]) - \
+			(all->pl->dir.x * all->kmap[_A]));
 	v.x = (v.x / 16) * X_VEL;
 	v.y = (v.y / 16) * X_VEL;
 	if (v.x != 0 || v.y != 0)
-	{
-		all->pl->p.x += v.x;
-		all->pl->p.y += v.y;
-	}
+		colision(all, v);
 }
 
 int	handle_hooks(t_all *all)
