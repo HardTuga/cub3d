@@ -26,4 +26,6 @@ cub3d v0.1.2 - organizar as coisas em pastas e mini coisinhas feitas
 cub3d v0.1.3 - adicionar as texturas
 
 cub3d v0.1.4 - confirmar se a verificacao das texturas funciona bem
-               criar o parsing.h 
+               criar o parsing.h
+
+cub3d v0.1.5 - coneverter os codigos rgb para uint
