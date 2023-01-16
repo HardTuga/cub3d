@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:15:40 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/14 15:37:40 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:42:55 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	main(int argc, char **argv)
 		free_cub(&cub);
 		return (1);
 	}
-	//print_cub(&cub);
+	print_cub(&cub);
 	ray_main(&cub);
 	free_cub(&cub);
 }
