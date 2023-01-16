@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/16 14:22:12 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:10:26 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,16 +73,18 @@ typedef struct s_player
 
 typedef struct s_cub
 {
-	t_player	player;
-	char		*n;
-	char		*s;
-	char		*w;
-	char		*e;
-	char		*f;
-	char		*c;
-	char		**map;
-	int			map_y;
-}				t_cub;
+	t_player		player;
+	char			*n;
+	char			*s;
+	char			*w;
+	char			*e;
+	char			*f;
+	unsigned int	f_trgb;
+	char			*c;
+	unsigned int	c_trgb;
+	char			**map;
+	int				map_y;
+}					t_cub;
 
 typedef struct s_data {
 	void	*img;

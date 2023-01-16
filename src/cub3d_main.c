@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:15:40 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/16 12:42:55 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:17:08 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ static void	print_cub(t_cub *cub)
 	printf("WE: %s\n", cub->w);
 	printf("EA: %s\n", cub->e);
 	printf("F: %s\n", cub->f);
+	printf("F UINT: %u\n", cub->f_trgb);
 	printf("C: %s\n", cub->c);
+	printf("C UINT: %u\n", cub->c_trgb);
 	printf("Player Stats:\nX: %d Y: %d\nOrientation: %c\n", \
 cub->player.x, cub->player.y, cub->player.dir);
 	print_map(cub->map);

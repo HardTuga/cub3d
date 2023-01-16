@@ -6,7 +6,7 @@
 #    By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 15:07:52 by lucas-ma          #+#    #+#              #
-#    Updated: 2023/01/16 14:01:15 by lucas-ma         ###   ########.fr        #
+#    Updated: 2023/01/16 14:15:51 by pcampos-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ SRCS    =        $(_SRC)cub3d_main.c \
                  $(_SRC)parsing/check_args.c \
                  $(_SRC)parsing/parse_file.c \
                  $(_SRC)parsing/parse_file_utils.c \
+				 $(_SRC)parsing/parse_file_rgb.c \
                  $(_SRC)parsing/check_map.c \
                  $(_SRC)parsing/check_map_utils.c \
 				 $(_SRC)raycasting/ray_main.c \

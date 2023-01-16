@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:43:43 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/14 15:27:33 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:01:41 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	fill_elements(t_cub *cub, char **tmp)
 		i++;
 	}
 	free_matrix(tmp);
+	convert_rgb(cub);
 	return (0);
 }
 
