@@ -1,7 +1,7 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO ./textures/colorstone.xpm
+SO ./textures/barrel.xpm
+WE ./textures/colorstone.xpm
+EA ./textures/gate_1.xpm
 
 C 225,30,5
 F 220,100,0

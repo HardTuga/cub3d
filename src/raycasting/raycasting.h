@@ -3,18 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/13 15:59:55 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/14 14:58:38 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYCASTING_H
 # define RAYCASTING_H
 
+//------------------------------INCLUDES------------------------------//
+
 # include "../cub3d.h"
 
+//------------------------------STRUCTS------------------------------//
 typedef struct s_draw
 {
 	int		x;

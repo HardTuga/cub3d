@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 13:50:26 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/13 15:50:22 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/14 15:27:31 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "parsing.h"
 
 int	n_chars(char *str, char c)
 {
@@ -52,12 +52,14 @@ int	check_image(char *element)
 {
 	int	fd;
 
+	printf("%s ", element);
 	if (rev_strstr(element, ".xpm"))
 		return (1);
 	fd = open(element, O_RDONLY);
 	if (fd < 0)
 		return (1);
 	close(fd);
+	printf("Is OK\n");
 	return (0);
 }
 
@@ -65,8 +67,8 @@ int	valid_elements(t_cub *cub)
 {
 	if (check_rgb(cub->f) || check_rgb(cub->c))
 		return (1);
-	/*if (check_image(cub->n) || check_image(cub->s) || check_image(cub->w)
+	if (check_image(cub->n) || check_image(cub->s) || check_image(cub->w)
 		|| check_image(cub->e))
-		return (1);*/
+		return (1);
 	return (0);
 }

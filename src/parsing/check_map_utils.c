@@ -6,11 +6,11 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 14:30:06 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/12 16:02:35 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/14 15:27:22 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "parsing.h"
 
 int	check_element(char c, int o)
 {

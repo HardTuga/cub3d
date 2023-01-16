@@ -6,11 +6,11 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 11:02:36 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/12 16:00:00 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/14 15:28:15 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "cub3d.h"
 
 int	matrix_size(char **matrix)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/13 16:51:18 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/14 15:26:50 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,35 +141,10 @@ void	free_cub(t_cub *cub);
 int		matrix_size(char **matrix);
 char	*ft_strdup_map(const char *src);
 
-//------------------------------CHECK_ARGS------------------------------//
+//------------------------------PARSING------------------------------//
 int		check_args(int ac, char **av);
-int		rev_strstr(char *str, char *find);
-
-//------------------------------PARSE_FILE------------------------------//
 int		parse_file(t_cub *cub, char **av);
-int		file_line(char *av);
-int		fill_elements(t_cub *cub, char **tmp);
-void	fill_params(t_cub *cub, char *str);
-int		check_elements(t_cub *cub);
-
-//------------------------------PARSE_FILE_UTILS------------------------------//
-int		valid_elements(t_cub *cub);
-int		check_rgb(char *element);
-int		check_image(char *element);
-
-//------------------------------CHECK_MAP------------------------------//
 int		map_checker(t_cub *cub);
-int		check_closed(t_cub *cub);
-int		closed_line(char **map, int y);
-int		closed_border(char **map, int y);
-int		check_chars(char **map);
-
-//------------------------------CHECK_MAP_UTILS------------------------------//
-int		single_player(char **map, t_cub *cub);
-int		check_line_midle(char **map, int y, int x);
-int		check_line_limits(char **map, int y, int x);
-int		check_element(char c, int o);
-int		check_door(char **map, int y, int x);
 
 //--------------------------------RAY_MAIN.C---------------------------------//
 void	ray_main(t_cub *map);
