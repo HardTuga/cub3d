@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:36:40 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/13 16:15:35 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:05:07 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	ray_main(t_cub *cub)
 	var.mlx.mlx = mlx_init();
 	var.mlx.win = mlx_new_window(var.mlx.mlx, SCREENW, SCREENH, "Cub3D");
 	init_player(&pl, cub);
+	init_images(&var);
 	var.pl = &pl;
 	hooks(&var);
 	mlx_loop(var.mlx.mlx);
