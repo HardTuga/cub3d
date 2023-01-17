@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/16 13:48:13 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/17 19:16:01 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@
 typedef struct s_draw
 {
 	int		x;
+	int		tex_num;
+	int		tex_y;
+	int		tex_x;
+	int		draw_start;
+	int		draw_end;
+	double	tex_pos;
 	uint	color;
 	t_mlx	*mlx;
 }				t_draw;
@@ -34,8 +40,10 @@ typedef struct s_rloop
 	int			draw_start;
 	int			draw_end;
 	int			line_height;
+	double		wallx;
 	double		camx;
 	double		perpwdist;
+	uint		buffer[SCREENH][SCREENW];
 	t_vector2	map;
 	t_vector	rdir;
 	t_vector	sdist;
@@ -59,6 +67,7 @@ void	hooks(t_all *all);
 
 //-------------------------------COLISION.C----------------------------------//
 void	colision(t_all *all, t_vector v);
+int		get_wall_dir(int side, t_vector ray_dir);
 
 //--------------------------------IMAGES.C-----------------------------------//
 void	init_images(t_all *var);

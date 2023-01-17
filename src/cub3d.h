@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/17 12:07:54 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/17 17:26:10 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,8 +131,6 @@ typedef struct s_mlx
 }				t_mlx;
 
 typedef struct s_all {
-	int			tex_height;
-	int			tex_width;
 	double		time_elapsed;
 	bool		kmap[8];
 	t_data		tex[4];
