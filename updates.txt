@@ -29,3 +29,5 @@ cub3d v0.1.4 - confirmar se a verificacao das texturas funciona bem
                criar o parsing.h
 
 cub3d v0.1.5 - coneverter os codigos rgb para uint
+
+cub3d v0.1.6 - adicionar funcao de cirat img

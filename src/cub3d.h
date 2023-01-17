@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/16 14:10:26 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/17 11:50:08 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,14 @@ enum
 	_DA	= 7
 };
 
+enum
+{
+	NO = 0,
+	SO = 1,
+	WE = 2,
+	EA = 3
+};
+
 //------------------------------STRUCTS------------------------------//
 
 typedef struct s_player
@@ -92,6 +100,8 @@ typedef struct s_data {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		img_width;
+	int		img_height;
 }				t_data;
 
 typedef struct s_vector
@@ -125,10 +135,7 @@ typedef struct s_all {
 	int			tex_width;
 	double		time_elapsed;
 	bool		kmap[8];
-	t_data		east;
-	t_data		west;
-	t_data		north;
-	t_data		south;
+	t_data		tex[4];
 	t_play		*pl;
 	t_mlx		mlx;
 	t_cub		*cub;
