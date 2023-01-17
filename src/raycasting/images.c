@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:46:29 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/17 11:59:19 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/17 12:08:11 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 void	init_images(t_all *var)
 {
-	var->tex[0].img = mlx_xpm_file_to_image(var->mlx.mlx, var->cub->n,
-		&var->tex[0].img_width, &var->tex[0].img_height);
-	var->tex[0].addr = mlx_get_data_addr(var->tex[0].img,
-		var->tex[0].bits_per_pixel, var->tex[0].line_length, var->tex[0].endian);
-	var->tex[1].img = mlx_xpm_file_to_image(var->mlx.mlx, var->cub->s,
-		&var->tex[1].img_width, &var->tex[1].img_height);
-	var->tex[1].addr = mlx_get_data_addr(var->tex[1].img,
-		var->tex[1].bits_per_pixel, var->tex[1].line_length, var->tex[1].endian);
-	var->tex[2].img = mlx_xpm_file_to_image(var->mlx.mlx, var->cub->w,
-		&var->tex[2].img_width, &var->tex[2].img_height);
-	var->tex[2].addr = mlx_get_data_addr(var->tex[2].img,
-		var->tex[2].bits_per_pixel, var->tex[2].line_length, var->tex[2].endian);
-	var->tex[3].img = mlx_xpm_file_to_image(var->mlx.mlx, var->cub->e,
-		&var->tex[3].img_width, &var->tex[3].img_height);
-	var->tex[3].addr = mlx_get_data_addr(var->tex[3].img,
-		var->tex[3].bits_per_pixel, var->tex[3].line_length, var->tex[3].endian);
+	var->tex[NO].img = mlx_xpm_file_to_image(var->mlx.mlx, var->cub->n,
+		&var->tex[NO].img_width, &var->tex[NO].img_height);
+	var->tex[NO].addr = mlx_get_data_addr(var->tex[NO].img,
+		var->tex[NO].bpp, var->tex[NO].line_length, var->tex[NO].endian);
+	var->tex[SO].img = mlx_xpm_file_to_image(var->mlx.mlx, var->cub->s,
+		&var->tex[SO].img_width, &var->tex[SO].img_height);
+	var->tex[SO].addr = mlx_get_data_addr(var->tex[SO].img,
+		var->tex[SO].bpp, var->tex[SO].line_length, var->tex[SO].endian);
+	var->tex[WE].img = mlx_xpm_file_to_image(var->mlx.mlx, var->cub->w,
+		&var->tex[WE].img_width, &var->tex[WE].img_height);
+	var->tex[WE].addr = mlx_get_data_addr(var->tex[WE].img,
+		var->tex[WE].bpp, var->tex[WE].line_length, var->tex[WE].endian);
+	var->tex[EA].img = mlx_xpm_file_to_image(var->mlx.mlx, var->cub->e,
+		&var->tex[EA].img_width, &var->tex[EA].img_height);
+	var->tex[EA].addr = mlx_get_data_addr(var->tex[EA].img,
+		var->tex[EA].bpp, var->tex[EA].line_length, var->tex[EA].endian);
 }
