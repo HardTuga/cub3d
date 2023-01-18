@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 09:54:47 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/17 19:18:54 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/18 17:46:25 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static void	init_tudao(t_rloop *tudao, t_play *player, char **map)
 	tudao->side = get_wall_dir(tudao->side, tudao->rdir);
 }
 
-static void	draw_stripe(t_draw d, t_rloop *tudao)
+static void	calc_line(t_rloop *tudao)
 {
 	tudao->line_height = (int)(SCREENH / tudao->perpwdist);
 	tudao->draw_start = -tudao->line_height / 2 + SCREENH / 2;
@@ -86,41 +86,33 @@ static void	draw_stripe(t_draw d, t_rloop *tudao)
 	tudao->draw_end = tudao->line_height / 2 + SCREENH / 2;
 	if (tudao->draw_end > SCREENH)
 		tudao->draw_end = SCREENH;
-	while (tudao->draw_start < tudao->draw_end)
-	{
-		my_mlx_pixel_put(&(d.mlx->img), SCREENW - d.x - 1, \
-		tudao->draw_start, d.color);
-		tudao->draw_start++;
-	}
 }
 
-void	ray_loop(t_mlx *mlx, t_play *pl, t_cub *cub)
+void	ray_loop(t_mlx *mlx, t_play *pl, t_cub *cub, t_all *all)
 {
 	t_draw	draw;
 	t_rloop	tudao;
 
-	draw.x = 0;
-	draw.mlx = mlx;
+	draw.x = -1;
 	mlx->img.img = mlx_new_image(mlx->mlx, SCREENW, SCREENH);
 	mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bpp,
 			&mlx->img.line_length, &mlx->img.endian);
-	while (draw.x < SCREENW)
+	while (++(draw.x) < SCREENW)
 	{
 		tudao.camx = 2 * draw.x / (double)SCREENW - 1;
 		init_tudao(&tudao, pl, cub->map);
 		if (tudao.side == EA || tudao.side == WE)
 		{
-			tudao.perpwdist = (tudao.sdist.x - tudao.ddist.x);
+			tudao.perpwdist = tudao.sdist.x - tudao.ddist.x;
 			tudao.wallx = pl->p.y + tudao.perpwdist * tudao.rdir.y;
 		}
 		else
 		{
-			tudao.perpwdist = (tudao.sdist.y - tudao.ddist.y);
+			tudao.perpwdist = tudao.sdist.y - tudao.ddist.y;
 			tudao.wallx = pl->p.x + tudao.perpwdist * tudao.rdir.x;
 		}
 		tudao.wallx -= floor(tudao.wallx);
-		// choose_color(tudao, mlx, cub, &draw);
-		// draw_stripe(draw, &tudao);
-		(draw.x)++;
+		calc_line(&tudao);
+		draw_walls(&tudao, draw, all);
 	}
 }

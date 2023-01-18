@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:07:22 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/13 17:02:29 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/18 17:40:04 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,10 @@ static void	handle_keys(t_all *all)
 int	handle_hooks(t_all *all)
 {
 	static double	oldtime;
+	char			*fps;
 	struct timeval	cur_time;
 
+	fps = NULL;
 	gettimeofday(&cur_time, NULL);
 	if (!oldtime)
 	{
@@ -98,10 +100,13 @@ int	handle_hooks(t_all *all)
 			- oldtime;
 	oldtime += all->time_elapsed;
 	all->time_elapsed *= 64;
-	ray_loop(&all->mlx, all->pl, all->cub);
+	ray_loop(&all->mlx, all->pl, all->cub, all);
 	handle_keys(all);
 	mlx_clear_window(all->mlx.mlx, all->mlx.win);
 	mlx_put_image_to_window(all->mlx.mlx, all->mlx.win, all->mlx.img.img, 0, 0);
+	fps = ft_itoa(get_fps());
+	mlx_string_put(all->mlx.mlx, all->mlx.win, 20, 20, 0xFFFFFFFF, fps);
+	free(fps);
 	mlx_destroy_image(all->mlx.mlx, all->mlx.img.img);
 	return (0);
 }

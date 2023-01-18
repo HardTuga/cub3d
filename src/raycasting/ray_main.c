@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:36:40 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/18 11:36:03 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:48:16 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,19 @@ static t_vector	calc_plane(t_vector dir, int sign)
 	return (plane);
 }
 
-void	choose_color(t_rloop tudao, t_mlx *mlx, t_cub *cub, t_draw *draw)
+void	choose_color(t_rloop tudao, t_all *all, t_draw *draw)
 {
-	if (cub->map[tudao.map.y][tudao.map.x] == '1')
-		draw->color = mlx_get_color_value(mlx->mlx, 0xFFFF0000);
-	else if (cub->map[tudao.map.y][tudao.map.x] == '6')
-		draw->color = mlx_get_color_value(mlx->mlx, 0xFF00FF00);
-	else if (cub->map[tudao.map.y][tudao.map.x] == '3')
-		draw->color = mlx_get_color_value(mlx->mlx, 0xFF0000FF);
-	else if (cub->map[tudao.map.y][tudao.map.x] == '4')
-		draw->color = mlx_get_color_value(mlx->mlx, 0xFFFFFFFF);
-	else if (cub->map[tudao.map.y][tudao.map.x] == '5')
-		draw->color = mlx_get_color_value(mlx->mlx, 0xFFFFFF00);
-	if (tudao.side == 1)
+	if (all->cub->map[tudao.map.y][tudao.map.x] == '1')
+		draw->color = mlx_get_color_value(all->mlx.mlx, 0xFFFF0000);
+	else if (all->cub->map[tudao.map.y][tudao.map.x] == '6')
+		draw->color = mlx_get_color_value(all->mlx.mlx, 0xFF00FF00);
+	else if (all->cub->map[tudao.map.y][tudao.map.x] == '3')
+		draw->color = mlx_get_color_value(all->mlx.mlx, 0xFF0000FF);
+	else if (all->cub->map[tudao.map.y][tudao.map.x] == '4')
+		draw->color = mlx_get_color_value(all->mlx.mlx, 0xFFFFFFFF);
+	else if (all->cub->map[tudao.map.y][tudao.map.x] == '5')
+		draw->color = mlx_get_color_value(all->mlx.mlx, 0xFFFFFF00);
+	if (tudao.side == NO || tudao.side == SO)
 		draw->color = (int)((draw->color & 0x0000FF) * 0.70)
 			| (int)(((draw->color >> 8) & 0x0000FF) * 0.70) << 8
 			| (int)((draw->color >> 16) * 0.70) << 16;

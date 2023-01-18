@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/17 17:26:10 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/18 17:39:43 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,26 +140,30 @@ typedef struct s_all {
 }				t_all;
 
 //------------------------------CUB3D_MAIN------------------------------//
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 //------------------------------ERRORS------------------------------//
-int		error_msg(char *str);
+int				error_msg(char *str);
 
 //------------------------------FREE_UTILS------------------------------//
-void	free_str(char *str);
-void	free_matrix(char **matrix);
-void	free_cub(t_cub *cub);
+void			free_str(char *str);
+void			free_matrix(char **matrix);
+void			free_cub(t_cub *cub);
 
 //------------------------------UTILS------------------------------//
-int		matrix_size(char **matrix);
-char	*ft_strdup_map(const char *src);
+int				matrix_size(char **matrix);
+char			*ft_strdup_map(const char *src);
 
 //------------------------------PARSING------------------------------//
-int		check_args(int ac, char **av);
-int		parse_file(t_cub *cub, char **av);
-int		map_checker(t_cub *cub);
+int				check_args(int ac, char **av);
+int				parse_file(t_cub *cub, char **av);
+int				map_checker(t_cub *cub);
+
+//--------------------------------TIME.C---------------------------------//
+unsigned long	get_timer(void);
+int				get_fps(void);
 
 //--------------------------------RAY_MAIN.C---------------------------------//
-void	ray_main(t_cub *map);
+void			ray_main(t_cub *map);
 
 #endif

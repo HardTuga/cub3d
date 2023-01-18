@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/17 19:16:01 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/18 18:00:14 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,6 @@
 typedef struct s_draw
 {
 	int		x;
-	int		tex_num;
-	int		tex_y;
-	int		tex_x;
-	int		draw_start;
-	int		draw_end;
-	double	tex_pos;
 	uint	color;
 	t_mlx	*mlx;
 }				t_draw;
@@ -40,10 +34,10 @@ typedef struct s_rloop
 	int			draw_start;
 	int			draw_end;
 	int			line_height;
-	double		wallx;
 	double		camx;
+	double		wallx;
 	double		perpwdist;
-	uint		buffer[SCREENH][SCREENW];
+	uint		buff[SCREENH][SCREENW];
 	t_vector2	map;
 	t_vector	rdir;
 	t_vector	sdist;
@@ -51,10 +45,10 @@ typedef struct s_rloop
 }				t_rloop;
 
 //-----------------------------RAY_MAIN.C------------------------------------//
-void	choose_color(t_rloop tudao, t_mlx *mlx, t_cub *cub, t_draw *draw);
+void	choose_color(t_rloop tudao, t_all *all, t_draw *draw);
 
 //-----------------------------RAY_LOOP.C------------------------------------//
-void	ray_loop(t_mlx *mlx, t_play *pl, t_cub *cub);
+void	ray_loop(t_mlx *mlx, t_play *pl, t_cub *cub, t_all *all);
 
 //-----------------------------RAY_MOVES.C-----------------------------------//
 int		key_released(int key, t_all *all);
@@ -71,5 +65,8 @@ int		get_wall_dir(int side, t_vector ray_dir);
 
 //--------------------------------IMAGES.C-----------------------------------//
 void	init_images(t_all *var);
+
+//---------------------------------DRAW.C------------------------------------//
+void	draw_walls(t_rloop *tudao, t_draw d, t_all *all);
 
 #endif
