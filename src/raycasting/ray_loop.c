@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 09:54:47 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/12 15:25:46 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/17 19:18:54 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	init_tudao(t_rloop *tudao, t_play *player, char **map)
 	tudao->rdir.y = player->dir.y + player->plane.y * tudao->camx;
 	calc_deltadist(&(tudao->ddist), tudao->rdir);
 	calc_sidedist(tudao, player);
-	tudao->hit = 0;
+	tudao->hit = false;
 	while (!(tudao->hit))
 	{
 		if (tudao->sdist.x < tudao->sdist.y)
@@ -72,8 +72,9 @@ static void	init_tudao(t_rloop *tudao, t_play *player, char **map)
 			tudao->side = 1;
 		}
 		if (map[tudao->map.y][tudao->map.x] != '0')
-			tudao->hit = 1;
+			tudao->hit = true;
 	}
+	tudao->side = get_wall_dir(tudao->side, tudao->rdir);
 }
 
 static void	draw_stripe(t_draw d, t_rloop *tudao)
@@ -101,18 +102,25 @@ void	ray_loop(t_mlx *mlx, t_play *pl, t_cub *cub)
 	draw.x = 0;
 	draw.mlx = mlx;
 	mlx->img.img = mlx_new_image(mlx->mlx, SCREENW, SCREENH);
-	mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bits_per_pixel,
+	mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bpp,
 			&mlx->img.line_length, &mlx->img.endian);
 	while (draw.x < SCREENW)
 	{
 		tudao.camx = 2 * draw.x / (double)SCREENW - 1;
 		init_tudao(&tudao, pl, cub->map);
-		if (tudao.side == 0)
+		if (tudao.side == EA || tudao.side == WE)
+		{
 			tudao.perpwdist = (tudao.sdist.x - tudao.ddist.x);
+			tudao.wallx = pl->p.y + tudao.perpwdist * tudao.rdir.y;
+		}
 		else
+		{
 			tudao.perpwdist = (tudao.sdist.y - tudao.ddist.y);
-		choose_color(tudao, mlx, cub, &draw);
-		draw_stripe(draw, &tudao);
+			tudao.wallx = pl->p.x + tudao.perpwdist * tudao.rdir.x;
+		}
+		tudao.wallx -= floor(tudao.wallx);
+		// choose_color(tudao, mlx, cub, &draw);
+		// draw_stripe(draw, &tudao);
 		(draw.x)++;
 	}
 }

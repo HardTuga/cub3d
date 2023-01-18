@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:22:50 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/13 16:20:28 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/17 19:13:54 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,23 @@ void	colision(t_all *all, t_vector v)
 				NULL, all->cub->map))
 			all->pl->p.x += v.x;
 	}
+}
+
+int	get_wall_dir(int side, t_vector ray_dir)
+{
+	if (side == 1)
+	{
+		if (ray_dir.x < 0)
+			side = EA;
+		else
+			side = WE;
+	}
+	else
+	{	
+		if (ray_dir.y < 0)
+			side = SO;
+		else
+			side = NO;
+	}
+	return (side);
 }
