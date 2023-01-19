@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 18:14:15 by pcampos-          #+#    #+#             */
-/*   Updated: 2022/12/29 12:27:35 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/19 11:11:40 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,13 @@ void	free_cub(t_cub *cub)
 	free_str(cub->f);
 	free_str(cub->c);
 	free_matrix(cub->map);
+}
+
+void	free_imgs(t_all *all)
+{
+	int	i;
+
+	i = -1;
+	while (++i < 6)
+		mlx_destroy_image(all->mlx.mlx, all->tex[i].img);
 }

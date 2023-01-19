@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/17 17:26:10 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/19 11:44:49 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ enum
 	KEY_RGT_ARR = 65363,
 	KEY_UP_ARR = 65362,
 	KEY_DOWN_ARR = 65364,
-	KEY_M = 109
+	KEY_M = 109,
+	KEY_E = 101 //pode estar errado
 };
 
 enum
@@ -59,7 +60,7 @@ enum
 	_LA = 4,
 	_RA = 5,
 	_UA = 6,
-	_DA	= 7
+	_DA	= 7,
 };
 
 enum
@@ -67,7 +68,9 @@ enum
 	NO = 0,
 	SO = 1,
 	WE = 2,
-	EA = 3
+	EA = 3,
+	D_O = 4,
+	D_C = 5
 };
 
 //------------------------------STRUCTS------------------------------//
@@ -133,7 +136,7 @@ typedef struct s_mlx
 typedef struct s_all {
 	double		time_elapsed;
 	bool		kmap[8];
-	t_data		tex[4];
+	t_data		tex[6];
 	t_play		*pl;
 	t_mlx		mlx;
 	t_cub		*cub;
@@ -149,6 +152,7 @@ int		error_msg(char *str);
 void	free_str(char *str);
 void	free_matrix(char **matrix);
 void	free_cub(t_cub *cub);
+void	free_imgs(t_all *all);
 
 //------------------------------UTILS------------------------------//
 int		matrix_size(char **matrix);

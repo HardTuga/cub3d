@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 11:27:21 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/14 15:27:27 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/19 11:48:49 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	check_chars(char **map)
 // 		while (map[j][++i])
 // 			if (map[j][i] != '0' && map[j][i] != '1' && map[j][i] != 'N' &&
 // 				map[j][i] != 'S' && map[j][i] != 'E' && map[j][i] != 'W' &&
-// 				map[j][i] != ' ' && map[j][i] != '2')
+// 				map[j][i] != ' ' && map[j][i] != '2' && map[j][i] != '3' &&)
 // 				return (1);
 // 		i = -1;
 // 	}
@@ -59,9 +59,22 @@ int	closed_border(char **map, int y)
 	while (map[y][++x])
 		if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S' ||
 			map[y][x] == 'E' || map[y][x] == 'W' || map[y][x] == '2')
-			return (error_msg("Map is not closed"));
+			return (error_msg("ERROR\nMap is not closed"));
 	return (0);
 }
+
+//int	closed_border(char **map, int y)
+//{
+//	int	x;
+//
+//	x = -1;
+//	while (map[y][++x])
+//		if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S' ||
+//			map[y][x] == 'E' || map[y][x] == 'W' || map[y][x] == '2' ||
+//			map[y][x] == '3')
+//			return (error_msg("ERROR\nMap is not closed"));
+//	return (0);
+//}
 
 int	closed_line(char **map, int y)
 {
@@ -74,18 +87,18 @@ int	closed_line(char **map, int y)
 			map[y][x] == 'E' || map[y][x] == 'W')
 		{
 			if (x == 0 || x == (int)ft_strlen(map[y]) - 1)
-				return (error_msg("Map is not closed"));
+				return (error_msg("ERROR\nMap is not closed"));
 			if (check_line_limits(map, y, x))
-				return (error_msg("Map is not closed"));
+				return (error_msg("ERROR\nMap is not closed"));
 			if (check_line_midle(map, y, x))
-				return (error_msg("Map is not closed"));
+				return (error_msg("ERROR\nMap is not closed"));
 		}
-		if (map[y][x] == '2')
+		if (map[y][x] == '2'/*|| map[y][x] == '3'*/)
 		{
 			if (x == 0 || x == (int)ft_strlen(map[y]) - 1)
-				return (error_msg("Door in invalid place"));
+				return (error_msg("ERROR\nDoor in invalid place"));
 			if (check_door(map, y, x))
-				return (error_msg("Door in invalid place"));
+				return (error_msg("ERROR\nDoor in invalid place"));
 		}
 	}
 	return (0);
@@ -113,9 +126,9 @@ int	check_closed(t_cub *cub)
 int	map_checker(t_cub *cub)
 {
 	if (check_chars(cub->map))
-		return (error_msg("Invalid characters in map"));
+		return (error_msg("ERROR\nInvalid characters in map"));
 	if (single_player(cub->map, cub))
-		return (error_msg("Map must have one, and only one player"));
+		return (error_msg("ERROR\nMap must have one, and only one player"));
 	if (check_closed(cub))
 		return (1);
 	return (0);

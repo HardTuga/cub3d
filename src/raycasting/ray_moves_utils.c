@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:21:17 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/12 15:03:16 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/19 11:07:07 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	exit_handler(t_all *all)
 {
 	free_cub(all->cub);
+	free_imgs(all);
 	if (all->mlx.win != NULL)
 		mlx_destroy_window(all->mlx.mlx, all->mlx.win);
 	mlx_destroy_display(all->mlx.mlx);

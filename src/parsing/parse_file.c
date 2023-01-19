@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:43:43 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/16 14:01:41 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/19 11:49:22 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int	check_elements(t_cub *cub)
 {
 	if (cub->n == NULL || cub->s == NULL || cub->w == NULL || cub->e == NULL
 		|| cub->f == NULL || cub->c == NULL)
-		return (error_msg("Wrong number of elements"));
+		return (error_msg("ERROR\nWrong number of elements"));
 	if (valid_elements(cub))
-		return (error_msg("Invalid value of one or more elements"));
+		return (error_msg("ERROR\nInvalid value of one or more elements"));
 	return (0);
 }
 
@@ -49,11 +49,11 @@ int	fill_elements(t_cub *cub, char **tmp)
 	if (check_elements(cub))
 	{
 		free_matrix(tmp);
-		return (error_msg("Error parsing elements"));
+		return (error_msg("ERROR\nError parsing elements"));
 	}
 	cub->map = malloc(sizeof(char **) * (cub->map_y + 1));
 	if (!cub->map)
-		return (error_msg("Error allocating memory"));
+		return (error_msg("ERROR\nError allocating memory"));
 	cub->map[cub->map_y] = NULL;
 	while (tmp[i] && i < cub->map_y + 6)
 	{
@@ -75,7 +75,7 @@ int	file_line(char *av)
 	fd = open(av, O_RDONLY);
 	if (fd < 0)
 	{
-		error_msg("Error opening file");
+		error_msg("ERROR\nError opening file");
 		exit(2);
 	}
 	tmp = get_next_line(fd);
@@ -99,7 +99,7 @@ int	parse_file(t_cub *cub, char **av)
 
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
-		return (error_msg("Error opening file"));
+		return (error_msg("ERROR\nError opening file"));
 	cub->map_y = file_line(av[1]);
 	tmp = malloc(sizeof(char *) * (cub->map_y + 1));
 	tmp[cub->map_y] = NULL;

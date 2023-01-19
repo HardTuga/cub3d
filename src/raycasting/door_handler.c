@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_args.c                                       :+:      :+:    :+:   */
+/*   door_handler.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/27 11:25:04 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/19 11:47:49 by pcampos-         ###   ########.fr       */
+/*   Created: 2023/01/19 11:00:22 by pcampos-          #+#    #+#             */
+/*   Updated: 2023/01/19 11:20:49 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "raycasting.h"
 
-int	rev_strstr(char *str, char *find)
+void	open_close_door(t_all *all)
 {
-	int	i;
-	int	j;
-
-	i = ft_strlen(str);
-	j = ft_strlen(find);
-	while (i >= 0 && j >= 0)
+	if (all->cub->map[][] == '2')
 	{
-		if (str[i] != find[j])
-			return (1);
-		i--;
-		j--;
+		//do_door_animation();
+		all->cub->map[][] = '3';
 	}
-	return (0);
-}
-
-int	check_args(int ac, char **av)
-{
-	if (ac != 2)
-		return (error_msg("Wrong number of arguments"));
-	if (rev_strstr(av[1], ".cub"))
-		return (error_msg("Invalid file extension"));
-	return (0);
+	else if (all->cub->map[][] == '3')
+	{
+		//do_door_animation();
+		all->cub->map[][] = '2';
+	}
 }

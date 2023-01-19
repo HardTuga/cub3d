@@ -30,4 +30,6 @@ cub3d v0.1.4 - confirmar se a verificacao das texturas funciona bem
 
 cub3d v0.1.5 - coneverter os codigos rgb para uint
 
-cub3d v0.1.6 - adicionar funcao de cirat img
+cub3d v0.1.6 - adicionar funcao de criar img
+
+cub3d v0.1.7 - adicionar cenas para as portas

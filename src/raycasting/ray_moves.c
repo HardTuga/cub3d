@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_moves.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:07:22 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/13 17:02:29 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/19 11:44:14 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int	key_pressed(int key, t_all *all)
 		all->kmap[_RA] = true;
 	else if (key == KEY_LFT_ARR)
 		all->kmap[_LA] = true;
+	// else if (key == KEY_E)
+	// 	open_close_door(all);
 	return (0);
 }
 
@@ -68,7 +70,7 @@ static void	handle_keys(t_all *all)
 	t_vector	v;
 
 	rotation(all->pl, (all->kmap[_RA] * X_ROT - all->kmap[_LA] * X_ROT));
-			v.x = all->time_elapsed * ((all->pl->dir.x * all->kmap[_W]) + \
+	v.x = all->time_elapsed * ((all->pl->dir.x * all->kmap[_W]) + \
 			(all->pl->dir.y * all->kmap[_A])
 			- (all->pl->dir.x * all->kmap[_S]) - \
 			(all->pl->dir.y * all->kmap[_D]));
