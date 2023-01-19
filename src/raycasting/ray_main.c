@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:36:40 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/18 13:48:16 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/19 18:56:18 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,23 +45,32 @@ static t_vector	calc_plane(t_vector dir, int sign)
 	return (plane);
 }
 
-void	choose_color(t_rloop tudao, t_all *all, t_draw *draw)
+void	draw_all(t_rloop *tudao, t_draw *draw, t_all *all)
 {
-	if (all->cub->map[tudao.map.y][tudao.map.x] == '1')
+	int	y;
+/*	if (all->cub->map[tudao->map.y][tudao->map.x] == '1')
 		draw->color = mlx_get_color_value(all->mlx.mlx, 0xFFFF0000);
-	else if (all->cub->map[tudao.map.y][tudao.map.x] == '6')
+	else if (all->cub->map[tudao->map.y][tudao->map.x] == '6')
 		draw->color = mlx_get_color_value(all->mlx.mlx, 0xFF00FF00);
-	else if (all->cub->map[tudao.map.y][tudao.map.x] == '3')
+	else if (all->cub->map[tudao->map.y][tudao->map.x] == '3')
 		draw->color = mlx_get_color_value(all->mlx.mlx, 0xFF0000FF);
-	else if (all->cub->map[tudao.map.y][tudao.map.x] == '4')
+	else if (all->cub->map[tudao->map.y][tudao->map.x] == '4')
 		draw->color = mlx_get_color_value(all->mlx.mlx, 0xFFFFFFFF);
-	else if (all->cub->map[tudao.map.y][tudao.map.x] == '5')
-		draw->color = mlx_get_color_value(all->mlx.mlx, 0xFFFFFF00);
-	if (tudao.side == NO || tudao.side == SO)
-		draw->color = (int)((draw->color & 0x0000FF) * 0.70)
-			| (int)(((draw->color >> 8) & 0x0000FF) * 0.70) << 8
-			| (int)((draw->color >> 16) * 0.70) << 16;
+	else if (all->cub->map[tudao->map.y][tudao->map.x] == '5')
+		draw->color = mlx_get_color_value(all->mlx.mlx, 0xFFFFFF00);*/
+	draw->step = (double)(all->tex[tudao->side].img_height / tudao->line_height);
+	draw->texpos = (tudao->draw_start - SCREENH / 2 + tudao->line_height / 2) * draw->step;
+	if (draw->texpos < 0)
+		draw->texpos = 0;
+	y = -1;
+	while (++y < tudao->draw_start)
+		my_mlx_pixel_put(&(all->mlx.img), SCREENW - draw->x - 1, y, all->cub->c_trgb);
+	while (++y < tudao->draw_end)
+		draw_wall(tudao, draw, all, y);
+	while (y < SCREENH)
+		my_mlx_pixel_put(&all->mlx.img, SCREENW - draw->x - 1, y, all->cub->c_trgb);
 }
+
 
 static void	init_player(t_play *player, t_cub *cub)
 {

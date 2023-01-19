@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/18 17:39:43 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/19 17:35:07 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,9 @@ typedef struct s_cub
 	char			*w;
 	char			*e;
 	char			*f;
-	unsigned int	f_trgb;
+	uint			f_trgb;
 	char			*c;
-	unsigned int	c_trgb;
+	uint			c_trgb;
 	char			**map;
 	int				map_y;
 }					t_cub;
@@ -133,6 +133,7 @@ typedef struct s_mlx
 typedef struct s_all {
 	double		time_elapsed;
 	bool		kmap[8];
+	// bool		door;
 	t_data		tex[4];
 	t_play		*pl;
 	t_mlx		mlx;
