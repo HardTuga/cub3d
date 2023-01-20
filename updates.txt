@@ -33,3 +33,5 @@ cub3d v0.1.5 - coneverter os codigos rgb para uint
 cub3d v0.1.6 - adicionar funcao de criar img
 
 cub3d v0.1.7 - adicionar cenas para as portas
+
+cub3d v0.2.0 - comecar a tratar do minimapa
