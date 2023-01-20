@@ -15,6 +15,7 @@
 int	exit_handler(t_all *all)
 {
 	free_cub(all->cub);
+	free_imgs(all);
 	if (all->mlx.win != NULL)
 		mlx_destroy_window(all->mlx.mlx, all->mlx.win);
 	mlx_destroy_display(all->mlx.mlx);

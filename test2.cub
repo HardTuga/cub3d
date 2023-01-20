@@ -1,7 +1,7 @@
-NO ./textures/colorstone.xpm
-SO ./textures/barrel.xpm
-WE ./textures/colorstone.xpm
-EA ./textures/gate_1.xpm
+NO ./assets/colorstone.xpm
+SO ./assets/barrel.xpm
+WE ./assets/colorstone.xpm
+EA ./assets/gate_1.xpm
 
 C 225,30,5
 F 220,100,0
