@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 09:54:47 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/19 18:54:54 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/20 11:57:26 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,9 @@ static void	calc_tex_x(t_rloop *tudao, t_play *pl, t_draw *draw, t_data *tex)
 	wallx -= floor(wallx);
 	draw->tex_x = (int)(wallx * tex[tudao->side].img_width);
 	if ((tudao->side == EA || tudao->side == WE) && tudao->rdir.x < 0)
-		draw->tex_x = tex->img_width - draw->tex_x - 1;
+		draw->tex_x = tex[tudao->side].img_width - draw->tex_x - 1;
 	if ((tudao->side == NO || tudao->side == SO) && tudao->rdir.y > 0)
-		draw->tex_x = tex->img_width - draw->tex_x - 1;
+		draw->tex_x = tex[tudao->side].img_width - draw->tex_x - 1;
 }
 
 void	ray_loop(t_play *pl, t_cub *cub, t_all *all)

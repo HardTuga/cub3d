@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:22:50 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/19 11:42:59 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/20 12:40:32 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ int	get_wall_dir(int side, t_vector ray_dir)
 	if (side == 0)
 	{
 		if (ray_dir.x < 0)
-			side = EA;
-		else
 			side = WE;
+		else
+			side = EA;
 	}
 	else
 	{	
