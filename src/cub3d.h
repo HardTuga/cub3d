@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/19 17:35:07 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/20 14:08:24 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define SCREENH 1080
 # define X_SEN 0.9
 # define X_VEL 0.75
-# define X_ROT 0.04
+# define X_ROT 0.08
 
 //-------------------------------ENUMS-------------------------------//
 
@@ -73,14 +73,14 @@ enum
 	D_C = 5
 };
 
-enum
-{
-	mm_floor = ,
-	mm_player = ,
-	mm_wall = ,
-	mm_door_open = ,
-	mm_door_closed = 
-}
+// enum
+// {
+// 	mm_floor = ,
+// 	mm_player = ,
+// 	mm_wall = ,
+// 	mm_door_open = ,
+// 	mm_door_closed = 
+// }
 //------------------------------STRUCTS------------------------------//
 
 typedef struct s_player
