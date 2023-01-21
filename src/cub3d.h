@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/20 14:08:24 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/21 13:02:49 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 //------------------------------INCLUDES------------------------------//
 # include "../libft/libft.h"
-# include "../minilibx_linux/mlx.h"
+# include "../mlx/mlx.h"
 # include <stdio.h>
 # include <math.h>
 # include <stdlib.h>
@@ -27,28 +27,44 @@
 
 //------------------------------DEFINES------------------------------//
 
-# define SCREENW 1920
-# define SCREENH 1080
+# define SCREENW 1080
+# define SCREENH 720
 # define X_SEN 0.9
 # define X_VEL 0.75
 # define X_ROT 0.08
 
 //-------------------------------ENUMS-------------------------------//
 
-/* LINUX KEYS */
+// /* LINUX KEYS */
+// enum
+// {
+// 	KEY_ESC = 65307,
+// 	KEY_W = 119,
+// 	KEY_A = 97,
+// 	KEY_S = 115,
+// 	KEY_D = 100,
+// 	KEY_LFT_ARR = 65361,
+// 	KEY_RGT_ARR = 65363,
+// 	KEY_UP_ARR = 65362,
+// 	KEY_DOWN_ARR = 65364,
+// 	KEY_M = 109,
+// 	KEY_E = 101 //pode estar errado
+// };
+
+/* MAC KEYS */
 enum
 {
-	KEY_ESC = 65307,
-	KEY_W = 119,
-	KEY_A = 97,
-	KEY_S = 115,
-	KEY_D = 100,
-	KEY_LFT_ARR = 65361,
-	KEY_RGT_ARR = 65363,
-	KEY_UP_ARR = 65362,
-	KEY_DOWN_ARR = 65364,
-	KEY_M = 109,
-	KEY_E = 101 //pode estar errado
+	KEY_ESC = 53,
+	KEY_W = 13,
+	KEY_A = 0,
+	KEY_S = 1,
+	KEY_D = 2,
+	KEY_LFT_ARR = 123,
+	KEY_RGT_ARR = 124,
+	KEY_UP_ARR = 126,
+	KEY_DOWN_ARR = 125,
+	KEY_M = 46,
+	KEY_E = 14
 };
 
 enum
@@ -82,6 +98,8 @@ enum
 // 	mm_door_closed = 
 // }
 //------------------------------STRUCTS------------------------------//
+
+typedef unsigned int uint;
 
 typedef struct s_player
 {
@@ -149,6 +167,7 @@ typedef struct s_all {
 	t_mlx		mlx;
 	t_cub		*cub;
 }				t_all;
+
 
 //------------------------------CUB3D_MAIN------------------------------//
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
