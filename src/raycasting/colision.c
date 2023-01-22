@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:22:50 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/20 14:33:56 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/22 13:47:53 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,11 @@ void	colision(t_all *all, t_vector v)
 	}
 	else
 	{
-		if (c.x && !c.y)
+		if ((c.x && !c.y) ||
+			colider(all->pl->p.x + v.x, all->pl->p.y, NULL, all->cub->map))
 			all->pl->p.x += v.x;
-		if (c.y && !c.x)
+		if ((c.y && !c.x)
+			|| colider(all->pl->p.x, all->pl->p.y + v.y, NULL, all->cub->map))
 			all->pl->p.y += v.y;
 	}
 }
