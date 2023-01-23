@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:20:43 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/19 15:22:43 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:45:14 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,22 @@ void	print_minimap(t_vector p_cords, t_vector2 start, t_all *all, int x)
 	while (start.y >= SCREENW - (SCREENW / 12) - (SCREENW / 20)
 		&& start.y < SCREENW - (SCREENW / 12) + (SCREENW / 20))
 	{
-		if ()
+		if (all->cub->map[(int)p_cords.y][(int)p_cords.x] &&
+			all->cub->map[(int)p_cords.y][(int)p_cords.x] == '0')
+			paint_minimap(&all->mlx.img, start, mm_floor);
+		else if (all->cub->map[(int)p_cords.y][(int)p_cords.x] &&
+			all->cub->map[(int)p_cords.y][(int)p_cords.x] == '1')
+			paint_minimap(&all->mlx.img, start, mm_wall);
+		else if (all->cub->map[(int)p_cords.y][(int)p_cords.x] &&
+			all->cub->map[(int)p_cords.y][(int)p_cords.x] == '2')
+			paint_minimap(&all->mlx.img, start, mm_door_closed);
+		else if (all->cub->map[(int)p_cords.y][(int)p_cords.x] &&
+			all->cub->map[(int)p_cords.y][(int)p_cords.x] == '3')
+			paint_minimap(&all->mlx.img, start, mm_door_open);
+		else
+			paint_minimap(&all->mlx.img, start, mm_void);
+		p_cords.x += scale * x;
+		start.x += x;
 	}
 }
 
@@ -42,11 +57,11 @@ void	minimap(t_all *all, int x, int y)
 		p_cords.y += (scale * y);
 		start.y += y;
 	}
-	if (x != 1 || y != 1)
-	{
-		do_fov(all);
-		return ;
-	}
+	// if (x != 1 || y != 1)
+	// {
+		// do_fov(all);
+		// return ;
+	// }
 	minimap(all, -1, -1);
 	minimap(all, -1, 1);
 	minimap(all, 1, -1);

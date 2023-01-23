@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/19 15:34:13 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/20 12:00:00 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,13 @@ enum
 
 enum
 {
-	mm_floor = ,
-	mm_player = ,
-	mm_wall = ,
-	mm_door_open = ,
-	mm_door_closed = 
-}
+	mm_floor = 0xa0a0a0,
+	mm_player = 0xff66b2,
+	mm_wall = 0x0000ff,
+	mm_door_open = 0x00ff00,
+	mm_door_closed = 0xff0000,
+	mm_void = 0x202020
+};
 //------------------------------STRUCTS------------------------------//
 
 typedef struct s_player

@@ -35,3 +35,5 @@ cub3d v0.1.6 - adicionar funcao de criar img
 cub3d v0.1.7 - adicionar cenas para as portas
 
 cub3d v0.2.0 - comecar a tratar do minimapa
+
+cub3d v0.2.1 - continuar o minimapa

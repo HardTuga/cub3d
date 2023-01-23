@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/17 19:16:01 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:43:39 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,9 @@ int		get_wall_dir(int side, t_vector ray_dir);
 
 //--------------------------------IMAGES.C-----------------------------------//
 void	init_images(t_all *var);
+
+//--------------------------------MINIMAP-----------------------------------//
+void	minimap(t_all *all, int x, int y);
+void	print_minimap(t_vector p_cords, t_vector2 start, t_all *all, int x);
 
 #endif

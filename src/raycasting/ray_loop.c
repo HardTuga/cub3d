@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 09:54:47 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/19 11:43:59 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/20 12:02:23 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static void	init_tudao(t_rloop *tudao, t_play *player, char **map)
 // 		tudao->draw_end = SCREENH;
 // 	while (tudao->draw_start < tudao->draw_end)
 // 	{
-// 		my_mlx_pixel_put(&(d.mlx->img), SCREENW - d.x - 1, \
+// 		my_mlx_pixel_put(&(d.mlx->img), SCREENW - d.x - 1,
 // 		tudao->draw_start, d.color);
 // 		tudao->draw_start++;
 // 	}
