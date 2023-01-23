@@ -6,11 +6,24 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:20:43 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/23 11:45:14 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/23 12:06:14 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
+
+void	paint_minimap(t_data *data, t_vector2 start, int color)
+{
+	double	x;
+
+	x = fabs(sqrt(pow((SCREENW - (SCREENW / 12)) - start.x, 2)
+				+ pow((SCREENH - (SCREENW / 12)) - start.y, 2)));
+	x = round(x);
+	if (x < SCREENW / 21)
+		my_mlx_pixel_put(data, start.x, start.y, color);
+	else if (x <= SCREENW / 21 + 1)
+		my_mlx_pixel_put(data, start.x, start.y, 0);
+}
 
 void	print_minimap(t_vector p_cords, t_vector2 start, t_all *all, int x)
 {
@@ -57,11 +70,11 @@ void	minimap(t_all *all, int x, int y)
 		p_cords.y += (scale * y);
 		start.y += y;
 	}
-	// if (x != 1 || y != 1)
-	// {
-		// do_fov(all);
-		// return ;
-	// }
+	if (x != 1 || y != 1)
+	{
+		//do_fov(all);
+		return ;
+	}
 	minimap(all, -1, -1);
 	minimap(all, -1, 1);
 	minimap(all, 1, -1);
