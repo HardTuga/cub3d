@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/23 14:05:58 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/23 15:13:56 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,11 @@ int		get_wall_dir(int side, t_vector ray_dir);
 //--------------------------------IMAGES.C-----------------------------------//
 void	init_images(t_all *var);
 uint	*get_img_pixel(t_data *data, int x, int y);
+
+//--------------------------------MINIMAP-----------------------------------//
+void	minimap(t_all *all, int x, int y);
+void	print_minimap(t_vector p_cords, t_vector2 start, t_all *all, int x);
+void	paint_minimap(t_data *data, t_vector2 start, int color);
 
 //---------------------------------DRAW.C------------------------------------//
 void	draw_all(t_rloop *tudao, t_draw *draw, t_all *all);

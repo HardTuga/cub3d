@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:07:22 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/23 15:03:14 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/23 15:13:38 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int	handle_hooks(t_all *all)
 	oldtime += all->time_elapsed;
 	all->time_elapsed *= 64;
 	ray_loop(all->pl, all->cub, all);
-	//minimap(all, 1, 1);
+	minimap(all, 1, 1);
 	handle_keys(all);
 	mlx_clear_window(all->mlx.mlx, all->mlx.win);
 	mlx_put_image_to_window(all->mlx.mlx, all->mlx.win, all->mlx.img.img, 0, 0);

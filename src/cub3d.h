@@ -101,14 +101,15 @@ enum
 	D_C = 5
 };
 
-// enum
-// {
-// 	mm_floor = ,
-// 	mm_player = ,
-// 	mm_wall = ,
-// 	mm_door_open = ,
-// 	mm_door_closed = 
-// }
+enum
+{
+	mm_floor = 0xa0a0a0,
+	mm_player = 0xff66b2,
+	mm_wall = 0x0000ff,
+	mm_door_open = 0x00ff00,
+	mm_door_closed = 0xff0000,
+	mm_void = 0x202020
+};
 //------------------------------STRUCTS------------------------------//
 
 typedef unsigned int uint;
