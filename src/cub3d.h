@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
 /*   Updated: 2023/01/23 17:17:25 by lucas-ma         ###   ########.fr       */
@@ -104,12 +104,12 @@ enum
 
 enum
 {
-	mm_floor = 0xa0a0a0,
-	mm_player = 0xff66b2,
-	mm_wall = 0x0000ff,
-	mm_door_open = 0x00ff00,
-	mm_door_closed = 0xff0000,
-	mm_void = 0x202020
+	MM_F = 0xffa0a0a0,
+	MM_P = 0xffff66b2,
+	MM_W = 0xff0000ff,
+	MM_DO = 0xff00ff00,
+	MM_DC = 0xffff0000,
+	MM_V = 0xff202020
 };
 //------------------------------STRUCTS------------------------------//
 
@@ -135,6 +135,7 @@ typedef struct s_cub
 	uint			c_trgb;
 	char			**map;
 	int				map_y;
+	int				map_x;
 }					t_cub;
 
 typedef struct s_data {

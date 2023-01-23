@@ -52,6 +52,7 @@ SRCS    =        $(_SRC)cub3d_main.c \
 				 $(_SRC)parsing/parse_file_rgb.c \
                  $(_SRC)parsing/check_map.c \
                  $(_SRC)parsing/check_map_utils.c \
+				 $(_SRC)parsing/fill_map.c \
 				 $(_SRC)raycasting/ray_main.c \
 				 $(_SRC)raycasting/ray_loop.c \
 				 $(_SRC)raycasting/ray_moves.c \

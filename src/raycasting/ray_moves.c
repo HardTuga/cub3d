@@ -123,9 +123,9 @@ int	handle_hooks(t_all *all)
 	oldtime += all->time_elapsed;
 	all->time_elapsed *= 64;
 	ray_loop(all->pl, all->cub, all);
-	minimap(all, 1, 1);
 	handle_keys(all);
 	mlx_clear_window(all->mlx.mlx, all->mlx.win);
+	minimap(all, 1, 1);
 	mlx_put_image_to_window(all->mlx.mlx, all->mlx.win, all->mlx.img.img, 0, 0);
 	fps = ft_itoa(get_fps());
 	mlx_string_put(all->mlx.mlx, all->mlx.win, 20, 20, 0xFFFFFFFF, fps);
