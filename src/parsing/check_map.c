@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 11:27:21 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/19 11:48:49 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/23 15:48:27 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,5 +131,6 @@ int	map_checker(t_cub *cub)
 		return (error_msg("ERROR\nMap must have one, and only one player"));
 	if (check_closed(cub))
 		return (1);
+	fill_map(cub);
 	return (0);
 }

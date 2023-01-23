@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/23 12:09:52 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:38:15 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ uint	*get_img_pixel(t_data *data, int x, int y);
 void	minimap(t_all *all, int x, int y);
 void	print_minimap(t_vector p_cords, t_vector2 start, t_all *all, int x);
 void	paint_minimap(t_data *data, t_vector2 start, int color);
+void	put_player(t_all *all);
 
 //---------------------------------DRAW.C------------------------------------//
 void	draw_all(t_rloop *tudao, t_draw *draw, t_all *all);

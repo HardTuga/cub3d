@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 12:28:25 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/20 14:15:40 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/23 16:25:55 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	draw_all(t_rloop *tudao, t_draw *draw, t_all *all)
 	draw->texpos = (tudao->draw_start - SCREENH / 2 + tudao->line_height / 2) * draw->step;
 	while (++y < tudao->draw_start)
 		my_mlx_pixel_put(&(all->mlx.img), SCREENW - draw->x - 1, y, all->cub->c_trgb);
+	y = tudao->draw_start;
 	while (++y < tudao->draw_end)
 		draw_wall(tudao, draw, all, y);
 	while (++y < SCREENH)

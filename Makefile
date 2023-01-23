@@ -6,7 +6,7 @@
 #    By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 15:07:52 by lucas-ma          #+#    #+#              #
-#    Updated: 2023/01/20 14:35:09 by lucas-ma         ###   ########.fr        #
+#    Updated: 2023/01/23 16:20:48 by pcampos-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ _BIN    =        ./
 ############### COMPILER ################
 
 CC      =        cc
-CFLAGS      =        -Wall -Werror -Wextra #-g -fsanitize=address
+CFLAGS      =        -Wall -Werror -Wextra -g -fsanitize=address
 #valgrind --leak-check=full --show-leak-kinds=all ./minishell
 SRCS    =        $(_SRC)cub3d_main.c \
                  $(_SRC)errors.c \
@@ -52,6 +52,7 @@ SRCS    =        $(_SRC)cub3d_main.c \
 				 $(_SRC)parsing/parse_file_rgb.c \
                  $(_SRC)parsing/check_map.c \
                  $(_SRC)parsing/check_map_utils.c \
+				 $(_SRC)parsing/fill_map.c \
 				 $(_SRC)raycasting/ray_main.c \
 				 $(_SRC)raycasting/ray_loop.c \
 				 $(_SRC)raycasting/ray_moves.c \
