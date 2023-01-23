@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:21:17 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/23 17:42:18 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/23 18:08:35 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	exit_handler(t_all *all)
 	exit(EXIT_SUCCESS);
 }
 
-int	re_expand_window(t_all *all)
+static int	re_expand_window(t_all *all)
 {
 	if (all->m_in_window == true)
 	{
@@ -34,24 +34,10 @@ int	re_expand_window(t_all *all)
 	return (0);
 }
 
-int	minimize_window(t_all *all)
+static int	minimize_window(t_all *all)
 {
 	mlx_mouse_show(all->mlx.mlx, all->mlx.win);
 	all->w_minimised = true;
-	return (0);
-}
-
-int	mouse_pressed(int button, int x, int y, t_all *all)
-{
-	(void)button;
-	(void)x;
-	(void)y;
-	if (all->m_in_window == false)
-	{
-		all->m_in_window = true;
-		mlx_mouse_hide(all->mlx.mlx, all->mlx.win);
-		mlx_mouse_move(all->mlx.mlx, all->mlx.win, SCREENW / 2, SCREENH / 2);
-	}
 	return (0);
 }
 

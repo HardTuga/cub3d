@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:07:22 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/23 16:31:52 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:56:24 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ int	key_released(int key, t_all *all)
 		all->kmap[_RA] = false;
 	else if (key == KEY_LFT_ARR)
 		all->kmap[_LA] = false;
-	// else if (key == KEY_DOWN_ARR)
-	// 	all->kmap[_DA] = false;
-	// else if (key == KEY_UP_ARR)
-	// 	all->kmap[_UA] = false;
+	else if (key == KEY_DOWN_ARR)
+		all->kmap[_DA] = false;
+	else if (key == KEY_UP_ARR)
+		all->kmap[_UA] = false;
 	return (0);
 }
 
@@ -89,7 +89,8 @@ static void	handle_keys(t_all *all)
 		}
 		all->kmap[_TAB] = false;
 	}
-	rotation(all->pl, (all->kmap[_RA] * X_ROT - all->kmap[_LA] * X_ROT));
+	rotation(all->pl, handle_mouse(all) + \
+	(all->kmap[_RA] * X_ROT - all->kmap[_LA] * X_ROT));
 	v.x = all->time_elapsed * ((all->pl->dir.x * all->kmap[_W]) + \
 			(all->pl->dir.y * all->kmap[_A])
 			- (all->pl->dir.x * all->kmap[_S]) - \
@@ -125,7 +126,6 @@ int	handle_hooks(t_all *all)
 	ray_loop(all->pl, all->cub, all);
 	handle_keys(all);
 	mlx_clear_window(all->mlx.mlx, all->mlx.win);
-	minimap(all, 1, 1);
 	mlx_put_image_to_window(all->mlx.mlx, all->mlx.win, all->mlx.img.img, 0, 0);
 	fps = ft_itoa(get_fps());
 	mlx_string_put(all->mlx.mlx, all->mlx.win, 20, 20, 0xFFFFFFFF, fps);

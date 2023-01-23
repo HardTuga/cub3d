@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:36:40 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/23 14:03:31 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:57:43 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static t_vector	calc_plane(t_vector dir, int sign)
 	plane.y = (0.66 * dir.x) * sign;
 	return (plane);
 }
-
 
 static void	init_player(t_play *player, t_cub *cub)
 {

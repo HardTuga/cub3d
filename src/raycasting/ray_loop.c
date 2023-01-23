@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 09:54:47 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/23 15:13:06 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:58:29 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static void	init_tudao(t_rloop *tudao, t_play *player, char **map)
 static void	calc_tex_x(t_rloop *tudao, t_play *pl, t_draw *draw, t_data *tex)
 {
 	double	wallx;
-	
+
 	if (tudao->side == EA || tudao->side == WE)
 	{
 		tudao->perpwdist = tudao->sdist.x - tudao->ddist.x;
@@ -122,4 +122,5 @@ void	ray_loop(t_play *pl, t_cub *cub, t_all *all)
 			tudao.draw_end = SCREENH;
 		draw_all(&tudao, &draw, all);
 	}
+	minimap(all, 1, 1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/23 17:17:25 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/23 18:23:52 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,7 @@ enum
 	MM_V = 0xff202020
 };
 //------------------------------STRUCTS------------------------------//
-
-typedef unsigned int uint;
-
+// typedef unsigned int uint;
 typedef struct s_player
 {
 	int		x;
@@ -180,11 +178,11 @@ typedef struct s_all {
 	double		time_elapsed;
 	bool		kmap[13];
 	t_data		tex[6];
+	t_vector	mouse;
 	t_play		*pl;
 	t_mlx		mlx;
 	t_cub		*cub;
 }				t_all;
-
 
 //------------------------------CUB3D_MAIN------------------------------//
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
@@ -194,8 +192,8 @@ int				error_msg(char *str);
 
 //------------------------------FREE_UTILS------------------------------//
 void			free_str(char *str);
-void 			free_matrix(char **matrix);
-void 			free_cub(t_cub *cub);
+void			free_matrix(char **matrix);
+void			free_cub(t_cub *cub);
 void			free_imgs(t_all *all);
 
 //------------------------------UTILS------------------------------//

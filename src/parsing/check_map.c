@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 11:27:21 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/23 15:48:27 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:51:02 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,25 +32,25 @@ int	check_chars(char **map)
 	return (0);
 }
 
-// int	check_chars(char **map)
-// {
-// 	int	i;
-// 	int	j;
+/* int	check_chars(char **map)
+{
+	int	i;
+	int	j;
 
-// 	i = -1;
-// 	j = -1;
-// 	while (map[++j])
-// 	{
-// 		while (map[j][++i])
-// 			if (map[j][i] != '0' && map[j][i] != '1' && map[j][i] != 'N' &&
-// 				map[j][i] != 'S' && map[j][i] != 'E' && map[j][i] != 'W' &&
-// 				map[j][i] != ' ' && map[j][i] != '2' && map[j][i] != '3' &&)
-// 				return (1);
-// 		i = -1;
-// 	}
-// 	return (0);
-// }
-
+	i = -1;
+	j = -1;
+	while (map[++j])
+	{
+		while (map[j][++i])
+			if (map[j][i] != '0' && map[j][i] != '1' && map[j][i] != 'N' &&
+				map[j][i] != 'S' && map[j][i] != 'E' && map[j][i] != 'W' &&
+				map[j][i] != ' ' && map[j][i] != '2' && map[j][i] != '3' &&)
+				return (1);
+		i = -1;
+	}
+	return (0);
+}
+ */
 int	closed_border(char **map, int y)
 {
 	int	x;
@@ -63,18 +63,18 @@ int	closed_border(char **map, int y)
 	return (0);
 }
 
-//int	closed_border(char **map, int y)
-//{
-//	int	x;
-//
-//	x = -1;
-//	while (map[y][++x])
-//		if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S' ||
-//			map[y][x] == 'E' || map[y][x] == 'W' || map[y][x] == '2' ||
-//			map[y][x] == '3')
-//			return (error_msg("ERROR\nMap is not closed"));
-//	return (0);
-//}
+/* int	closed_border(char **map, int y)
+{
+	int	x;
+
+	x = -1;
+	while (map[y][++x])
+		if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S' ||
+			map[y][x] == 'E' || map[y][x] == 'W' || map[y][x] == '2' ||
+			map[y][x] == '3')
+			return (error_msg("ERROR\nMap is not closed"));
+	return (0);
+} */
 
 int	closed_line(char **map, int y)
 {
