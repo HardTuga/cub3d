@@ -6,7 +6,7 @@
 #    By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 15:07:52 by lucas-ma          #+#    #+#              #
-#    Updated: 2023/01/23 11:44:03 by pcampos-         ###   ########.fr        #
+#    Updated: 2023/01/23 11:50:16 by pcampos-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ CFLAGS      =        -Wall -Werror -Wextra -g -fsanitize=address
 #valgrind --leak-check=full --show-leak-kinds=all ./minishell
 SRCS    =        $(_SRC)cub3d_main.c \
                  $(_SRC)errors.c \
+                 $(_SRC)time.c \
                  $(_SRC)free_utils.c \
                  $(_SRC)utils.c \
                  $(_SRC)parsing/check_args.c \
@@ -58,6 +59,7 @@ SRCS    =        $(_SRC)cub3d_main.c \
 				 $(_SRC)raycasting/colision.c \
 				 $(_SRC)raycasting/images.c \
 				 $(_SRC)raycasting/minimap.c \
+				 $(_SRC)raycasting/draw.c \
 
 OBJS    =        $(patsubst $(_SRC)%.c,$(_OBJ)%.o,$(SRCS))
 DEPS    =        ./libs/libft.a ./minilibx_linux/libmlx_Linux.a

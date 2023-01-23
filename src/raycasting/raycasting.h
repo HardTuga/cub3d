@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/23 11:43:39 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:51:46 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,12 @@
 //------------------------------STRUCTS------------------------------//
 typedef struct s_draw
 {
-	int		x;
-	int		tex_num;
-	int		tex_y;
-	int		tex_x;
-	int		draw_start;
-	int		draw_end;
-	double	tex_pos;
-	uint	color;
-	t_mlx	*mlx;
+	int			x;
+	int			tex_y;
+	int			tex_x;
+	double		step;
+	double		texpos;
+	uint		color;
 }				t_draw;
 
 typedef struct s_rloop
@@ -40,10 +37,8 @@ typedef struct s_rloop
 	int			draw_start;
 	int			draw_end;
 	int			line_height;
-	double		wallx;
 	double		camx;
 	double		perpwdist;
-	uint		buffer[SCREENH][SCREENW];
 	t_vector2	map;
 	t_vector	rdir;
 	t_vector	sdist;
@@ -51,10 +46,10 @@ typedef struct s_rloop
 }				t_rloop;
 
 //-----------------------------RAY_MAIN.C------------------------------------//
-void	choose_color(t_rloop tudao, t_mlx *mlx, t_cub *cub, t_draw *draw);
+void	draw_wall(t_rloop *tudao, t_draw *d, t_all *all, int y);
 
 //-----------------------------RAY_LOOP.C------------------------------------//
-void	ray_loop(t_mlx *mlx, t_play *pl, t_cub *cub);
+void	ray_loop(t_play *pl, t_cub *cub, t_all *all);
 
 //-----------------------------RAY_MOVES.C-----------------------------------//
 int		key_released(int key, t_all *all);
@@ -71,9 +66,13 @@ int		get_wall_dir(int side, t_vector ray_dir);
 
 //--------------------------------IMAGES.C-----------------------------------//
 void	init_images(t_all *var);
+uint	*get_img_pixel(t_data *data, int x, int y);
 
 //--------------------------------MINIMAP-----------------------------------//
 void	minimap(t_all *all, int x, int y);
 void	print_minimap(t_vector p_cords, t_vector2 start, t_all *all, int x);
+
+//---------------------------------DRAW.C------------------------------------//
+void	draw_all(t_rloop *tudao, t_draw *draw, t_all *all);
 
 #endif
