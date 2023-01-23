@@ -6,7 +6,7 @@
 #    By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 15:07:52 by lucas-ma          #+#    #+#              #
-#    Updated: 2023/01/20 14:35:09 by lucas-ma         ###   ########.fr        #
+#    Updated: 2023/01/23 13:52:44 by lucas-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ _BIN    =        ./
 ############### COMPILER ################
 
 CC      =        cc
-CFLAGS      =        -Wall -Werror -Wextra #-g -fsanitize=address
+CFLAGS      =        -Wall -Werror -Wextra -g -fsanitize=address
 #valgrind --leak-check=full --show-leak-kinds=all ./minishell
 SRCS    =        $(_SRC)cub3d_main.c \
                  $(_SRC)errors.c \
@@ -55,7 +55,7 @@ SRCS    =        $(_SRC)cub3d_main.c \
 				 $(_SRC)raycasting/ray_main.c \
 				 $(_SRC)raycasting/ray_loop.c \
 				 $(_SRC)raycasting/ray_moves.c \
-				 $(_SRC)raycasting/ray_moves_utils.c \
+				 $(_SRC)raycasting/ray_hooks.c \
 				 $(_SRC)raycasting/colision.c \
 				 $(_SRC)raycasting/images.c \
 				 $(_SRC)raycasting/draw.c \

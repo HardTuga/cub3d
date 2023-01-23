@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_moves.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:07:22 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/19 18:19:06 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/23 15:03:14 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,16 @@ int	key_released(int key, t_all *all)
 		all->kmap[_RA] = false;
 	else if (key == KEY_LFT_ARR)
 		all->kmap[_LA] = false;
+	// else if (key == KEY_DOWN_ARR)
+	// 	all->kmap[_DA] = false;
+	// else if (key == KEY_UP_ARR)
+	// 	all->kmap[_UA] = false;
 	return (0);
 }
 
 int	key_pressed(int key, t_all *all)
 {
+	// printf("keycode %d\n", key);
 	if (key == KEY_ESC)
 		exit_handler(all);
 	else if (key == KEY_W)
@@ -60,6 +65,14 @@ int	key_pressed(int key, t_all *all)
 		all->kmap[_RA] = true;
 	else if (key == KEY_LFT_ARR)
 		all->kmap[_LA] = true;
+	else if (key == KEY_TAB)
+	{
+		if (all->m_in_window == true)
+		{
+			mlx_mouse_show(all->mlx.mlx, all->mlx.win);
+			all->m_in_window = false;
+		}
+	}
 	// else if (key == KEY_E)
 	// 	open_close_door(all);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/23 11:45:11 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:47:56 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 //------------------------------INCLUDES------------------------------//
 # include "../libft/libft.h"
-# include "../mlx/mlx.h"
+# include "../minilibx_linux/mlx.h"
 # include <stdio.h>
 # include <math.h>
 # include <stdlib.h>
@@ -45,10 +45,21 @@ enum
 	KEY_D = 100,
 	KEY_LFT_ARR = 65361,
 	KEY_RGT_ARR = 65363,
-	KEY_UP_ARR = 65362,
-	KEY_DOWN_ARR = 65364,
+	KEY_TAB = 65289,
+	// KEY_UP_ARR = 65362,
+	// KEY_DOWN_ARR = 65364,
 	KEY_M = 109,
-	KEY_E = 101 //pode estar errado
+	KEY_E = 101
+};
+
+enum {
+	ON_KEYDOWN = 2,
+	ON_KEYUP = 3,
+	ON_MOUSEDOWN = 4,
+	ON_MOUSEUP = 5,
+	ON_MOUSEMOVE = 6,
+	ON_EXPOSE = 12,
+	ON_DESTROY = 17
 };
 
 // /* MAC KEYS */
@@ -75,8 +86,9 @@ enum
 	_D = 3,
 	_LA = 4,
 	_RA = 5,
-	_UA = 6,
-	_DA	= 7,
+	_TA = 6,
+	// _UA = 6,
+	// _DA	= 7,
 };
 
 enum
@@ -160,6 +172,8 @@ typedef struct s_mlx
 }				t_mlx;
 
 typedef struct s_all {
+	bool		m_in_window;
+	bool		w_minimised;
 	double		time_elapsed;
 	bool		kmap[8];
 	t_data		tex[6];

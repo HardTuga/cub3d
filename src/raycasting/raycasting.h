@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/19 18:56:28 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:05:58 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,9 @@ int		key_released(int key, t_all *all);
 int		key_pressed(int key, t_all *all);
 int		handle_hooks(t_all *all);
 
-//---------------------------RAY_MOVES_UTILS.C-------------------------------//
+//-----------------------------RAY_HOOKS.C-----------------------------------//
 int		exit_handler(t_all *all);
+void	init_mouse(t_all *all);
 void	hooks(t_all *all);
 
 //-------------------------------COLISION.C----------------------------------//

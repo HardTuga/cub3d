@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:36:40 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/20 11:20:30 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:03:31 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ void	ray_main(t_cub *cub)
 	init_images(&var);
 	var.pl = &pl;
 	hooks(&var);
+	init_mouse(&var);
 	mlx_loop(var.mlx.mlx);
 }
