@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/23 14:47:56 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:17:25 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ enum
 	KEY_LFT_ARR = 65361,
 	KEY_RGT_ARR = 65363,
 	KEY_TAB = 65289,
-	// KEY_UP_ARR = 65362,
-	// KEY_DOWN_ARR = 65364,
+	KEY_UP_ARR = 65362,
+	KEY_DOWN_ARR = 65364,
 	KEY_M = 109,
 	KEY_E = 101
 };
@@ -58,7 +58,8 @@ enum {
 	ON_MOUSEDOWN = 4,
 	ON_MOUSEUP = 5,
 	ON_MOUSEMOVE = 6,
-	ON_EXPOSE = 12,
+	ON_ENTER = 9,
+	ON_LEAVE = 10,
 	ON_DESTROY = 17
 };
 
@@ -86,9 +87,9 @@ enum
 	_D = 3,
 	_LA = 4,
 	_RA = 5,
-	_TA = 6,
-	// _UA = 6,
-	// _DA	= 7,
+	_UA = 6,
+	_DA = 7,
+	_TAB = 8
 };
 
 enum
@@ -176,7 +177,7 @@ typedef struct s_all {
 	bool		m_in_window;
 	bool		w_minimised;
 	double		time_elapsed;
-	bool		kmap[8];
+	bool		kmap[13];
 	t_data		tex[6];
 	t_play		*pl;
 	t_mlx		mlx;
@@ -191,10 +192,10 @@ void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int				error_msg(char *str);
 
 //------------------------------FREE_UTILS------------------------------//
-void	free_str(char *str);
-void 	free_matrix(char **matrix);
-void 	free_cub(t_cub *cub);
-void	free_imgs(t_all *all);
+void			free_str(char *str);
+void 			free_matrix(char **matrix);
+void 			free_cub(t_cub *cub);
+void			free_imgs(t_all *all);
 
 //------------------------------UTILS------------------------------//
 int				matrix_size(char **matrix);

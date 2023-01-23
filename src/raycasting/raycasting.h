@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/23 15:13:56 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:41:37 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ int		handle_hooks(t_all *all);
 
 //-----------------------------RAY_HOOKS.C-----------------------------------//
 int		exit_handler(t_all *all);
-void	init_mouse(t_all *all);
 void	hooks(t_all *all);
 
 //-------------------------------COLISION.C----------------------------------//
@@ -76,5 +75,6 @@ void	paint_minimap(t_data *data, t_vector2 start, int color);
 
 //---------------------------------DRAW.C------------------------------------//
 void	draw_all(t_rloop *tudao, t_draw *draw, t_all *all);
+void	init_mouse(t_all *all);
 
 #endif
