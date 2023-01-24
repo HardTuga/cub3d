@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:07:22 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/23 17:40:56 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/24 12:10:39 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	key_pressed(int key, t_all *all)
 	else if (key == KEY_LFT_ARR)
 		all->kmap[_LA] = true;
 	// else if (key == KEY_E)
-	// 	open_close_door(all);
+		// door_handler(all);
 	return (0);
 }
 
