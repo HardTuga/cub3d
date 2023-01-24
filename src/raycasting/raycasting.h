@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/23 18:06:41 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/24 12:08:03 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,15 @@ typedef struct s_draw
 
 typedef struct s_rloop
 {
-	int			hit;
 	int			side;
+	int			door_state;
 	int			stepx;
 	int			stepy;
 	int			draw_start;
 	int			draw_end;
 	int			line_height;
+	bool		hit_door;
+	bool		hit;
 	double		camx;
 	double		perpwdist;
 	t_vector2	map;
@@ -80,5 +82,8 @@ void	draw_all(t_rloop *tudao, t_draw *draw, t_all *all);
 //---------------------------------MOUSE.C-----------------------------------//
 void	init_mouse(t_all *all);
 int		mouse_pressed(int button, int x, int y, t_all *all);
+
+//------------------------------DOOR_HANDLER.C-------------------------------//
+bool	check_door(char **map, t_rloop *tudao);
 
 #endif
