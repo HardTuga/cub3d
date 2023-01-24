@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/23 16:50:12 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/24 12:10:17 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 //------------------------------INCLUDES------------------------------//
 # include "../libft/libft.h"
-# include "../mlx/mlx.h"
 # include <stdio.h>
 # include <math.h>
 # include <stdlib.h>
@@ -34,7 +33,27 @@
 # define X_ROT 0.04
 
 //-------------------------------ENUMS-------------------------------//
-
+#ifdef __APPLE__
+# include "../mlx/mlx.h"
+typedef unsigned int uint;
+/* MAC KEYS */
+enum
+{
+	KEY_ESC = 53,
+	KEY_W = 13,
+	KEY_A = 0,
+	KEY_S = 1,
+	KEY_D = 2,
+	KEY_LFT_ARR = 123,
+	KEY_RGT_ARR = 124,
+	KEY_TAB = 48,
+	KEY_UP_ARR = 126,
+	KEY_DOWN_ARR = 125,
+	KEY_M = 46,
+	KEY_E = 14
+};
+#else
+# include "../minilibx_linux/mlx.h"
 /* LINUX KEYS */
 enum
 {
@@ -45,27 +64,26 @@ enum
 	KEY_D = 100,
 	KEY_LFT_ARR = 65361,
 	KEY_RGT_ARR = 65363,
+	KEY_TAB = 65289,
 	KEY_UP_ARR = 65362,
 	KEY_DOWN_ARR = 65364,
 	KEY_M = 109,
-	KEY_E = 101 //pode estar errado
+	KEY_E = 101
 };
 
-// /* MAC KEYS */
-// enum
-// {
-// 	KEY_ESC = 53,
-// 	KEY_W = 13,
-// 	KEY_A = 0,
-// 	KEY_S = 1,
-// 	KEY_D = 2,
-// 	KEY_LFT_ARR = 123,
-// 	KEY_RGT_ARR = 124,
-// 	KEY_UP_ARR = 126,
-// 	KEY_DOWN_ARR = 125,
-// 	KEY_M = 46,
-// 	KEY_E = 14
-// };
+#endif
+
+enum {
+	ON_KEYDOWN = 2,
+	ON_KEYUP = 3,
+	ON_MOUSEDOWN = 4,
+	ON_MOUSEUP = 5,
+	ON_MOUSEMOVE = 6,
+	ON_ENTER = 9,
+	ON_LEAVE = 10,
+	ON_DESTROY = 17
+};
+
 
 enum
 {
@@ -76,7 +94,8 @@ enum
 	_LA = 4,
 	_RA = 5,
 	_UA = 6,
-	_DA	= 7,
+	_DA = 7,
+	_TAB = 8
 };
 
 enum
@@ -99,9 +118,6 @@ enum
 	MM_V = 0xff202020
 };
 //------------------------------STRUCTS------------------------------//
-
-typedef unsigned int uint;
-
 typedef struct s_player
 {
 	int		x;
@@ -162,14 +178,16 @@ typedef struct s_mlx
 }				t_mlx;
 
 typedef struct s_all {
+	bool		m_in_window;
+	bool		w_minimised;
 	double		time_elapsed;
-	bool		kmap[8];
+	bool		kmap[13];
 	t_data		tex[6];
+	t_vector	mouse;
 	t_play		*pl;
 	t_mlx		mlx;
 	t_cub		*cub;
 }				t_all;
-
 
 //------------------------------CUB3D_MAIN------------------------------//
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
@@ -178,10 +196,10 @@ void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int				error_msg(char *str);
 
 //------------------------------FREE_UTILS------------------------------//
-void	free_str(char *str);
-void 	free_matrix(char **matrix);
-void 	free_cub(t_cub *cub);
-void	free_imgs(t_all *all);
+void			free_str(char *str);
+void			free_matrix(char **matrix);
+void			free_cub(t_cub *cub);
+void			free_imgs(t_all *all);
 
 //------------------------------UTILS------------------------------//
 int				matrix_size(char **matrix);

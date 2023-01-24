@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:20:43 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/24 11:17:09 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:57:34 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	print_minimap(t_vector p_cords, t_vector2 start, t_all *all, int x)
 		&& start.x < SCREENW - (SCREENW / 12) + (SCREENW / 20))
 	{
 		if (p_cords.x < 0 || p_cords.y < 0 || p_cords.x >= all->cub->map_x
-			|| p_cords.y >= all->cub->map_y || all->cub->map[(int)p_cords.y][(int)p_cords.x] == ' ')
+			|| p_cords.y >= all->cub->map_y || \
+			all->cub->map[(int)p_cords.y][(int)p_cords.x] == ' ')
 			paint_minimap(&all->mlx.img, start, MM_V);
 		else if (all->cub->map[(int)p_cords.y][(int)p_cords.x] == '0')
 			paint_minimap(&all->mlx.img, start, MM_F);
@@ -56,7 +57,7 @@ void	put_player(t_all *all)
 	t_vector	player;
 	int			x;
 	int			y;
-	
+
 	player.x = (double)(SCREENW - (SCREENW / 12));
 	player.y = (double)(SCREENH - (SCREENW / 12));
 	y = SCREENH - (SCREENW / 12) - (SCREENW / 20);
@@ -65,7 +66,8 @@ void	put_player(t_all *all)
 		x = SCREENW - (SCREENW / 12) - (SCREENW / 20);
 		while (x < SCREENW - (SCREENW / 12) + (SCREENW / 20))
 		{
-			if ((x - player.x) * (x - player.x) + (y - player.y) * (y - player.y) <= 7)
+			if ((x - player.x) * (x - player.x) + \
+			(y - player.y) * (y - player.y) <= 7)
 				my_mlx_pixel_put(&all->mlx.img, x, y, MM_P);
 			x += 1;
 		}

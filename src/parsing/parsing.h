@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:46:50 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/23 16:20:29 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:49:17 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ int				check_element(char c, int o);
 int				check_door(char **map, int y, int x);
 
 //------------------------------FILL_MAP------------------------------//
-void	fill_map(t_cub *cub);
-void	redo_map(t_cub *cub, int len);
-char	*remake_line(char *line, int len);
-int		max_x(char **map);
+void			fill_map(t_cub *cub);
+void			redo_map(t_cub *cub, int len);
+char			*remake_line(char *line, int len);
+int				max_x(char **map);
 
 #endif

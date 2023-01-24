@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:36:40 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/20 11:20:30 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:57:43 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static t_vector	calc_plane(t_vector dir, int sign)
 	return (plane);
 }
 
-
 static void	init_player(t_play *player, t_cub *cub)
 {
 	player->p.x = cub->player.x + 0.5;
@@ -70,5 +69,6 @@ void	ray_main(t_cub *cub)
 	init_images(&var);
 	var.pl = &pl;
 	hooks(&var);
+	init_mouse(&var);
 	mlx_loop(var.mlx.mlx);
 }

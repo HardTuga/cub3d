@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_moves.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:07:22 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/24 12:10:39 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/24 12:11:31 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,16 @@ int	key_released(int key, t_all *all)
 		all->kmap[_RA] = false;
 	else if (key == KEY_LFT_ARR)
 		all->kmap[_LA] = false;
+	else if (key == KEY_DOWN_ARR)
+		all->kmap[_DA] = false;
+	else if (key == KEY_UP_ARR)
+		all->kmap[_UA] = false;
 	return (0);
 }
 
 int	key_pressed(int key, t_all *all)
 {
+	// printf("keycode %d\n", key);
 	if (key == KEY_ESC)
 		exit_handler(all);
 	else if (key == KEY_W)
@@ -60,6 +65,12 @@ int	key_pressed(int key, t_all *all)
 		all->kmap[_RA] = true;
 	else if (key == KEY_LFT_ARR)
 		all->kmap[_LA] = true;
+	else if (key == KEY_UP_ARR)
+		all->kmap[_UA] = true;
+	else if (key == KEY_DOWN_ARR)
+		all->kmap[_DA] = true;
+	else if (key == KEY_TAB)
+		all->kmap[_TAB] = true;
 	// else if (key == KEY_E)
 		// door_handler(all);
 	return (0);
@@ -69,6 +80,15 @@ static void	handle_keys(t_all *all)
 {
 	t_vector	v;
 
+	if (all->kmap[_TAB] == true)
+	{
+		if (all->m_in_window == true)
+		{
+			mlx_mouse_show(all->mlx.mlx, all->mlx.win);
+			all->m_in_window = false;
+		}
+		all->kmap[_TAB] = false;
+	}
 	rotation(all->pl, (all->kmap[_RA] * X_ROT - all->kmap[_LA] * X_ROT));
 	v.x = all->time_elapsed * ((all->pl->dir.x * all->kmap[_W]) + \
 			(all->pl->dir.y * all->kmap[_A])
@@ -105,7 +125,6 @@ int	handle_hooks(t_all *all)
 	ray_loop(all->pl, all->cub, all);
 	handle_keys(all);
 	mlx_clear_window(all->mlx.mlx, all->mlx.win);
-	minimap(all, 1, 1);
 	mlx_put_image_to_window(all->mlx.mlx, all->mlx.win, all->mlx.img.img, 0, 0);
 	fps = ft_itoa(get_fps());
 	mlx_string_put(all->mlx.mlx, all->mlx.win, 20, 20, 0xFFFFFFFF, fps);

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   fill_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 15:48:41 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/23 16:23:12 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:51:15 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-int		max_x(char **map)
+int	max_x(char **map)
 {
 	int	y;
 	int	i;
@@ -21,7 +21,7 @@ int		max_x(char **map)
 	i = -1;
 	while (map[++i])
 	{
-		if(ft_strlen(map[i]) > ft_strlen(map[y]))
+		if (ft_strlen(map[i]) > ft_strlen(map[y]))
 			y = i;
 	}
 	return (ft_strlen(map[y]));
@@ -35,9 +35,9 @@ char	*remake_line(char *line, int len)
 	i = -1;
 	new_line = malloc(sizeof(char) * (len + 1));
 	new_line[len] = '\0';
-	while(line[++i])
+	while (line[++i])
 		new_line[i] = line[i];
-	while(i < len)
+	while (i < len)
 	{
 		new_line[i] = ' ';
 		i++;
@@ -47,13 +47,13 @@ char	*remake_line(char *line, int len)
 
 void	redo_map(t_cub *cub, int len)
 {
-	int	i;
-	char **tmp;
+	int		i;
+	char	**tmp;
 
 	i = -1;
 	tmp = malloc(sizeof(char *) * (cub->map_y + 1));
 	tmp[cub->map_y] = NULL;
-	while(cub->map[++i])
+	while (cub->map[++i])
 		tmp[i] = remake_line(cub->map[i], len);
 	free_matrix(cub->map);
 	cub->map = tmp;
