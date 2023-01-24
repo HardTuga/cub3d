@@ -72,7 +72,7 @@ int	key_pressed(int key, t_all *all)
 	else if (key == KEY_TAB)
 		all->kmap[_TAB] = true;
 	// else if (key == KEY_E)
-	// 	open_close_door(all);
+		// door_handler(all);
 	return (0);
 }
 

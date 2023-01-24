@@ -40,3 +40,8 @@ cub3d v0.2.1 - continuar o minimapa
 
 cub3d v0.2.2 - agora a matrix do mapa e quadrada
                minimapa so falta o cone do POV
+
+cub3d v0.2.3 - inicios do tratamento das portas
+
+
+TO DO LIST: Portas, FOV
