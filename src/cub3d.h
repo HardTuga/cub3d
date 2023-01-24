@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/24 11:57:43 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/24 12:10:17 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 //------------------------------INCLUDES------------------------------//
 # include "../libft/libft.h"
-# include "../minilibx_linux/mlx.h"
 # include <stdio.h>
 # include <math.h>
 # include <stdlib.h>
@@ -34,7 +33,27 @@
 # define X_ROT 0.04
 
 //-------------------------------ENUMS-------------------------------//
-
+#ifdef __APPLE__
+# include "../mlx/mlx.h"
+typedef unsigned int uint;
+/* MAC KEYS */
+enum
+{
+	KEY_ESC = 53,
+	KEY_W = 13,
+	KEY_A = 0,
+	KEY_S = 1,
+	KEY_D = 2,
+	KEY_LFT_ARR = 123,
+	KEY_RGT_ARR = 124,
+	KEY_TAB = 48,
+	KEY_UP_ARR = 126,
+	KEY_DOWN_ARR = 125,
+	KEY_M = 46,
+	KEY_E = 14
+};
+#else
+# include "../minilibx_linux/mlx.h"
 /* LINUX KEYS */
 enum
 {
@@ -52,6 +71,8 @@ enum
 	KEY_E = 101
 };
 
+#endif
+
 enum {
 	ON_KEYDOWN = 2,
 	ON_KEYUP = 3,
@@ -63,21 +84,6 @@ enum {
 	ON_DESTROY = 17
 };
 
-// /* MAC KEYS */
-// enum
-// {
-// 	KEY_ESC = 53,
-// 	KEY_W = 13,
-// 	KEY_A = 0,
-// 	KEY_S = 1,
-// 	KEY_D = 2,
-// 	KEY_LFT_ARR = 123,
-// 	KEY_RGT_ARR = 124,
-// 	KEY_UP_ARR = 126,
-// 	KEY_DOWN_ARR = 125,
-// 	KEY_M = 46,
-// 	KEY_E = 14
-// };
 
 enum
 {
@@ -112,7 +118,6 @@ enum
 	MM_V = 0xff202020
 };
 //------------------------------STRUCTS------------------------------//
-// typedef unsigned int uint;
 typedef struct s_player
 {
 	int		x;
