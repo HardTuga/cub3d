@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:07:22 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/23 17:56:24 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/24 11:16:08 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,7 @@ static void	handle_keys(t_all *all)
 		}
 		all->kmap[_TAB] = false;
 	}
-	rotation(all->pl, handle_mouse(all) + \
-	(all->kmap[_RA] * X_ROT - all->kmap[_LA] * X_ROT));
+	rotation(all->pl, (all->kmap[_RA] * X_ROT - all->kmap[_LA] * X_ROT));
 	v.x = all->time_elapsed * ((all->pl->dir.x * all->kmap[_W]) + \
 			(all->pl->dir.y * all->kmap[_A])
 			- (all->pl->dir.x * all->kmap[_S]) - \
