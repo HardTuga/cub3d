@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/24 12:10:17 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/24 12:37:54 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,7 +182,7 @@ typedef struct s_all {
 	bool		w_minimised;
 	double		time_elapsed;
 	bool		kmap[13];
-	t_data		tex[6];
+	t_data		tex[7];
 	t_vector	mouse;
 	t_play		*pl;
 	t_mlx		mlx;
