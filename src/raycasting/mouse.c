@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 18:04:05 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/25 15:23:10 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/25 16:57:45 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,5 @@ int	mouse_pressed(int button, int x, int y, t_all *all)
 
 // double	handle_mouse(t_all *all)
 // {
+// 	mlx_mouse_get_pos(all->)
 // }

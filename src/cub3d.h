@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/25 15:26:45 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:16:24 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define SCREENW 1080
 # define SCREENH 720
 # define X_SEN 0.9
+# define Y_SEN 10
 # define X_VEL 0.75
 # define X_ROT 0.04
 
@@ -182,6 +183,7 @@ typedef struct s_mlx
 
 typedef struct s_all {
 	ssize_t		h;
+	int			line_height;
 	bool		m_in_window;
 	bool		w_minimised;
 	double		time_elapsed;

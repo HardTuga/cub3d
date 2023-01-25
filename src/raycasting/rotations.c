@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:07:31 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/25 14:30:20 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:56:47 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,4 @@ void	horizontal_rot(t_play *p, double angle)
 	p->dir.y = old_dir * sin(angle) + p->dir.y * cos(angle);
 	p->plane.x = p->plane.x * cos(angle) - p->plane.y * sin(angle);
 	p->plane.y = old_plane * sin(angle) + p->plane.y * cos(angle);
-}
-
-void	vertical_rot(t_all *all)
-{
-	ssize_t h;
-	
-	h = 0;
-	if (all->kmap[_UA] == true)
-		h++;
-	if (all->kmap[_DA] == true)
-		h--;
-	if (h >= SCREENH)
-		h = SCREENH - 1;
-	else if (h < -SCREENH)
-		h = -(SCREENH - 1);
-	all->h += h / (X_ROT * 2);
 }

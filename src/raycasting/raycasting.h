@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/25 14:46:10 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:43:30 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ void	door_handler(t_all *all);
 void	open_close_door(t_all *all, int x, int y);
 
 //-------------------------------ROTATIONS.C---------------------------------//
-void	vertical_rot(t_all *all);
 void	horizontal_rot(t_play *p, double angle);
 
 #endif
