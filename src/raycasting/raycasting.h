@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/24 12:08:03 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/25 11:08:54 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,14 @@ void	print_minimap(t_vector p_cords, t_vector2 start, t_all *all, int x);
 void	paint_minimap(t_data *data, t_vector2 start, int color);
 void	put_player(t_all *all);
 
-//--------------------------------DOOR_HANDLER-----------------------------------//
-void	door_handler(t_all *all);
-
 //---------------------------------MOUSE.C-----------------------------------//
 void	init_mouse(t_all *all);
 int		mouse_pressed(int button, int x, int y, t_all *all);
 
 //------------------------------DOOR_HANDLER.C-------------------------------//
-bool	check_door(char **map, t_rloop *tudao);
+bool	check_d(char **map, t_rloop *tudao);
+
+//-------------------------------ROTATIONS.C---------------------------------//
+void	horizontal_rot(t_play *p, double angle);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 15:07:52 by lucas-ma          #+#    #+#              #
-#    Updated: 2023/01/23 18:05:52 by lucas-ma         ###   ########.fr        #
+#    Updated: 2023/01/24 11:24:10 by lucas-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,13 +33,13 @@ CPY        =        cp
 _SRC    =        src/
 _OBJ 	=		 obj/
 _LIB    =        libs/
-_MLX    =        ./minilibx_linux/
+_MLX    =        ./mlx/
 _BIN    =        ./
 
 ############### COMPILER ################
 
 CC      =        cc
-CFLAGS      =        -Wall -Werror -Wextra -g -fsanitize=address
+CFLAGS      =        -Wall -Werror -Wextra #-g -fsanitize=address
 #valgrind --leak-check=full --show-leak-kinds=all ./minishell
 SRCS    =        $(_SRC)cub3d_main.c \
                  $(_SRC)errors.c \
@@ -59,12 +59,12 @@ SRCS    =        $(_SRC)cub3d_main.c \
 				 $(_SRC)raycasting/ray_hooks.c \
 				 $(_SRC)raycasting/colision.c \
 				 $(_SRC)raycasting/images.c \
-				 $(_SRC)raycasting/minimap.c \
 				 $(_SRC)raycasting/draw.c \
+				 $(_SRC)raycasting/minimap.c \
 				 $(_SRC)raycasting/mouse.c \
 
 OBJS    =        $(patsubst $(_SRC)%.c,$(_OBJ)%.o,$(SRCS))
-DEPS    =        ./libs/libft.a ./minilibx_linux/libmlx_Linux.a
+DEPS    =        ./libs/libft.a ./mlx/libmlx.a
 LIBS    =        -lft
 
 ################ RULES ##################
@@ -76,15 +76,15 @@ $(_OBJ)%.o: $(_SRC)%.c
 	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 $(NAME): $(DEPS) $(OBJS)
-	$(CC) $(CFLAGS) -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz $(OBJS) -o $(NAME) -L $(_LIB) $(LIBS) -L $(_MLX) -lmlx_Linux
+	$(CC) $(CFLAGS) -Lmlx -framework OpenGL -framework AppKit $(OBJS) -o $(NAME) -L $(_LIB) $(LIBS) -L $(_MLX) -lmlx
 
 ################ DEPS ###################
 
 ./libs/libft.a:
 	$(MKE) -C libft/
 
-./minilibx_linux/libmlx_Linux.a:
-	$(MKE) -C minilibx_linux/
+./mlx/libmlx.a:
+	$(MKE) -C $(_MLX)
 
 ############## STRUCTURE ################
 
@@ -97,9 +97,8 @@ clean:
 fclean: clean
 	$(RMV) -r $(NAME)
 	$(RMV) -r $(_LIB)libft.a
-	$(RMV) -r $(_MLX)libmlx.a
-	$(RMV) -r $(_MLX)libmlx_Linux.a
-
+	cd $(_MLX); $(MKE) clean;
+	
 re: fclean all
 
 rebonus: fclean bonus

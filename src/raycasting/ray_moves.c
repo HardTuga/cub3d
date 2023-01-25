@@ -6,26 +6,11 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:07:22 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/24 12:11:31 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/25 11:13:20 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
-
-static void	rotation(t_play *p, double angle)
-{
-	double	old_dir;
-	double	old_plane;
-
-	if (angle == 0)
-		return ;
-	old_dir = p->dir.x;
-	old_plane = p->plane.x;
-	p->dir.x = p->dir.x * cos(angle) - p->dir.y * sin(angle);
-	p->dir.y = old_dir * sin(angle) + p->dir.y * cos(angle);
-	p->plane.x = p->plane.x * cos(angle) - p->plane.y * sin(angle);
-	p->plane.y = old_plane * sin(angle) + p->plane.y * cos(angle);
-}
 
 int	key_released(int key, t_all *all)
 {
@@ -76,20 +61,10 @@ int	key_pressed(int key, t_all *all)
 	return (0);
 }
 
-static void	handle_keys(t_all *all)
+static void	move_player(t_all *all)
 {
 	t_vector	v;
 
-	if (all->kmap[_TAB] == true)
-	{
-		if (all->m_in_window == true)
-		{
-			mlx_mouse_show(all->mlx.mlx, all->mlx.win);
-			all->m_in_window = false;
-		}
-		all->kmap[_TAB] = false;
-	}
-	rotation(all->pl, (all->kmap[_RA] * X_ROT - all->kmap[_LA] * X_ROT));
 	v.x = all->time_elapsed * ((all->pl->dir.x * all->kmap[_W]) + \
 			(all->pl->dir.y * all->kmap[_A])
 			- (all->pl->dir.x * all->kmap[_S]) - \
@@ -102,6 +77,22 @@ static void	handle_keys(t_all *all)
 	v.y = (v.y / 16) * X_VEL;
 	if (v.x != 0 || v.y != 0)
 		colision(all, v);
+}
+
+static void	handle_keys(t_all *all)
+{
+	if (all->kmap[_TAB] == true)
+	{
+		if (all->m_in_window == true)
+		{
+			mlx_mouse_show(all->mlx.mlx, all->mlx.win);
+			all->m_in_window = false;
+		}
+		all->kmap[_TAB] = false;
+	}
+	horizontal_rot(all->pl, (all->kmap[_RA] * X_ROT - all->kmap[_LA] * X_ROT));
+	// vertical_rot(all->pl, (all->kmap[_DA] * X_ROT - all->kmap[_UA] * X_ROT));
+	move_player(all);
 }
 
 int	handle_hooks(t_all *all)

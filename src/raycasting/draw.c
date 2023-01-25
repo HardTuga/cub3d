@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 12:28:25 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/23 18:04:29 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/25 11:16:08 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,12 @@ void	draw_all(t_rloop *tudao, t_draw *draw, t_all *all)
 	int	y;
 
 	y = -1;
-	draw->step = 1.0 * all->tex[tudao->side].img_height / tudao->line_height;
+	if (tudao->hit_door == true)
+		draw->step = 1.0 * all->tex[tudao->door_state].img_height / \
+			tudao->line_height;
+	else
+		draw->step = 1.0 * all->tex[tudao->side].img_height / \
+			tudao->line_height;
 	draw->texpos = (tudao->draw_start - SCREENH / 2 + \
 	tudao->line_height / 2) * draw->step;
 	while (++y < tudao->draw_start)
@@ -33,10 +38,19 @@ void	draw_all(t_rloop *tudao, t_draw *draw, t_all *all)
 
 void	draw_wall(t_rloop *tudao, t_draw *draw, t_all *all, int y)
 {
-	draw->tex_y = (int)draw->texpos & (all->tex[tudao->side].img_height - 1);
+	if (tudao->hit_door == true)
+		draw->tex_y = (int)draw->texpos & \
+		(all->tex[tudao->door_state].img_height - 1);
+	else
+		draw->tex_y = (int)draw->texpos & \
+		(all->tex[tudao->side].img_height - 1);
 	draw->texpos += draw->step;
-	draw->color = *(get_img_pixel(&(all->tex[tudao->side]), \
-	draw->tex_x, draw->tex_y));
+	if (tudao->hit_door == true)
+		draw->color = *(get_img_pixel(&(all->tex[tudao->door_state]), \
+		draw->tex_x, draw->tex_y));
+	else
+		draw->color = *(get_img_pixel(&(all->tex[tudao->side]), \
+		draw->tex_x, draw->tex_y));
 	if (tudao->side == NO || tudao->side == SO)
 		draw->color = mlx_get_color_value(all->mlx.mlx,
 				(int)((draw->color & 0x0000FF) * 0.70)
