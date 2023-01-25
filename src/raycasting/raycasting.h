@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/25 11:08:54 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/25 12:00:00 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ int		mouse_pressed(int button, int x, int y, t_all *all);
 
 //------------------------------DOOR_HANDLER.C-------------------------------//
 bool	check_d(char **map, t_rloop *tudao);
+void	door_handler(t_all *all);
+void	open_close_door(t_all *all, int x, int y);
 
 //-------------------------------ROTATIONS.C---------------------------------//
 void	horizontal_rot(t_play *p, double angle);
