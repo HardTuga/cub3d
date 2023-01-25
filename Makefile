@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+         #
+#    By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 15:07:52 by lucas-ma          #+#    #+#              #
-#    Updated: 2023/01/25 11:09:55 by lucas-ma         ###   ########.fr        #
+#    Updated: 2023/01/25 17:01:42 by pcampos-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,7 @@ SRCS    =        $(_SRC)cub3d_main.c \
 				 $(_SRC)raycasting/colision.c \
 				 $(_SRC)raycasting/images.c \
 				 $(_SRC)raycasting/minimap.c \
+				 $(_SRC)raycasting/minimap_fov.c \
 				 $(_SRC)raycasting/draw.c \
 				 $(_SRC)raycasting/mouse.c \
 				 $(_SRC)raycasting/door_handler.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:20:43 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/23 17:57:34 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/25 16:52:46 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,25 @@ void	print_minimap(t_vector p_cords, t_vector2 start, t_all *all, int x)
 	}
 }
 
+void	do_fov(t_all *all)
+{
+	t_vector2	player;
+	t_vector2	lvert;
+	t_vector2	rvert;
+
+	player.x = (SCREENW - (SCREENW / 12));
+	player.y = (SCREENH - (SCREENW / 12));
+	lvert.x = all->pl->dir.x + all->pl->plane.x * -1;
+	lvert.x = lvert.x * (SCREENW / 100 + 2) + player.x;
+	lvert.y = all->pl->dir.y + all->pl->plane.y * -1;
+	lvert.y = lvert.y * (SCREENW / 100 + 2) + player.y;
+	rvert.x = all->pl->dir.x + all->pl->plane.x * 1;
+	rvert.x = rvert.x * (SCREENW / 100 + 2) + player.x;
+	rvert.y = all->pl->dir.y + all->pl->plane.y * 1;
+	rvert.y = rvert.y * (SCREENW / 100 + 2) + player.y;
+	fill_fov(all, lvert, rvert, player);
+}
+
 void	put_player(t_all *all)
 {
 	t_vector	player;
@@ -93,6 +112,7 @@ void	minimap(t_all *all, int x, int y)
 	}
 	if (x != 1 || y != 1)
 	{
+		do_fov(all);
 		put_player(all);
 		return ;
 	}
