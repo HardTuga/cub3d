@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/25 11:08:54 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/25 13:12:46 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int		mouse_pressed(int button, int x, int y, t_all *all);
 bool	check_d(char **map, t_rloop *tudao);
 
 //-------------------------------ROTATIONS.C---------------------------------//
+void	vertical_rot(t_all *all);
 void	horizontal_rot(t_play *p, double angle);
 
 #endif

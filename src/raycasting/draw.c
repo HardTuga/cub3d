@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 12:28:25 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/25 11:16:08 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/25 14:40:58 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,14 @@ void	draw_all(t_rloop *tudao, t_draw *draw, t_all *all)
 	else
 		draw->step = 1.0 * all->tex[tudao->side].img_height / \
 			tudao->line_height;
-	draw->texpos = (tudao->draw_start - SCREENH / 2 + \
+	draw->texpos = (tudao->draw_start - (SCREENH / 2) + all->h + \
 	tudao->line_height / 2) * draw->step;
+	tudao->draw_start = -tudao->line_height / 2 + SCREENH / 2 + all->h;
+	if (tudao->draw_start < 0)
+		tudao->draw_start = 0;
+	tudao->draw_end = tudao->line_height / 2 + SCREENH / 2 + all->h;
+	if (tudao->draw_end > SCREENH)
+		tudao->draw_end = SCREENH;
 	while (++y < tudao->draw_start)
 		my_mlx_pixel_put(&(all->mlx.img), SCREENW - \
 		draw->x - 1, y, all->cub->c_trgb);
