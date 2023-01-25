@@ -43,5 +43,7 @@ cub3d v0.2.2 - agora a matrix do mapa e quadrada
 
 cub3d v0.2.3 - inicios do tratamento das portas
 
+cub3d v0.3.0 - portas feitas
+
 
 TO DO LIST: Portas, FOV

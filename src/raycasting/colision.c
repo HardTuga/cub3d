@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   colision.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:22:50 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/25 11:09:06 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/25 12:59:59 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
+
+bool	col(char c)
+{
+	if (c == '1' || c == '2')
+		return (true);
+	return (false);
+}
 
 static bool	colider(double posx, double posy, t_vector2 *c, char **map)
 {
@@ -28,11 +35,11 @@ static bool	colider(double posx, double posy, t_vector2 *c, char **map)
 		old_dir = vector.x;
 		vector.x = vector.x * cos(angle) - vector.y * sin(angle);
 		vector.y = old_dir * sin(angle) + vector.y * cos(angle);
-		if (c && map[(int)(posy)][(int)(posx + vector.x)] != '0')
+		if (c && col(map[(int)(posy)][(int)(posx + vector.x)]))
 			c->x = false;
-		if (c && map[(int)(posy + vector.y)][(int)(posx)] != '0')
+		if (c && col(map[(int)(posy)][(int)(posx + vector.x)]))
 			c->y = false;
-		if (map[(int)(posy + vector.y)][(int)(posx + vector.x)] != '0')
+		if (col(map[(int)(posy)][(int)(posx + vector.x)]))
 			no_cool = false;
 		if (!no_cool && (!c || !c->x) && (!c || !c->y))
 			return (false);

@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:07:22 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/25 13:14:02 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/25 14:45:10 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ int	key_pressed(int key, t_all *all)
 		all->kmap[_SHIFT] = true;
 	else if (key == KEY_TAB)
 		all->kmap[_TAB] = true;
-	// else if (key == KEY_E)
-		// door_handler(all);
+	else if (key == KEY_E)
+		door_handler(all);
 	return (0);
 }
 
