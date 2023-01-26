@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:24:31 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/26 11:38:47 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/26 14:31:05 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ double	get_line_b(t_vector p_a, t_vector p_b)
 	if (p_b.x - p_a.x == 0)
 		line_b = 0;
 	else
-		line_b = ((p_b.y - p_a.y) * p_b.x + ((p_b.x - p_a.x) +
-				p_b.y) * -1) / ((p_b.x - p_a.x) * -1);
+		line_b = ((p_b.y - p_a.y) * p_b.x + ((p_b.x - p_a.x) * p_b.y)
+				* -1) / ((p_b.x - p_a.x) * -1);
 	return(line_b);
 }
 
@@ -48,10 +48,10 @@ bool	inside(t_vector p_a, t_vector p_b, t_vector p_c, t_vector target)
 	if (depth == 3)
 		depth = 0;
 	line_b = get_line_b(p_a, p_b);
-	line_d_c = (p_b.y - p_a.y) * p_c.x + ((p_b.x - p_a.x) *
-				p_c.y * -1) + (p_b.x - p_a.x) * line_b;
-	line_d_t = (p_b.y - p_a.y) * target.x + ((p_b.x - p_a.x) *
-				target.y * -1) + (p_c.x - p_a.x) * line_b;
+	line_d_c = (p_b.y - p_a.y) * p_c.x + ((p_b.x - p_a.x)
+				* p_c.y * -1) + (p_b.x - p_a.x) * line_b;
+	line_d_t = (p_b.y - p_a.y) * target.x + ((p_b.x - p_a.x)
+				* target.y * -1) + (p_b.x - p_a.x) * line_b;
 	if ((line_d_c <= 0 && line_d_t <= 0) || (line_d_c > 0 && line_d_t > 0))
 	{
 		depth++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colision.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:22:50 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/26 11:35:07 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/26 14:44:54 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ static bool	colider(double posx, double posy, t_vector2 *c, char **map)
 	no_cool = true;
 	angle = 0;
 	vector.x = 0.25;
-	vector.y = 0;
-	while (angle < M_PI * 2)
+	vector.y = 0.25;
+	while (angle < M_PI_2)
 	{
 		old_dir = vector.x;
 		vector.x = vector.x * cos(angle) - vector.y * sin(angle);
@@ -43,7 +43,7 @@ static bool	colider(double posx, double posy, t_vector2 *c, char **map)
 			no_cool = false;
 		if (!no_cool && (!c || !c->x) && (!c || !c->y))
 			return (false);
-		angle += M_2_PI;
+		angle += M_1_PI;
 	}
 	return (no_cool);
 }

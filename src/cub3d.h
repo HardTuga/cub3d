@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/26 11:33:42 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/26 14:34:10 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,13 +119,13 @@ enum
 
 enum
 {
-	MM_F = 0xffa0a0a0,
-	MM_P = 0xffff66b2,
-	MM_W = 0xff0000ff,
-	MM_DO = 0xff00ff00,
-	MM_DC = 0xffff0000,
-	MM_V = 0xff202020,
-	MM_FOV = 0xaaff66b2
+	MM_F = 0x00a0a0a0,
+	MM_P = 0x00ffff33,
+	MM_W = 0x000000ff,
+	MM_DO = 0x0000ff00,
+	MM_DC = 0x00ff0000,
+	MM_V = 0x00202020,
+	MM_FOV = 0xaaff99cc
 };
 //------------------------------STRUCTS------------------------------//
 typedef struct s_player
