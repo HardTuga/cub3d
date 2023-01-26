@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 09:54:47 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/24 13:39:27 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:23:22 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,13 +127,7 @@ void	ray_loop(t_play *pl, t_cub *cub, t_all *all)
 		tudao.hit = false;
 		init_tudao(&tudao, pl, cub->map);
 		calc_tex_x(&tudao, pl, &draw, all->tex);
-		tudao.line_height = (int)(SCREENH / tudao.perpwdist);
-		tudao.draw_start = -tudao.line_height / 2 + SCREENH / 2;
-		if (tudao.draw_start < 0)
-			tudao.draw_start = 0;
-		tudao.draw_end = tudao.line_height / 2 + SCREENH / 2;
-		if (tudao.draw_end > SCREENH)
-			tudao.draw_end = SCREENH;
+		all->line_height = (int)(SCREENH / tudao.perpwdist);
 		draw_all(&tudao, &draw, all);
 	}
 	minimap(all, 1, 1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_moves.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:07:22 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/25 11:35:55 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/25 18:12:27 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	key_released(int key, t_all *all)
 		all->kmap[_DA] = false;
 	else if (key == KEY_UP_ARR)
 		all->kmap[_UA] = false;
+	else if (key == KEY_SHIFT)
+		all->kmap[_SHIFT] = false;
 	return (0);
 }
 
@@ -54,6 +56,8 @@ int	key_pressed(int key, t_all *all)
 		all->kmap[_UA] = true;
 	else if (key == KEY_DOWN_ARR)
 		all->kmap[_DA] = true;
+	else if (key == KEY_SHIFT)
+		all->kmap[_SHIFT] = true;
 	else if (key == KEY_TAB)
 		all->kmap[_TAB] = true;
 	else if (key == KEY_E)
@@ -73,8 +77,16 @@ static void	move_player(t_all *all)
 			(all->pl->dir.x * all->kmap[_D])
 			- (all->pl->dir.y * all->kmap[_S]) - \
 			(all->pl->dir.x * all->kmap[_A]));
-	v.x = (v.x / 16) * X_VEL;
-	v.y = (v.y / 16) * X_VEL;
+	if (all->kmap[_SHIFT] == true)
+	{
+		v.x = ((v.x / 16) * X_VEL) * 2;
+		v.y = ((v.y / 16) * X_VEL) * 2;
+	}
+	else
+	{
+		v.x = (v.x / 16) * X_VEL;
+		v.y = (v.y / 16) * X_VEL;
+	}
 	if (v.x != 0 || v.y != 0)
 		colision(all, v);
 }
@@ -91,7 +103,14 @@ static void	handle_keys(t_all *all)
 		all->kmap[_TAB] = false;
 	}
 	horizontal_rot(all->pl, (all->kmap[_RA] * X_ROT - all->kmap[_LA] * X_ROT));
-	// vertical_rot(all->pl, (all->kmap[_DA] * X_ROT - all->kmap[_UA] * X_ROT));
+	if (all->kmap[_UA] == true)
+		all->h += Y_SEN;
+	if (all->kmap[_DA] == true)
+		all->h -= Y_SEN;
+	if (all->h >= SCREENH)
+		all->h = SCREENH;
+	else if (all->h < -(SCREENH))
+		all->h = -(SCREENH - 1);
 	move_player(all);
 }
 

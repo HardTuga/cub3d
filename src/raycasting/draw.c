@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 12:28:25 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/25 11:16:08 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:16:14 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,18 @@ void	draw_all(t_rloop *tudao, t_draw *draw, t_all *all)
 	y = -1;
 	if (tudao->hit_door == true)
 		draw->step = 1.0 * all->tex[tudao->door_state].img_height / \
-			tudao->line_height;
+			all->line_height;
 	else
 		draw->step = 1.0 * all->tex[tudao->side].img_height / \
-			tudao->line_height;
-	draw->texpos = (tudao->draw_start - SCREENH / 2 + \
-	tudao->line_height / 2) * draw->step;
+			all->line_height;
+	tudao->draw_start = (-all->line_height + all->h) / 2 + SCREENH / 2;
+	if (tudao->draw_start < 0)
+		tudao->draw_start = 0;
+	tudao->draw_end = (all->line_height + all->h) / 2 + SCREENH / 2;
+	if (tudao->draw_end > SCREENH)
+		tudao->draw_end = SCREENH;
+	draw->texpos = (tudao->draw_start - ((SCREENH + all->h) / 2) + \
+	all->line_height / 2) * draw->step;
 	while (++y < tudao->draw_start)
 		my_mlx_pixel_put(&(all->mlx.img), SCREENW - \
 		draw->x - 1, y, all->cub->c_trgb);

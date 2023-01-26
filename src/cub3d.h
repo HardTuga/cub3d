@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/25 16:54:27 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/26 11:33:42 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,14 @@
 # define SCREENW 1080
 # define SCREENH 720
 # define X_SEN 0.9
+# define Y_SEN 10
 # define X_VEL 0.75
 # define X_ROT 0.04
+# define M_PI		3.14159265358979323846	/* pi */
+# define M_PI_2		1.57079632679489661923	/* pi/2 */
+# define M_PI_4		0.78539816339744830962	/* pi/4 */
+# define M_1_PI		0.31830988618379067154	/* 1/pi */
+# define M_2_PI		0.63661977236758134308	/* 2/pi */
 
 //-------------------------------ENUMS-------------------------------//
 #ifdef __APPLE__
@@ -49,6 +55,7 @@ enum
 	KEY_TAB = 48,
 	KEY_UP_ARR = 126,
 	KEY_DOWN_ARR = 125,
+	KEY_SHIFT = 257,
 	KEY_M = 46,
 	KEY_E = 14
 };
@@ -67,6 +74,7 @@ enum
 	KEY_TAB = 65289,
 	KEY_UP_ARR = 65362,
 	KEY_DOWN_ARR = 65364,
+	KEY_SHIFT = 65505,
 	KEY_M = 109,
 	KEY_E = 101
 };
@@ -95,7 +103,8 @@ enum
 	_RA = 5,
 	_UA = 6,
 	_DA = 7,
-	_TAB = 8
+	_TAB = 8,
+	_SHIFT = 9
 };
 
 enum
@@ -179,10 +188,12 @@ typedef struct s_mlx
 }				t_mlx;
 
 typedef struct s_all {
+	ssize_t		h;
+	int			line_height;
 	bool		m_in_window;
 	bool		w_minimised;
 	double		time_elapsed;
-	bool		kmap[13];
+	bool		kmap[14];
 	t_data		tex[7];
 	t_vector	mouse;
 	t_play		*pl;

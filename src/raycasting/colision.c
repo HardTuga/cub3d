@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colision.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:22:50 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/25 12:59:59 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/26 11:35:07 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,23 +27,23 @@ static bool	colider(double posx, double posy, t_vector2 *c, char **map)
 	t_vector	vector;
 
 	no_cool = true;
-	angle = 0.05;
-	vector.x = 0.2;
+	angle = 0;
+	vector.x = 0.25;
 	vector.y = 0;
-	while (angle < 6.25)
+	while (angle < M_PI * 2)
 	{
 		old_dir = vector.x;
 		vector.x = vector.x * cos(angle) - vector.y * sin(angle);
 		vector.y = old_dir * sin(angle) + vector.y * cos(angle);
 		if (c && col(map[(int)(posy)][(int)(posx + vector.x)]))
 			c->x = false;
-		if (c && col(map[(int)(posy)][(int)(posx + vector.x)]))
+		if (c && col(map[(int)(posy + vector.y)][(int)(posx)]))
 			c->y = false;
-		if (col(map[(int)(posy)][(int)(posx + vector.x)]))
+		if (col(map[(int)(posy + vector.y)][(int)(posx + vector.x)]))
 			no_cool = false;
 		if (!no_cool && (!c || !c->x) && (!c || !c->y))
 			return (false);
-		angle += 0.05;
+		angle += M_2_PI;
 	}
 	return (no_cool);
 }
