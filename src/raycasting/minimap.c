@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:20:43 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/25 16:52:46 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/26 11:31:10 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ void	print_minimap(t_vector p_cords, t_vector2 start, t_all *all, int x)
 
 void	do_fov(t_all *all)
 {
-	t_vector2	player;
-	t_vector2	lvert;
-	t_vector2	rvert;
+	t_vector	player;
+	t_vector	lvert;
+	t_vector	rvert;
 
-	player.x = (SCREENW - (SCREENW / 12));
-	player.y = (SCREENH - (SCREENW / 12));
+	player.x = (double)(SCREENW - (SCREENW / 12));
+	player.y = (double)(SCREENH - (SCREENW / 12));
 	lvert.x = all->pl->dir.x + all->pl->plane.x * -1;
 	lvert.x = lvert.x * (SCREENW / 100 + 2) + player.x;
 	lvert.y = all->pl->dir.y + all->pl->plane.y * -1;
