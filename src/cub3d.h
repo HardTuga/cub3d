@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
 /*   Updated: 2023/01/26 11:33:42 by lucas-ma         ###   ########.fr       */
@@ -124,7 +124,8 @@ enum
 	MM_W = 0xff0000ff,
 	MM_DO = 0xff00ff00,
 	MM_DC = 0xffff0000,
-	MM_V = 0xff202020
+	MM_V = 0xff202020,
+	MM_FOV = 0xaaff66b2
 };
 //------------------------------STRUCTS------------------------------//
 typedef struct s_player

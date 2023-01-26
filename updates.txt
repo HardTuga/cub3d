@@ -45,5 +45,8 @@ cub3d v0.2.3 - inicios do tratamento das portas
 
 cub3d v0.3.0 - portas feitas
 
+cub3d v0.3.1 - comecar a fazer o cone de visao do player
 
-TO DO LIST: Portas, FOV
+cub3d v0.3.2 - arranjar o cone de visao do player
+
+TO DO LIST: FOV

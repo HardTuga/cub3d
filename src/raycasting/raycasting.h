@@ -78,6 +78,14 @@ void	minimap(t_all *all, int x, int y);
 void	print_minimap(t_vector p_cords, t_vector2 start, t_all *all, int x);
 void	paint_minimap(t_data *data, t_vector2 start, int color);
 void	put_player(t_all *all);
+void	do_fov(t_all *all);
+
+//--------------------------------MINIMAP_FOV-----------------------------------//
+void	fill_fov(t_all *all, t_vector lvert, t_vector rvert, t_vector player);
+int		get_min(int a, int b);
+int		get_max(int a, int b);
+bool	inside(t_vector p_a, t_vector p_b, t_vector p_c, t_vector target);
+double	get_line_b(t_vector p_a, t_vector p_b);
 
 //---------------------------------MOUSE.C-----------------------------------//
 void	init_mouse(t_all *all);
