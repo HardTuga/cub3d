@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 09:54:47 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/25 17:23:22 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/26 18:32:41 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,9 @@ static void	init_tudao(t_rloop *tudao, t_play *player, char **map)
 			tudao->sdist.y += tudao->ddist.y;
 			tudao->side = 1;
 		}
-		if (map[tudao->map.y][tudao->map.x] != '0')
-		{
+		check_d(map, tudao);
+		if (map[tudao->map.y][tudao->map.x] == '1')
 			tudao->hit = true;
-			tudao->hit_door = check_d(map, tudao);
-		}
 	}
 	tudao->side = get_wall_dir(tudao->side, tudao->rdir);
 }
@@ -94,22 +92,11 @@ static void	calc_tex_x(t_rloop *tudao, t_play *pl, t_draw *draw, t_data *tex)
 		wallx = pl->p.x + tudao->perpwdist * tudao->rdir.x;
 	}
 	wallx -= floor(wallx);
-	if (tudao->hit_door == true)
-		draw->tex_x = (int)(wallx * tex[tudao->door_state].img_width);
-	else
-		draw->tex_x = (int)(wallx * tex[tudao->side].img_width);
-	if ((tudao->side == EA || tudao->side == WE) && tudao->rdir.x < 0
-		&& tudao->hit_door == false)
+	draw->tex_x = (int)(wallx * tex[tudao->side].img_width);
+	if ((tudao->side == EA || tudao->side == WE) && tudao->rdir.x < 0)
 		draw->tex_x = tex[tudao->side].img_width - draw->tex_x - 1;
-	else if ((tudao->side == NO || tudao->side == SO) && tudao->rdir.y > 0
-		&& tudao->hit_door == false)
+	else if ((tudao->side == NO || tudao->side == SO) && tudao->rdir.y > 0)
 		draw->tex_x = tex[tudao->side].img_width - draw->tex_x - 1;
-	else if ((tudao->side == EA || tudao->side == WE) && tudao->rdir.x < 0
-		&& tudao->hit_door == true)
-			draw->tex_x = tex[tudao->door_state].img_width - draw->tex_x - 1;
-	else if ((tudao->side == NO || tudao->side == SO) && tudao->rdir.y > 0
-		&& tudao->hit_door == true)
-			draw->tex_x = tex[tudao->door_state].img_width - draw->tex_x - 1;
 }
 
 void	ray_loop(t_play *pl, t_cub *cub, t_all *all)
@@ -121,6 +108,8 @@ void	ray_loop(t_play *pl, t_cub *cub, t_all *all)
 	all->mlx.img.img = mlx_new_image(all->mlx.mlx, SCREENW, SCREENH);
 	all->mlx.img.addr = mlx_get_data_addr(all->mlx.img.img, &all->mlx.img.bpp,
 			&all->mlx.img.line_length, &all->mlx.img.endian);
+	tudao.hit_door = false;
+	tudao.end_door = 0;
 	while (++(draw.x) < SCREENW)
 	{
 		tudao.camx = 2 * draw.x / (double)SCREENW - 1;
@@ -129,6 +118,19 @@ void	ray_loop(t_play *pl, t_cub *cub, t_all *all)
 		calc_tex_x(&tudao, pl, &draw, all->tex);
 		all->line_height = (int)(SCREENH / tudao.perpwdist);
 		draw_all(&tudao, &draw, all);
+		if (tudao.hit_door == true && tudao.end_door != draw.x)
+		{
+			calc_tex_door(&tudao, pl, &draw, all->tex);
+			all->line_height = SCREENH / tudao.door_dist;
+			tudao.draw_start = (-all->line_height + all->h) / 2 + SCREENH / 2;
+			if (tudao.draw_start < 0)
+				tudao.draw_start = 0;
+			tudao.draw_end = (all->line_height + all->h) / 2 + SCREENH / 2;
+			if (tudao.draw_end > SCREENH)
+				tudao.draw_end = SCREENH;
+			while (tudao.draw_start < tudao.draw_end)
+				draw_door(&tudao, &draw, all, tudao.draw_start++);
+		}
 	}
 	minimap(all, 1, 1);
 }

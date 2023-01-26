@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:20:43 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/26 11:31:10 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/26 12:19:18 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	minimap(t_all *all, int x, int y)
 	}
 	if (x != 1 || y != 1)
 	{
-		do_fov(all);
+		// do_fov(all);
 		put_player(all);
 		return ;
 	}

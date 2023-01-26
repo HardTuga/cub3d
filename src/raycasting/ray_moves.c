@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:07:22 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/25 18:12:27 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/26 13:12:34 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ static void	handle_keys(t_all *all)
 		}
 		all->kmap[_TAB] = false;
 	}
+	move_player(all);
 	horizontal_rot(all->pl, (all->kmap[_RA] * X_ROT - all->kmap[_LA] * X_ROT));
 	if (all->kmap[_UA] == true)
 		all->h += Y_SEN;
@@ -111,7 +112,6 @@ static void	handle_keys(t_all *all)
 		all->h = SCREENH;
 	else if (all->h < -(SCREENH))
 		all->h = -(SCREENH - 1);
-	move_player(all);
 }
 
 int	handle_hooks(t_all *all)

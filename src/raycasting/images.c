@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:46:29 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/24 12:51:40 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/26 16:31:03 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	init_images(t_all *var)
 	init_door_image(var);
 }
 
-uint	*get_img_pixel(t_data *data, int x, int y)
+unsigned int	*get_img_pixel(t_data *data, int x, int y)
 {
 	char	*pixel;
 
