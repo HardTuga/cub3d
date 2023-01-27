@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 12:28:25 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/26 18:22:13 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:03:28 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ void	draw_all(t_rloop *tudao, t_draw *draw, t_all *all)
 
 void	choose_color(t_rloop *tudao, t_draw *draw, t_all *all)
 {
-	draw->step = 1.0 * all->tex[tudao->door_state].img_height / \
+	draw->step = 1.0 * all->tex[all->door_state].img_height / \
 		all->line_height;
 	draw->texpos = (tudao->draw_start - ((SCREENH + all->h) / 2) + \
 	all->line_height / 2) * draw->step;
 	draw->tex_y = (int)draw->texpos \
-	& (all->tex[tudao->door_state].img_height - 1);
+	& (all->tex[all->door_state].img_height - 1);
 	draw->texpos += draw->step;
-	draw->color = *(get_img_pixel(&(all->tex[tudao->door_state]), \
+	draw->color = *(get_img_pixel(&(all->tex[all->door_state]), \
 	draw->tex_x, draw->tex_y));
 }
 
@@ -65,7 +65,9 @@ void	draw_door(t_rloop *tudao, t_draw *draw, t_all *all, int y)
 				| (int)(((draw->color >> 8) & 0x0000FF) * 0.70) << 8
 				| (int)((draw->color >> 16) * 0.70) << 16);
 	if (draw->color != 0xff000000)
-		my_mlx_pixel_put(&(all->mlx.img), draw->x, y, draw->color);
+		my_mlx_pixel_put(&(all->mlx.img), SCREENW - draw->x - 1, y, draw->color);
+	if (y + 1 == tudao->draw_end)
+		all->hit_door = false;
 }
 
 void	draw_wall(t_rloop *tudao, t_draw *draw, t_all *all, int y)

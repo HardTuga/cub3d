@@ -6,13 +6,13 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 09:54:47 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/26 18:32:41 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:01:41 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-static void	calc_sidedist(t_rloop *tudao, t_play *player)
+void	calc_sidedist(t_rloop *tudao, t_play *player)
 {
 	tudao->map.x = (int)player->p.x;
 	tudao->map.y = (int)player->p.y;
@@ -38,7 +38,7 @@ static void	calc_sidedist(t_rloop *tudao, t_play *player)
 	}
 }
 
-static void	calc_deltadist(t_vector *deltadist, t_vector raydir)
+void	calc_deltadist(t_vector *deltadist, t_vector raydir)
 {
 	if (raydir.x == 0)
 		deltadist->x = 1e30;
@@ -50,7 +50,7 @@ static void	calc_deltadist(t_vector *deltadist, t_vector raydir)
 		deltadist->y = fabs(1 / raydir.y);
 }
 
-static void	init_tudao(t_rloop *tudao, t_play *player, char **map)
+static void	init_tudao(t_rloop *tudao, t_play *player, char **map, t_all *all)
 {
 	tudao->rdir.x = player->dir.x + player->plane.x * tudao->camx;
 	tudao->rdir.y = player->dir.y + player->plane.y * tudao->camx;
@@ -70,7 +70,7 @@ static void	init_tudao(t_rloop *tudao, t_play *player, char **map)
 			tudao->sdist.y += tudao->ddist.y;
 			tudao->side = 1;
 		}
-		check_d(map, tudao);
+		check_d(map, tudao, all);
 		if (map[tudao->map.y][tudao->map.x] == '1')
 			tudao->hit = true;
 	}
@@ -103,33 +103,34 @@ void	ray_loop(t_play *pl, t_cub *cub, t_all *all)
 {
 	t_draw	draw;
 	t_rloop	tudao;
+	t_rloop	door;
 
 	draw.x = -1;
 	all->mlx.img.img = mlx_new_image(all->mlx.mlx, SCREENW, SCREENH);
 	all->mlx.img.addr = mlx_get_data_addr(all->mlx.img.img, &all->mlx.img.bpp,
 			&all->mlx.img.line_length, &all->mlx.img.endian);
-	tudao.hit_door = false;
-	tudao.end_door = 0;
+	all->hit_door = false;
 	while (++(draw.x) < SCREENW)
 	{
 		tudao.camx = 2 * draw.x / (double)SCREENW - 1;
 		tudao.hit = false;
-		init_tudao(&tudao, pl, cub->map);
+		init_tudao(&tudao, pl, cub->map, all);
 		calc_tex_x(&tudao, pl, &draw, all->tex);
 		all->line_height = (int)(SCREENH / tudao.perpwdist);
 		draw_all(&tudao, &draw, all);
-		if (tudao.hit_door == true && tudao.end_door != draw.x)
+		if (all->hit_door)
 		{
-			calc_tex_door(&tudao, pl, &draw, all->tex);
-			all->line_height = SCREENH / tudao.door_dist;
-			tudao.draw_start = (-all->line_height + all->h) / 2 + SCREENH / 2;
-			if (tudao.draw_start < 0)
-				tudao.draw_start = 0;
-			tudao.draw_end = (all->line_height + all->h) / 2 + SCREENH / 2;
-			if (tudao.draw_end > SCREENH)
-				tudao.draw_end = SCREENH;
-			while (tudao.draw_start < tudao.draw_end)
-				draw_door(&tudao, &draw, all, tudao.draw_start++);
+			raycast_door(all, draw.x, &door);
+			calc_tex_door(&door, all, &draw, all->tex);
+			all->line_height = (int)(SCREENH / door.perpwdist);
+			door.draw_start = (-all->line_height + all->h) / 2 + SCREENH / 2;
+			if (door.draw_start < 0)
+				door.draw_start = 0;
+			door.draw_end = (all->line_height + all->h) / 2 + SCREENH / 2;
+			if (door.draw_end > SCREENH)
+				door.draw_end = SCREENH;
+			while (door.draw_start < door.draw_end)
+				draw_door(&door, &draw, all, door.draw_start++);
 		}
 	}
 	minimap(all, 1, 1);

@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/26 16:32:46 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:02:47 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,10 +189,12 @@ typedef struct s_mlx
 typedef struct s_all {
 	ssize_t		h;
 	int			line_height;
+	int			door_state;
 	bool		m_in_window;
 	bool		w_minimised;
-	double		time_elapsed;
+	bool		hit_door;
 	bool		kmap[14];
+	double		time_elapsed;
 	t_data		tex[7];
 	t_vector	mouse;
 	t_play		*pl;

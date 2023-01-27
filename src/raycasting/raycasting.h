@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/26 18:18:43 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:02:27 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,12 @@ typedef struct s_rloop
 	int			draw_end;
 	int			line_height;
 	int			door_state;
-	int			end_door;
+	int			door_x;
 	bool		hit;
-	bool		hit_door;
 	double		door_dist;
-	double		ZBuffer[SCREENW];
 	double		camx;
 	double		perpwdist;
+	t_draw		*draw;
 	t_vector2	map;
 	t_vector	rdir;
 	t_vector	sdist;
@@ -54,7 +53,9 @@ typedef struct s_rloop
 void			draw_wall(t_rloop *tudao, t_draw *d, t_all *all, int y);
 
 //-----------------------------RAY_LOOP.C------------------------------------//
+void			calc_sidedist(t_rloop *tudao, t_play *player);
 void			ray_loop(t_play *pl, t_cub *cub, t_all *all);
+void			calc_deltadist(t_vector *deltadist, t_vector raydir);
 
 //-----------------------------RAY_MOVES.C-----------------------------------//
 int				key_released(int key, t_all *all);
@@ -95,13 +96,16 @@ void			init_mouse(t_all *all);
 int				mouse_pressed(int button, int x, int y, t_all *all);
 
 //------------------------------DOOR_HANDLER.C-------------------------------//
-void			calc_tex_door(t_rloop *tudao, t_play *pl, t_draw *draw, t_data *tex);
-void			check_d(char **map, t_rloop *tudao);
+void			check_d(char **map, t_rloop *tudao, t_all *all);
 void			door_handler(t_all *all);
 void			draw_door(t_rloop *tudao, t_draw *draw, t_all *all, int y);
 void			open_close_door(t_all *all, int x, int y);
 
 //-------------------------------ROTATIONS.C---------------------------------//
 void			horizontal_rot(t_play *p, double angle);
+
+//------------------------------RAYCAST_DOOR.C-------------------------------//
+void			calc_tex_door(t_rloop *tudao, t_all *all, t_draw *draw, t_data *tex);
+void			raycast_door(t_all *all, int x, t_rloop *tudao);
 
 #endif
