@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/26 14:34:10 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/27 13:59:56 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,9 @@ enum
 	WE = 2,
 	EA = 3,
 	D_O = 4,
-	D_C = 5
+	D_AO = 5,
+	D_AC = 6,
+	D_C = 7
 };
 
 enum
@@ -187,6 +189,25 @@ typedef struct s_mlx
 	t_data	img;
 }				t_mlx;
 
+typedef struct s_rloop
+{
+	int			side;
+	int			door_state;
+	int			stepx;
+	int			stepy;
+	int			draw_start;
+	int			draw_end;
+	int			line_height;
+	bool		hit_door;
+	bool		hit;
+	double		camx;
+	double		perpwdist;
+	t_vector2	map;
+	t_vector	rdir;
+	t_vector	sdist;
+	t_vector	ddist;
+}				t_rloop;
+
 typedef struct s_all {
 	ssize_t		h;
 	int			line_height;
@@ -194,11 +215,12 @@ typedef struct s_all {
 	bool		w_minimised;
 	double		time_elapsed;
 	bool		kmap[14];
-	t_data		tex[7];
+	t_data		tex[8];
 	t_vector	mouse;
 	t_play		*pl;
 	t_mlx		mlx;
 	t_cub		*cub;
+	t_rloop		tudao;
 }				t_all;
 
 //------------------------------CUB3D_MAIN------------------------------//

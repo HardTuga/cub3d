@@ -51,4 +51,6 @@ cub3d v0.3.2 - arranjar o cone de visao do player
 
 cub3d v0.3.3 - fov feito POGGERS
 
+cub3d v0.3.4 - tratar da animacao da porta
+
 TO DO LIST: animacao da porta

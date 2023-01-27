@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   images.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:46:29 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/24 12:51:40 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/27 11:29:32 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,16 @@ void	init_door_image(t_all *var)
 	&var->tex[D_O].bpp, &var->tex[D_O].line_length, &var->tex[D_O].endian);
 	var->tex[D_C].img = mlx_xpm_file_to_image(var->mlx.mlx, \
 	"./assets/gate_1.xpm", &var->tex[D_C].img_width, &var->tex[D_C].img_height);
-	var->tex[D_C].addr = mlx_get_data_addr(var->tex[D_C].img,
-			&var->tex[D_C].bpp, &var->tex[D_C].line_length, \
-			&var->tex[D_C].endian);
+	var->tex[D_C].addr = mlx_get_data_addr(var->tex[D_C].img, \
+	&var->tex[D_C].bpp, &var->tex[D_C].line_length, &var->tex[D_C].endian);
+	var->tex[D_AO].img = mlx_xpm_file_to_image(var->mlx.mlx, \
+	"./assets/gate_3.xpm", &var->tex[D_AO].img_width, &var->tex[D_AO].img_height);
+	var->tex[D_AO].addr = mlx_get_data_addr(var->tex[D_O].img, \
+	&var->tex[D_AO].bpp, &var->tex[D_AO].line_length, &var->tex[D_AO].endian);
+	var->tex[D_AC].img = mlx_xpm_file_to_image(var->mlx.mlx, \
+	"./assets/gate_2.xpm", &var->tex[D_AC].img_width, &var->tex[D_AC].img_height);
+	var->tex[D_AC].addr = mlx_get_data_addr(var->tex[D_AC].img, \
+	&var->tex[D_AC].bpp, &var->tex[D_AC].line_length, &var->tex[D_AC].endian);
 }
 
 void	init_images(t_all *var)

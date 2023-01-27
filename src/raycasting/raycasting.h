@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/25 17:43:30 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/27 13:59:16 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,6 @@ typedef struct s_draw
 	double		texpos;
 	uint		color;
 }				t_draw;
-
-typedef struct s_rloop
-{
-	int			side;
-	int			door_state;
-	int			stepx;
-	int			stepy;
-	int			draw_start;
-	int			draw_end;
-	int			line_height;
-	bool		hit_door;
-	bool		hit;
-	double		camx;
-	double		perpwdist;
-	t_vector2	map;
-	t_vector	rdir;
-	t_vector	sdist;
-	t_vector	ddist;
-}				t_rloop;
 
 //-----------------------------RAY_MAIN.C------------------------------------//
 void	draw_wall(t_rloop *tudao, t_draw *d, t_all *all, int y);

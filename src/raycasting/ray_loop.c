@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_loop.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 09:54:47 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/25 17:23:22 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:04:52 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,6 @@ static void	calc_tex_x(t_rloop *tudao, t_play *pl, t_draw *draw, t_data *tex)
 void	ray_loop(t_play *pl, t_cub *cub, t_all *all)
 {
 	t_draw	draw;
-	t_rloop	tudao;
 
 	draw.x = -1;
 	all->mlx.img.img = mlx_new_image(all->mlx.mlx, SCREENW, SCREENH);
@@ -123,12 +122,12 @@ void	ray_loop(t_play *pl, t_cub *cub, t_all *all)
 			&all->mlx.img.line_length, &all->mlx.img.endian);
 	while (++(draw.x) < SCREENW)
 	{
-		tudao.camx = 2 * draw.x / (double)SCREENW - 1;
-		tudao.hit = false;
-		init_tudao(&tudao, pl, cub->map);
-		calc_tex_x(&tudao, pl, &draw, all->tex);
-		all->line_height = (int)(SCREENH / tudao.perpwdist);
-		draw_all(&tudao, &draw, all);
+		all->tudao.camx = 2 * draw.x / (double)SCREENW - 1;
+		all->tudao.hit = false;
+		init_tudao(&all->tudao, pl, cub->map);
+		calc_tex_x(&all->tudao, pl, &draw, all->tex);
+		all->line_height = (int)(SCREENH / all->tudao.perpwdist);
+		draw_all(&all->tudao, &draw, all);
 	}
 	minimap(all, 1, 1);
 }
