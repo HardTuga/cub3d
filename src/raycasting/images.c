@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:46:29 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/27 11:29:32 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:16:35 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	init_images(t_all *var)
 	init_door_image(var);
 }
 
-uint	*get_img_pixel(t_data *data, int x, int y)
+unsigned int	*get_img_pixel(t_data *data, int x, int y)
 {
 	char	*pixel;
 

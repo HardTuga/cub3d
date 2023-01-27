@@ -6,13 +6,13 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 09:54:47 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/27 14:04:52 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:41:23 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-static void	calc_sidedist(t_rloop *tudao, t_play *player)
+void	calc_sidedist(t_rloop *tudao, t_play *player)
 {
 	tudao->map.x = (int)player->p.x;
 	tudao->map.y = (int)player->p.y;
@@ -38,7 +38,7 @@ static void	calc_sidedist(t_rloop *tudao, t_play *player)
 	}
 }
 
-static void	calc_deltadist(t_vector *deltadist, t_vector raydir)
+void	calc_deltadist(t_vector *deltadist, t_vector raydir)
 {
 	if (raydir.x == 0)
 		deltadist->x = 1e30;
@@ -50,7 +50,7 @@ static void	calc_deltadist(t_vector *deltadist, t_vector raydir)
 		deltadist->y = fabs(1 / raydir.y);
 }
 
-static void	init_tudao(t_rloop *tudao, t_play *player, char **map)
+static void	init_tudao(t_rloop *tudao, t_play *player, char **map, t_all *all)
 {
 	tudao->rdir.x = player->dir.x + player->plane.x * tudao->camx;
 	tudao->rdir.y = player->dir.y + player->plane.y * tudao->camx;
@@ -70,11 +70,9 @@ static void	init_tudao(t_rloop *tudao, t_play *player, char **map)
 			tudao->sdist.y += tudao->ddist.y;
 			tudao->side = 1;
 		}
-		if (map[tudao->map.y][tudao->map.x] != '0')
-		{
+		check_d(map, tudao, all);
+		if (map[tudao->map.y][tudao->map.x] == '1')
 			tudao->hit = true;
-			tudao->hit_door = check_d(map, tudao);
-		}
 	}
 	tudao->side = get_wall_dir(tudao->side, tudao->rdir);
 }
@@ -94,40 +92,45 @@ static void	calc_tex_x(t_rloop *tudao, t_play *pl, t_draw *draw, t_data *tex)
 		wallx = pl->p.x + tudao->perpwdist * tudao->rdir.x;
 	}
 	wallx -= floor(wallx);
-	if (tudao->hit_door == true)
-		draw->tex_x = (int)(wallx * tex[tudao->door_state].img_width);
-	else
-		draw->tex_x = (int)(wallx * tex[tudao->side].img_width);
-	if ((tudao->side == EA || tudao->side == WE) && tudao->rdir.x < 0
-		&& tudao->hit_door == false)
+	draw->tex_x = (int)(wallx * tex[tudao->side].img_width);
+	if ((tudao->side == EA || tudao->side == WE) && tudao->rdir.x < 0)
 		draw->tex_x = tex[tudao->side].img_width - draw->tex_x - 1;
-	else if ((tudao->side == NO || tudao->side == SO) && tudao->rdir.y > 0
-		&& tudao->hit_door == false)
+	else if ((tudao->side == NO || tudao->side == SO) && tudao->rdir.y > 0)
 		draw->tex_x = tex[tudao->side].img_width - draw->tex_x - 1;
-	else if ((tudao->side == EA || tudao->side == WE) && tudao->rdir.x < 0
-		&& tudao->hit_door == true)
-			draw->tex_x = tex[tudao->door_state].img_width - draw->tex_x - 1;
-	else if ((tudao->side == NO || tudao->side == SO) && tudao->rdir.y > 0
-		&& tudao->hit_door == true)
-			draw->tex_x = tex[tudao->door_state].img_width - draw->tex_x - 1;
 }
 
 void	ray_loop(t_play *pl, t_cub *cub, t_all *all)
 {
 	t_draw	draw;
+	t_rloop	door;
 
 	draw.x = -1;
 	all->mlx.img.img = mlx_new_image(all->mlx.mlx, SCREENW, SCREENH);
 	all->mlx.img.addr = mlx_get_data_addr(all->mlx.img.img, &all->mlx.img.bpp,
 			&all->mlx.img.line_length, &all->mlx.img.endian);
+	all->hit_door = false;
 	while (++(draw.x) < SCREENW)
 	{
 		all->tudao.camx = 2 * draw.x / (double)SCREENW - 1;
 		all->tudao.hit = false;
-		init_tudao(&all->tudao, pl, cub->map);
+		init_tudao(&all->tudao, pl, cub->map, all);
 		calc_tex_x(&all->tudao, pl, &draw, all->tex);
 		all->line_height = (int)(SCREENH / all->tudao.perpwdist);
 		draw_all(&all->tudao, &draw, all);
+		if (all->hit_door)
+		{
+			raycast_door(all, draw.x, &door);
+			calc_tex_door(&door, all, &draw, all->tex);
+			all->line_height = (int)(SCREENH / door.perpwdist);
+			door.draw_start = (-all->line_height + all->h) / 2 + SCREENH / 2;
+			if (door.draw_start < 0)
+				door.draw_start = 0;
+			door.draw_end = (all->line_height + all->h) / 2 + SCREENH / 2;
+			if (door.draw_end > SCREENH)
+				door.draw_end = SCREENH;
+			while (door.draw_start < door.draw_end)
+				draw_door(&door, &draw, all, door.draw_start++);
+		}
 	}
 	minimap(all, 1, 1);
 }

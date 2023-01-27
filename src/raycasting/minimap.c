@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:20:43 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/26 14:47:35 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:49:15 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void	print_minimap(t_vector p_cords, t_vector2 start, t_all *all, int x)
 			paint_minimap(&all->mlx.img, start, MM_F);
 		else if (all->cub->map[(int)p_cords.y][(int)p_cords.x] == '1')
 			paint_minimap(&all->mlx.img, start, MM_W);
-		else if (all->cub->map[(int)p_cords.y][(int)p_cords.x] == '2')
-			paint_minimap(&all->mlx.img, start, MM_DC);
-		else if (all->cub->map[(int)p_cords.y][(int)p_cords.x] == '3')
+		else if (all->cub->map[(int)p_cords.y][(int)p_cords.x] == '4')
 			paint_minimap(&all->mlx.img, start, MM_DO);
+		else
+			paint_minimap(&all->mlx.img, start, MM_DC);
 		p_cords.x += scale * x;
 		start.x += x;
 	}
@@ -112,7 +112,7 @@ void	minimap(t_all *all, int x, int y)
 	}
 	if (x != 1 || y != 1)
 	{
-		do_fov(all);
+		// do_fov(all);
 		put_player(all);
 		return ;
 	}

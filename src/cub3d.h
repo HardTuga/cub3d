@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/27 13:59:56 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:58:30 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,12 @@
 # define M_PI		3.14159265358979323846	/* pi */
 # define M_PI_2		1.57079632679489661923	/* pi/2 */
 # define M_PI_4		0.78539816339744830962	/* pi/4 */
-# define M_1_PI		0.31830988618379067154	/* 1/pi */
-# define M_2_PI		0.63661977236758134308	/* 2/pi */
+// # define M_1_PI		0.31830988618379067154	/* 1/pi */
+// # define M_2_PI		0.63661977236758134308	/* 2/pi */
 
 //-------------------------------ENUMS-------------------------------//
 #ifdef __APPLE__
 # include "../mlx/mlx.h"
-typedef unsigned int uint;
 /* MAC KEYS */
 enum
 {
@@ -95,16 +94,16 @@ enum {
 
 enum
 {
-	_W = 0,
-	_A = 1,
-	_S = 2,
-	_D = 3,
-	_LA = 4,
-	_RA = 5,
-	_UA = 6,
-	_DA = 7,
-	_TAB = 8,
-	_SHIFT = 9
+	_W,
+	_A,
+	_S,
+	_D,
+	_LA,
+	_RA,
+	_UA,
+	_DA,
+	_TAB,
+	_SHIFT,
 };
 
 enum
@@ -137,7 +136,7 @@ typedef struct s_player
 	char	dir;
 }				t_player;
 
-typedef struct s_cub
+typedef struct s_cub	
 {
 	t_player		player;
 	char			*n;
@@ -145,9 +144,9 @@ typedef struct s_cub
 	char			*w;
 	char			*e;
 	char			*f;
-	uint			f_trgb;
+	unsigned int	f_trgb;
 	char			*c;
-	uint			c_trgb;
+	unsigned int	c_trgb;
 	char			**map;
 	int				map_y;
 	int				map_x;
@@ -211,10 +210,14 @@ typedef struct s_rloop
 typedef struct s_all {
 	ssize_t		h;
 	int			line_height;
+	int			door_state;
 	bool		m_in_window;
 	bool		w_minimised;
-	double		time_elapsed;
+	bool		hit_door;
 	bool		kmap[14];
+	double		time_elapsed;
+	double		time_door_init;
+	double		time_door_now;
 	t_data		tex[8];
 	t_vector	mouse;
 	t_play		*pl;

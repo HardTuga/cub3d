@@ -3,53 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 14:30:06 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/24 12:09:01 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:53:41 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
-
 int	check_element(char c, int o)
 {
 	if (o == 1)
 	{
-		if (c == '1' || c == '3' || c == '4' || c == '5' || c == '6')
-			return (0);
-		else
+		if (c != '1')
 			return (1);
 	}
 	else
 	{
 		if (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W'
-			|| c == '1' || c == '2' || c == '3' || c == '4' || c == '5'
-			|| c == '6')
+			|| c == '1' || c == '4' || c == '7')
 			return (0);
 		else
 			return (1);
 	}
 	return (0);
 }
-
-// int	check_element(char c, int o)
-// {
-	// if (o == 1)
-	// {
-		// if (c != '1')
-			// return (1);
-	// }
-	// else
-	// {
-		// if (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W'
-			// || c == '1' || c == '2' || c == '3')
-			// return (0);
-		// else
-			// return (1);
-	// }
-	// return (0);
-// }
 
 int	check_door(char **map, int y, int x)
 {
