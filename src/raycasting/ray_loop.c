@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 09:54:47 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/27 14:01:41 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:39:05 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ void	ray_loop(t_play *pl, t_cub *cub, t_all *all)
 		{
 			raycast_door(all, draw.x, &door);
 			calc_tex_door(&door, all, &draw, all->tex);
+			draw_door_util(door, draw, all);
 			all->line_height = (int)(SCREENH / door.perpwdist);
 			door.draw_start = (-all->line_height + all->h) / 2 + SCREENH / 2;
 			if (door.draw_start < 0)

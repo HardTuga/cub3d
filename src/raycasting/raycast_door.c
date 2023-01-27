@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 11:56:02 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/27 14:04:27 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:40:40 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,18 @@ void	calc_tex_door(t_rloop *tudao, t_all *all, t_draw *draw, t_data *tex)
 		draw->tex_x = tex[all->door_state].img_width - draw->tex_x - 1;
 	else if ((tudao->side == NO || tudao->side == SO) && tudao->rdir.y > 0)
 		draw->tex_x = tex[all->door_state].img_width - draw->tex_x - 1;
+}
+void	draw_door_util(t_rloop door, t_draw draw, t_all *all)
+{
+	all->line_height = (int)(SCREENH / door.perpwdist);
+	door.draw_start = (-all->line_height + all->h) / 2 + SCREENH / 2;
+	if (door.draw_start < 0)
+		door.draw_start = 0;
+	door.draw_end = (all->line_height + all->h) / 2 + SCREENH / 2;
+	if (door.draw_end > SCREENH)
+		door.draw_end = SCREENH;
+	while (door.draw_start < door.draw_end)
+		draw_door(&door, &draw, all, door.draw_start++);
 }
 
 void	raycast_door(t_all *all, int x, t_rloop *tudao)

@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/27 14:02:27 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/27 17:00:13 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,20 +79,24 @@ void			draw_all(t_rloop *tudao, t_draw *draw, t_all *all);
 
 //--------------------------------MINIMAP-----------------------------------//
 void			minimap(t_all *all, int x, int y);
-void			print_minimap(t_vector p_cords, t_vector2 start, t_all *all, int x);
+void			print_minimap(t_vector p_cords,
+					t_vector2 start, t_all *all, int x);
 void			paint_minimap(t_data *data, t_vector2 start, int color);
 void			put_player(t_all *all);
 void			do_fov(t_all *all);
 
-//--------------------------------MINIMAP_FOV-----------------------------------//
-void			fill_fov(t_all *all, t_vector lvert, t_vector rvert, t_vector player);
+//--------------------------------MINIMAP_FOV-----------------------------//
+void			fill_fov(t_all *all,
+					t_vector lvert, t_vector rvert, t_vector player);
 int				get_min(int a, int b);
 int				get_max(int a, int b);
-bool			inside(t_vector p_a, t_vector p_b, t_vector p_c, t_vector target);
+bool			inside(t_vector p_a, t_vector p_b,
+					t_vector p_c, t_vector target);
 double			get_line_b(t_vector p_a, t_vector p_b);
 
 //---------------------------------MOUSE.C-----------------------------------//
 void			init_mouse(t_all *all);
+double			handle_mouse(t_all *all);
 int				mouse_pressed(int button, int x, int y, t_all *all);
 
 //------------------------------DOOR_HANDLER.C-------------------------------//
@@ -105,7 +109,9 @@ void			open_close_door(t_all *all, int x, int y);
 void			horizontal_rot(t_play *p, double angle);
 
 //------------------------------RAYCAST_DOOR.C-------------------------------//
-void			calc_tex_door(t_rloop *tudao, t_all *all, t_draw *draw, t_data *tex);
+void			calc_tex_door(t_rloop *tudao,
+					t_all *all, t_draw *draw, t_data *tex);
+void			draw_door_util(t_rloop door, t_draw draw, t_all *all);
 void			raycast_door(t_all *all, int x, t_rloop *tudao);
 
 #endif
