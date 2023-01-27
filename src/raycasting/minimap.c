@@ -61,13 +61,13 @@ void	do_fov(t_all *all)
 	player.x = (double)(SCREENW - (SCREENW / 12));
 	player.y = (double)(SCREENH - (SCREENW / 12));
 	lvert.x = all->pl->dir.x + all->pl->plane.x * -1;
-	lvert.x = lvert.x * (SCREENW / 100 + 2) + player.x;
+	lvert.x = lvert.x * (SCREENW / 100) + player.x;
 	lvert.y = all->pl->dir.y + all->pl->plane.y * -1;
-	lvert.y = lvert.y * (SCREENW / 100 + 2) + player.y;
+	lvert.y = lvert.y * (SCREENW / 100) + player.y;
 	rvert.x = all->pl->dir.x + all->pl->plane.x * 1;
-	rvert.x = rvert.x * (SCREENW / 100 + 2) + player.x;
+	rvert.x = rvert.x * (SCREENW / 100) + player.x;
 	rvert.y = all->pl->dir.y + all->pl->plane.y * 1;
-	rvert.y = rvert.y * (SCREENW / 100 + 2) + player.y;
+	rvert.y = rvert.y * (SCREENW / 100) + player.y;
 	fill_fov(all, lvert, rvert, player);
 }
 

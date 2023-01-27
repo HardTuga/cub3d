@@ -39,7 +39,7 @@ _BIN    =        ./
 ############### COMPILER ################
 
 CC      =        cc
-CFLAGS      =        -Wall -Werror -Wextra -g -fsanitize=address
+CFLAGS      =        -Wall -Werror -Wextra #-g -fsanitize=address
 #valgrind --leak-check=full --show-leak-kinds=all ./minishell
 SRCS    =        $(_SRC)cub3d_main.c \
                  $(_SRC)errors.c \
