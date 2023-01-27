@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+         #
+#    By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 15:07:52 by lucas-ma          #+#    #+#              #
-#    Updated: 2023/01/26 12:06:05 by pcampos-         ###   ########.fr        #
+#    Updated: 2023/01/27 12:32:12 by lucas-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,7 @@ SRCS    =        $(_SRC)cub3d_main.c \
 				 $(_SRC)raycasting/mouse.c \
 				 $(_SRC)raycasting/door_handler.c \
 				 $(_SRC)raycasting/rotations.c \
+				 $(_SRC)raycasting/raycast_door.c \
 
 OBJS    =        $(patsubst $(_SRC)%.c,$(_OBJ)%.o,$(SRCS))
 DEPS    =        ./libs/libft.a ./minilibx_linux/libmlx_Linux.a

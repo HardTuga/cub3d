@@ -3,28 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   door_handler.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:00:22 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/25 12:55:42 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:02:10 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-bool	check_d(char **map, t_rloop *tudao)
+void	check_d(char **map, t_rloop *tudao, t_all *all)
 {
-	if (map[tudao->map.y][tudao->map.x] == '2')
+	if (!all->hit_door)
 	{
-		tudao->door_state = D_C;
-		return (true);
+		if (map[tudao->map.y][tudao->map.x] == '2')
+		{
+			all->door_state = D_C;
+			all->hit_door = true;
+		}
+		else if (map[tudao->map.y][tudao->map.x] == '3')
+		{
+			all->door_state = D_O;
+			all->hit_door = true;
+		}
 	}
-	else if (map[tudao->map.y][tudao->map.x] == '3')
-	{
-		tudao->door_state = D_O;
-		return (true);
-	}
-	return (false);
 }
 
 void	door_handler(t_all *all)
