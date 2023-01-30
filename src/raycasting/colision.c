@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:22:50 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/27 16:48:38 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/30 14:49:30 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ bool	col(char c)
 	return (false);
 }
 
-static bool	colider(double posx, double posy, t_vector2 *c, char **map)
+bool	colider(double posx, double posy, t_vector2 *c, char **map)
 {
 	bool		no_cool;
 	double		old_dir;
@@ -29,8 +29,8 @@ static bool	colider(double posx, double posy, t_vector2 *c, char **map)
 	no_cool = true;
 	angle = 0;
 	vector.x = 0.25;
-	vector.y = 0.25;
-	while (angle < M_PI_2)
+	vector.y = 0;
+	while (angle < M_PI * 2)
 	{
 		old_dir = vector.x;
 		vector.x = vector.x * cos(angle) - vector.y * sin(angle);

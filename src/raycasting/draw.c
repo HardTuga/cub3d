@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 12:28:25 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/27 14:39:50 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/30 14:51:22 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,14 @@ void	draw_door(t_rloop *tudao, t_draw *draw, t_all *all, int y)
 				| (int)(((draw->color >> 8) & 0x0000FF) * 0.70) << 8
 				| (int)((draw->color >> 16) * 0.70) << 16);
 	if (draw->color != 0xff000000)
-		my_mlx_pixel_put(&(all->mlx.img), SCREENW - draw->x - 1, y, draw->color);
+		my_mlx_pixel_put(&(all->mlx.img), \
+		SCREENW - draw->x - 1, y, draw->color);
 	if (y + 1 == tudao->draw_end)
+	{
+		my_mlx_pixel_put(&all->mlx.img, \
+		SCREENW - draw->x - 1, y, all->cub->f_trgb);
 		all->hit_door = false;
+	}
 }
 
 void	draw_wall(t_rloop *tudao, t_draw *draw, t_all *all, int y)

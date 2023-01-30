@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 09:54:47 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/27 14:41:23 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/30 14:53:05 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	calc_sidedist(t_rloop *tudao, t_play *player)
 {
+	tudao->hit = false;
 	tudao->map.x = (int)player->p.x;
 	tudao->map.y = (int)player->p.y;
 	if (tudao->rdir.x < 0)
@@ -121,15 +122,7 @@ void	ray_loop(t_play *pl, t_cub *cub, t_all *all)
 		{
 			raycast_door(all, draw.x, &door);
 			calc_tex_door(&door, all, &draw, all->tex);
-			all->line_height = (int)(SCREENH / door.perpwdist);
-			door.draw_start = (-all->line_height + all->h) / 2 + SCREENH / 2;
-			if (door.draw_start < 0)
-				door.draw_start = 0;
-			door.draw_end = (all->line_height + all->h) / 2 + SCREENH / 2;
-			if (door.draw_end > SCREENH)
-				door.draw_end = SCREENH;
-			while (door.draw_start < door.draw_end)
-				draw_door(&door, &draw, all, door.draw_start++);
+			draw_door_util(door, draw, all);
 		}
 	}
 	minimap(all, 1, 1);

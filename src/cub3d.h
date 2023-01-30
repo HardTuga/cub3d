@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/27 16:58:30 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/30 14:42:22 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 //------------------------------INCLUDES------------------------------//
+# include "../minilibx_linux/mlx.h"
 # include "../libft/libft.h"
 # include <stdio.h>
 # include <math.h>
@@ -35,31 +36,11 @@
 # define M_PI		3.14159265358979323846	/* pi */
 # define M_PI_2		1.57079632679489661923	/* pi/2 */
 # define M_PI_4		0.78539816339744830962	/* pi/4 */
-// # define M_1_PI		0.31830988618379067154	/* 1/pi */
-// # define M_2_PI		0.63661977236758134308	/* 2/pi */
+# define M_1_PI		0.31830988618379067154	/* 1/pi */
+# define M_2_PI		0.63661977236758134308	/* 2/pi */
 
 //-------------------------------ENUMS-------------------------------//
-#ifdef __APPLE__
-# include "../mlx/mlx.h"
-/* MAC KEYS */
-enum
-{
-	KEY_ESC = 53,
-	KEY_W = 13,
-	KEY_A = 0,
-	KEY_S = 1,
-	KEY_D = 2,
-	KEY_LFT_ARR = 123,
-	KEY_RGT_ARR = 124,
-	KEY_TAB = 48,
-	KEY_UP_ARR = 126,
-	KEY_DOWN_ARR = 125,
-	KEY_SHIFT = 257,
-	KEY_M = 46,
-	KEY_E = 14
-};
-#else
-# include "../minilibx_linux/mlx.h"
+
 /* LINUX KEYS */
 enum
 {
@@ -78,8 +59,6 @@ enum
 	KEY_E = 101
 };
 
-#endif
-
 enum {
 	ON_KEYDOWN = 2,
 	ON_KEYUP = 3,
@@ -90,7 +69,6 @@ enum {
 	ON_LEAVE = 10,
 	ON_DESTROY = 17
 };
-
 
 enum
 {
@@ -136,7 +114,7 @@ typedef struct s_player
 	char	dir;
 }				t_player;
 
-typedef struct s_cub	
+typedef struct s_cub
 {
 	t_player		player;
 	char			*n;

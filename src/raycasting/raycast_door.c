@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 11:56:02 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/27 16:41:11 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/30 14:53:36 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,22 @@ void	calc_tex_door(t_rloop *tudao, t_all *all, t_draw *draw, t_data *tex)
 		draw->tex_x = tex[all->door_state].img_width - draw->tex_x - 1;
 }
 
+void	draw_door_util(t_rloop door, t_draw draw, t_all *all)
+{
+	all->line_height = (int)(SCREENH / door.perpwdist);
+	door.draw_start = (-all->line_height + all->h) / 2 + SCREENH / 2;
+	if (door.draw_start < 0)
+		door.draw_start = 0;
+	door.draw_end = (all->line_height + all->h) / 2 + SCREENH / 2;
+	if (door.draw_end > SCREENH)
+		door.draw_end = SCREENH;
+	while (door.draw_start < door.draw_end)
+		draw_door(&door, &draw, all, door.draw_start++);
+}
+
 void	raycast_door(t_all *all, int x, t_rloop *tudao)
 {
 	tudao->camx = 2 * x / (double)SCREENW - 1;
-	tudao->hit = false;
 	tudao->rdir.x = all->pl->dir.x + all->pl->plane.x * tudao->camx;
 	tudao->rdir.y = all->pl->dir.y + all->pl->plane.y * tudao->camx;
 	calc_deltadist(&(tudao->ddist), tudao->rdir);

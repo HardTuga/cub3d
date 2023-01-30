@@ -6,7 +6,7 @@
 /*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:00:22 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/27 17:07:43 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/30 14:51:06 by pcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,13 @@ void	door_handler(t_all *all)
 	y = 0;
 	if (all->pl->dir.x < -0.5)
 		x = -1;
-	else if(all->pl->dir.x > 0.5)
+	else if (all->pl->dir.x > 0.5)
 		x = 1;
 	if (all->pl->dir.y < -0.5)
 		y = -1;
-	else if(all->pl->dir.y > 0.5)
+	else if (all->pl->dir.y > 0.5)
 		y = 1;
-	open_close_door(all, x ,y);
+	open_close_door(all, x, y);
 }
 
 void	open_close_door(t_all *all, int x, int y)

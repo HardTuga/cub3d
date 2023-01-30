@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:21:17 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/25 15:21:40 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:12:52 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ int	exit_handler(t_all *all)
 	free_imgs(all);
 	if (all->mlx.win != NULL)
 		mlx_destroy_window(all->mlx.mlx, all->mlx.win);
-#ifndef __APPLE__
 	mlx_destroy_display(all->mlx.mlx);
-#endif
 	free(all->mlx.mlx);
 	exit(EXIT_SUCCESS);
 }
@@ -30,11 +28,7 @@ static int	re_expand_window(t_all *all)
 	if (all->m_in_window == true)
 	{
 		mlx_mouse_hide(all->mlx.mlx, all->mlx.win);
-#ifndef __APPLE__
 		mlx_mouse_move(all->mlx.mlx, all->mlx.win, SCREENW / 2, SCREENH / 2);
-#else
-		mlx_mouse_move(all->mlx.win, SCREENW / 2, SCREENH / 2);
-#endif
 	}
 	all->w_minimised = false;
 	return (0);
