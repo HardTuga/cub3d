@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/30 14:42:22 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/30 17:36:10 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,12 @@ enum
 
 enum
 {
-	NO = 0,
-	SO = 1,
-	WE = 2,
-	EA = 3,
-	D_O = 4,
-	D_AO = 5,
-	D_AC = 6,
-	D_C = 7
+	NO,
+	SO,
+	WE,
+	EA,
+	D_O,
+	D_C
 };
 
 enum
@@ -196,7 +194,7 @@ typedef struct s_all {
 	double		time_elapsed;
 	double		time_door_init;
 	double		time_door_now;
-	t_data		tex[8];
+	t_data		tex[6];
 	t_vector	mouse;
 	t_play		*pl;
 	t_mlx		mlx;

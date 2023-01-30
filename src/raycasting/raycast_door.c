@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_door.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 11:56:02 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/30 14:53:36 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/30 17:34:09 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	raycast_door(t_all *all, int x, t_rloop *tudao)
 			tudao->sdist.y += tudao->ddist.y;
 			tudao->side = 1;
 		}
-		if (all->cub->map[tudao->map.y][tudao->map.x] >= '4')
+		if (all->cub->map[tudao->map.y][tudao->map.x] >= '2')
 			tudao->hit = true;
 		if (all->cub->map[tudao->map.y][tudao->map.x] == '1')
 			return ;

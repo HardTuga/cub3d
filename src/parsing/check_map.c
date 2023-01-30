@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 11:27:21 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/30 14:41:32 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/30 17:28:52 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	check_chars(char **map)
 		while (map[j][++i])
 			if (map[j][i] != '0' && map[j][i] != '1' && map[j][i] != 'N' &&
 				map[j][i] != 'S' && map[j][i] != 'E' && map[j][i] != 'W' &&
-				map[j][i] != ' ' && map[j][i] != '4' && map[j][i] != '7')
+				map[j][i] != ' ' && map[j][i] != '2' && map[j][i] != '3')
 				return (1);
 		i = -1;
 	}
@@ -38,8 +38,8 @@ int	closed_border(char **map, int y)
 	x = -1;
 	while (map[y][++x])
 		if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S' ||
-			map[y][x] == 'E' || map[y][x] == 'W' || map[y][x] == '4' ||
-			map[y][x] == '7')
+			map[y][x] == 'E' || map[y][x] == 'W' || map[y][x] == '2' ||
+			map[y][x] == '3')
 			return (error_msg("ERROR\nMap is not closed"));
 	return (0);
 }
@@ -61,7 +61,7 @@ int	closed_line(char **map, int y)
 			if (check_line_midle(map, y, x))
 				return (error_msg("ERROR\nMap is not closed"));
 		}
-		if (map[y][x] == '4' || map[y][x] == '7')
+		if (map[y][x] == '2' || map[y][x] == '3')
 		{
 			if (x == 0 || x == (int)ft_strlen(map[y]) - 1)
 				return (error_msg("ERROR\nDoor in invalid place"));
