@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:22:50 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/27 17:36:03 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:13:09 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ bool	col(char c)
 		return (true);
 	return (false);
 }
+
 bool	colider(double posx, double posy, t_vector2 *c, char **map)
 {
 	bool		no_cool;

@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 11:56:02 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/27 14:40:40 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:27:25 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	calc_tex_door(t_rloop *tudao, t_all *all, t_draw *draw, t_data *tex)
 	else if ((tudao->side == NO || tudao->side == SO) && tudao->rdir.y > 0)
 		draw->tex_x = tex[all->door_state].img_width - draw->tex_x - 1;
 }
+
 void	draw_door_util(t_rloop door, t_draw draw, t_all *all)
 {
 	all->line_height = (int)(SCREENH / door.perpwdist);
@@ -49,7 +50,6 @@ void	draw_door_util(t_rloop door, t_draw draw, t_all *all)
 void	raycast_door(t_all *all, int x, t_rloop *tudao)
 {
 	tudao->camx = 2 * x / (double)SCREENW - 1;
-	tudao->hit = false;
 	tudao->rdir.x = all->pl->dir.x + all->pl->plane.x * tudao->camx;
 	tudao->rdir.y = all->pl->dir.y + all->pl->plane.y * tudao->camx;
 	calc_deltadist(&(tudao->ddist), tudao->rdir);

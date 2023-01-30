@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/27 14:17:43 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:30:48 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 //------------------------------INCLUDES------------------------------//
+# include "../minilibx_linux/mlx.h"
 # include "../libft/libft.h"
 # include <stdio.h>
 # include <math.h>
@@ -39,27 +40,7 @@
 # define M_2_PI		0.63661977236758134308	/* 2/pi */
 
 //-------------------------------ENUMS-------------------------------//
-#ifdef __APPLE__
-# include "../mlx/mlx.h"
-/* MAC KEYS */
-enum
-{
-	KEY_ESC = 53,
-	KEY_W = 13,
-	KEY_A = 0,
-	KEY_S = 1,
-	KEY_D = 2,
-	KEY_LFT_ARR = 123,
-	KEY_RGT_ARR = 124,
-	KEY_TAB = 48,
-	KEY_UP_ARR = 126,
-	KEY_DOWN_ARR = 125,
-	KEY_SHIFT = 257,
-	KEY_M = 46,
-	KEY_E = 14
-};
-#else
-# include "../minilibx_linux/mlx.h"
+
 /* LINUX KEYS */
 enum
 {
@@ -78,8 +59,6 @@ enum
 	KEY_E = 101
 };
 
-#endif
-
 enum {
 	ON_KEYDOWN = 2,
 	ON_KEYUP = 3,
@@ -90,7 +69,6 @@ enum {
 	ON_LEAVE = 10,
 	ON_DESTROY = 17
 };
-
 
 enum
 {
@@ -134,7 +112,7 @@ typedef struct s_player
 	char	dir;
 }				t_player;
 
-typedef struct s_cub	
+typedef struct s_cub
 {
 	t_player		player;
 	char			*n;
@@ -144,7 +122,8 @@ typedef struct s_cub
 	char			*f;
 	unsigned int	f_trgb;
 	char			*c;
-	unsigned int	c_trgb;
+	unsigned int	
+src/cub3d.h: Error!c_trgb;
 	char			**map;
 	int				map_y;
 	int				map_x;

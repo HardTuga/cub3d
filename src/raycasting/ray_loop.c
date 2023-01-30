@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 09:54:47 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/27 17:30:11 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:29:12 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	calc_sidedist(t_rloop *tudao, t_play *player)
 {
+	tudao->hit = false;
 	tudao->map.x = (int)player->p.x;
 	tudao->map.y = (int)player->p.y;
 	if (tudao->rdir.x < 0)
