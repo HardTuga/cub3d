@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/30 11:30:48 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:41:28 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,7 @@ typedef struct s_cub
 	char			*f;
 	unsigned int	f_trgb;
 	char			*c;
-	unsigned int	
-src/cub3d.h: Error!c_trgb;
+	unsigned int	c_trgb;
 	char			**map;
 	int				map_y;
 	int				map_x;
