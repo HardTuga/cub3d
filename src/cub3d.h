@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/30 17:36:10 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/30 17:48:40 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,16 @@ enum
 	WE,
 	EA,
 	D_O,
-	D_C
+	D_C,
+	GUN1,
+	GUN2,
+	GUN3,
+	GUN4,
+	GUN5,
+	GUN6,
+	GUN7,
+	GUN8,
+	GUN9
 };
 
 enum
@@ -194,7 +203,7 @@ typedef struct s_all {
 	double		time_elapsed;
 	double		time_door_init;
 	double		time_door_now;
-	t_data		tex[6];
+	t_data		tex[15];
 	t_vector	mouse;
 	t_play		*pl;
 	t_mlx		mlx;
