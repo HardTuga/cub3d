@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/31 11:23:14 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/31 12:48:09 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "../libft/libft.h"
 # include <stdio.h>
 # include <math.h>
+# include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <sys/stat.h>
@@ -203,7 +204,7 @@ typedef struct s_all {
 	bool		hit_door;
 	bool		kmap[14];
 	double		time_elapsed;
-	double		time_door_init;
+	double		time_door_ini0t;
 	double		time_door_now;
 	t_data		tex[15];
 	t_vector	mouse;

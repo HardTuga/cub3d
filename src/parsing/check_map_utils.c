@@ -6,11 +6,12 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 14:30:06 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/30 17:28:09 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/31 12:51:37 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+
 int	check_element(char c, int o)
 {
 	if (o == 1)

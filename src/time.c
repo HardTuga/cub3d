@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:07:10 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/31 12:10:25 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/31 12:54:30 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,10 @@ void	wait_anime(t_all *all)
 	static unsigned long		oldtime = 0;
 	unsigned long				new_time;
 
-	new_time = get_timer_ms();
-	if (all->anim && new_time - oldtime >= 7)
+	new_time = get_timer_ms() * all->time_elapsed;
+	if (all->anim && new_time - oldtime <= \
+	(double)ULONG_MAX * all->time_elapsed)
 	{
-		printf("GUN STATE-> %d\n", all->gun_state);
-		printf("oldtime -> %ld\n", oldtime);
-		printf("new_time -> %ld\n", new_time);
-		printf("diference = %lu\n", new_time - oldtime);
 		if (all->gun_state == GUN9)
 		{
 			all->gun_state = GUN1;

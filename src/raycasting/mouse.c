@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 18:04:05 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/31 10:54:41 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/31 12:53:47 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	mouse_pressed(int button, int x, int y, t_all *all)
 		{
 			all->m_in_window = true;
 			mlx_mouse_hide(all->mlx.mlx, all->mlx.win);
-			mlx_mouse_move(all->mlx.mlx, all->mlx.win, SCREENW / 2, SCREENH / 2);
+			mlx_mouse_move(all->mlx.mlx, all->mlx.win, \
+			SCREENW / 2, SCREENH / 2);
 		}
 		else
 			all->anim = true;

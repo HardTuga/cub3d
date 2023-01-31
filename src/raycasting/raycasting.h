@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/31 10:06:30 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/31 12:53:27 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,8 @@ void			draw_door_util(t_rloop door, t_draw draw, t_all *all);
 void			raycast_door(t_all *all, int x, t_rloop *tudao);
 
 //--------------------------------DRAW_GUN.C---------------------------------//
-void			draw_gun(t_all *all, t_data *img, t_vector2 pos, t_vector2 size);
+void			draw_gun(t_all *all, t_data *img,
+					t_vector2 pos, t_vector2 size);
 t_vector2		vector2(int x, int y);
 
 #endif

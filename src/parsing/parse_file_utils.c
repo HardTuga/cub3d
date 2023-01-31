@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 13:50:26 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/31 11:57:13 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/31 12:54:44 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,12 @@ int	check_image(char *element)
 {
 	int	fd;
 
-	// printf("%s ", element);
 	if (rev_strstr(element, ".xpm"))
 		return (1);
 	fd = open(element, O_RDONLY);
 	if (fd < 0)
 		return (1);
 	close(fd);
-	// printf("Is OK\n");
 	return (0);
 }
 
