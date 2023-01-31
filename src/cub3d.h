@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:20:39 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/30 17:48:40 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/31 11:23:14 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,6 +196,8 @@ typedef struct s_all {
 	ssize_t		h;
 	int			line_height;
 	int			door_state;
+	int			gun_state;
+	bool		anim;
 	bool		m_in_window;
 	bool		w_minimised;
 	bool		hit_door;
@@ -234,7 +236,9 @@ int				map_checker(t_cub *cub);
 
 //--------------------------------TIME.C---------------------------------//
 unsigned long	get_timer(void);
+unsigned long	get_timer_ms(void);
 int				get_fps(void);
+void			wait_anime(t_all *all);
 
 //--------------------------------RAY_MAIN.C---------------------------------//
 void			ray_main(t_cub *map);

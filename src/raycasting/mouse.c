@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 18:04:05 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/30 11:12:31 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/31 10:54:41 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,18 @@ void	init_mouse(t_all *all)
 
 int	mouse_pressed(int button, int x, int y, t_all *all)
 {
-	(void)button;
 	(void)x;
 	(void)y;
-	if (all->m_in_window == false)
+	if (button == 1)
 	{
-		all->m_in_window = true;
-		mlx_mouse_hide(all->mlx.mlx, all->mlx.win);
-		mlx_mouse_move(all->mlx.mlx, all->mlx.win, SCREENW / 2, SCREENH / 2);
+		if (all->m_in_window == false)
+		{
+			all->m_in_window = true;
+			mlx_mouse_hide(all->mlx.mlx, all->mlx.win);
+			mlx_mouse_move(all->mlx.mlx, all->mlx.win, SCREENW / 2, SCREENH / 2);
+		}
+		else
+			all->anim = true;
 	}
 	return (0);
 }

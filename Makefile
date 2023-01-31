@@ -6,7 +6,7 @@
 #    By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 15:07:52 by lucas-ma          #+#    #+#              #
-#    Updated: 2023/01/30 17:38:26 by lucas-ma         ###   ########.fr        #
+#    Updated: 2023/01/31 09:59:11 by lucas-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ SRCS    =        $(_SRC)cub3d_main.c \
 				 $(_SRC)raycasting/door_handler.c \
 				 $(_SRC)raycasting/rotations.c \
 				 $(_SRC)raycasting/raycast_door.c \
+				 $(_SRC)raycasting/draw_gun.c \
 
 OBJS    =        $(patsubst $(_SRC)%.c,$(_OBJ)%.o,$(SRCS))
 DEPS    =        ./libs/libft.a ./minilibx_linux/libmlx_Linux.a
