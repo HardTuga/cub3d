@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:20:43 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/30 14:51:57 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/01/30 17:32:53 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	print_minimap(t_vector p_cords, t_vector2 start, t_all *all, int x)
 			paint_minimap(&all->mlx.img, start, MM_F);
 		else if (all->cub->map[(int)p_cords.y][(int)p_cords.x] == '1')
 			paint_minimap(&all->mlx.img, start, MM_W);
-		else if (all->cub->map[(int)p_cords.y][(int)p_cords.x] == '4')
+		else if (all->cub->map[(int)p_cords.y][(int)p_cords.x] == '3')
 			paint_minimap(&all->mlx.img, start, MM_DO);
 		else
 			paint_minimap(&all->mlx.img, start, MM_DC);

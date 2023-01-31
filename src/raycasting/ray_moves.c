@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:07:22 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/30 11:12:08 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/31 13:12:34 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,10 @@ static void	move_player(t_all *all)
 
 static void	handle_keys(t_all *all)
 {
+	wait_anime(all);
+	draw_gun(all, &all->tex[all->gun_state],
+		vector2(SCREENW - (SCREENW / 2), SCREENH - (SCREENH / 3)),
+		vector2(SCREENW / 4, SCREENH / 3));
 	if (all->kmap[_TAB] == true)
 	{
 		if (all->m_in_window == true)

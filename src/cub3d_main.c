@@ -6,36 +6,11 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:15:40 by pcampos-          #+#    #+#             */
-/*   Updated: 2023/01/23 13:58:44 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/01/31 12:54:16 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static void	print_map(char **map)
-{
-	int	i;
-
-	i = -1;
-	printf("MAP:\n");
-	while (map[++i])
-		printf("%s\n", map[i]);
-}
-
-static void	print_cub(t_cub *cub)
-{
-	printf("NO: %s\n", cub->n);
-	printf("SO: %s\n", cub->s);
-	printf("WE: %s\n", cub->w);
-	printf("EA: %s\n", cub->e);
-	printf("F: %s\n", cub->f);
-	printf("F UINT: %u\n", cub->f_trgb);
-	printf("C: %s\n", cub->c);
-	printf("C UINT: %u\n", cub->c_trgb);
-	printf("Player Stats:\nX: %d Y: %d\nOrientation: %c\n", \
-cub->player.x, cub->player.y, cub->player.dir);
-	print_map(cub->map);
-}
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -57,7 +32,6 @@ int	main(int argc, char **argv)
 		free_cub(&cub);
 		return (1);
 	}
-	print_cub(&cub);
 	ray_main(&cub);
 	free_cub(&cub);
 }
