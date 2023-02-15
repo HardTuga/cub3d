@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:52:43 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/31 12:53:27 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:04:45 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 //------------------------------STRUCTS------------------------------//
 typedef struct s_draw
 {
-	int					x;
-	int					tex_y;
-	int					tex_x;
-	double				step;
-	double				texpos;
-	unsigned int		color;
+	int				x;
+	double			tex_y;
+	int				tex_x;
+	double			step;
+	double			texpos;
+	unsigned int	color;
 }				t_draw;
 
 //-----------------------------RAY_MAIN.C------------------------------------//

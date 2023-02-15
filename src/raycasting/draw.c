@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcampos- <pcampos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 12:28:25 by lucas-ma          #+#    #+#             */
-/*   Updated: 2023/01/30 14:51:22 by pcampos-         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:04:07 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	draw_wall(t_rloop *tudao, t_draw *draw, t_all *all, int y)
 	draw->tex_y = (int)draw->texpos & (all->tex[tudao->side].img_height - 1);
 	draw->texpos += draw->step;
 	draw->color = *(get_img_pixel(&(all->tex[tudao->side]), \
-	draw->tex_x, draw->tex_y));
+	draw->tex_x, draw->texpos));
 	if (tudao->side == NO || tudao->side == SO)
 		draw->color = mlx_get_color_value(all->mlx.mlx,
 				(int)((draw->color & 0x0000FF) * 0.70)
